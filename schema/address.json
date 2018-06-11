@@ -1,0 +1,24 @@
+{
+  "id": "https://docs.hoepel.app/schema/address.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "A physical street address",
+  "type": "object",
+  "properties": {
+    "street": {
+      "type": "string",
+      "description": "The street component of the address, e.g. 'Baker Street'"
+    },
+    "number": {
+      "type": "string",
+      "description": "The house number, e.g. '12A'"
+    },
+    "zipCode": {
+      "type": "number",
+      "description": "The zip code of the city, e.g. '1200'"
+    },
+    "city": {
+      "type": "string",
+      "description": "The city, e.g. 'Brussels'"
+    }
+  }
+}

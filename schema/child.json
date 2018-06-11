@@ -1,0 +1,48 @@
+{
+  "id": "https://docs.hoepel.app/schema/child.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "A child",
+  "type": "object",
+  "required": [],
+  "properties": {
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "legacyAddress": {
+      "$ref": "https://docs.hoepel.app/schema/address.json"
+    },
+    "legacyContact": {
+      "$ref": "TODO"
+    },
+    "gender": {
+      "type": "string",
+      "enum": [ "male", "female", "other" ]
+    },
+    "contactPeople": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "contactPersonId": {
+            "type": "string"
+          },
+          "relationship": {
+            "type": "string",
+            "description": "The relationship between the person and the contact person. E.g. 'Father', 'Grandparent'"
+          }
+        }
+      }
+    },
+    "birthDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Day on which child was born as ISO 8601"
+    },
+    "remarks": {
+      "type": "string"
+    }
+  }
+}
