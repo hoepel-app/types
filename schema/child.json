@@ -15,7 +15,7 @@
       "$ref": "https://docs.hoepel.app/schema/address.json"
     },
     "legacyContact": {
-      "$ref": "TODO"
+      "$ref": "https://docs.hoepel.app/schema/contact-info.json"
     },
     "gender": {
       "type": "string",

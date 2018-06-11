@@ -3,7 +3,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "Phone contact information for a person. Includes phone number and phone number meta-information.",
   "type": "object",
-  "required": [ "phoneNumber" ]
+  "required": [ "phoneNumber" ],
   "properties": {
     "phoneNumber": {
       "type": "string"
