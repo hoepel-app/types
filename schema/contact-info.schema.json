@@ -1,5 +1,5 @@
 {
-  "id": "https://docs.hoepel.app/schema/contact-info.json",
+  "id": "https://docs.hoepel.app/schema/contact-info.schema.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "Contact information for a person. Describes how a person can be contacted.",
   "type": "object",
@@ -8,7 +8,7 @@
     "phone": {
       "type": "array",
       "items": {
-        "$ref": "https://docs.hoepel.app/schema/phone-contact.json"
+        "$ref": "https://docs.hoepel.app/schema/phone-contact.schema.json"
       }
     },
     "email": {

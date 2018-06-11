@@ -1,0 +1,19 @@
+{
+  "id": "https://docs.hoepel.app/schema/day.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "A day, possibly containing shifts on that day",
+  "type": "object",
+  "required": [ "date", "shifts" ],
+  "properties": {
+    "date": {
+      "type": "string",
+      "pattern": "date"
+    },
+    "shifts": {
+      "type": "array",
+      "item": {
+        "$ref": "https://docs.hoepel.app/schema/shift.schema.json"
+      }
+    }
+  }
+}

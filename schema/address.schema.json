@@ -1,5 +1,5 @@
 {
-  "id": "https://docs.hoepel.app/schema/address.json",
+  "id": "https://docs.hoepel.app/schema/address.schema.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "A physical street address",
   "type": "object",
@@ -13,7 +13,7 @@
       "description": "The house number, e.g. '12A'"
     },
     "zipCode": {
-      "type": "number",
+      "type": "integer",
       "description": "The zip code of the city, e.g. '1200'"
     },
     "city": {

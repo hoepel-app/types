@@ -1,0 +1,40 @@
+{
+  "id": "https://docs.hoepel.app/schema/shift.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "A shift: an activity or period of a day",
+  "type": "object",
+  "required": [
+    "id",
+    "price",
+    "childrenCanBePresent",
+    "crewCanBePresent",
+    "kind"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "price": {
+      "$ref": "https://docs.hoepel.app/schema/price.schema.json"
+    },
+    "childrenCanBePresent": {
+      "type": "boolean"
+    },
+    "crewCanBePresent": {
+      "type": "boolean"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "startAndEnd": {
+      "$ref": "https://docs.hoepel.app/schema/start-and-end-time.schema.json"
+    }
+  }
+}
+

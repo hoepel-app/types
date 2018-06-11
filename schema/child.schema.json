@@ -1,9 +1,9 @@
 {
-  "id": "https://docs.hoepel.app/schema/child.json",
+  "id": "https://docs.hoepel.app/schema/child.schema.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "A child",
   "type": "object",
-  "required": [],
+  "required": [ "firstName", "lastName", "contactPeople", "remarks" ],
   "properties": {
     "firstName": {
       "type": "string"
@@ -12,14 +12,18 @@
       "type": "string"
     },
     "legacyAddress": {
-      "$ref": "https://docs.hoepel.app/schema/address.json"
+      "$ref": "https://docs.hoepel.app/schema/address.schema.json"
     },
     "legacyContact": {
-      "$ref": "https://docs.hoepel.app/schema/contact-info.json"
+      "$ref": "https://docs.hoepel.app/schema/contact-info.schema.json"
     },
     "gender": {
       "type": "string",
-      "enum": [ "male", "female", "other" ]
+      "enum": [
+        "male",
+        "female",
+        "other"
+      ]
     },
     "contactPeople": {
       "type": "array",

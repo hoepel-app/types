@@ -1,0 +1,18 @@
+{
+  "id": "https://docs.hoepel.app/schema/relative-time.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": [ "hour", "minute" ],
+  "properties": {
+    "hour": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 23
+    },
+    "minute": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 60
+    }
+  }
+}
