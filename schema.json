@@ -1,0 +1,219 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "definitions": {
+        "Address": {
+            "description": "A physical street address",
+            "properties": {
+                "city": {
+                    "description": "The city, e.g. 'Brussels'",
+                    "type": "string"
+                },
+                "number": {
+                    "description": "The house number, e.g. '12A'",
+                    "type": "string"
+                },
+                "street": {
+                    "description": "The street component of the address, e.g. 'Baker Street'",
+                    "type": "string"
+                },
+                "zipCode": {
+                    "description": "The zip code of the city, e.g. '1200'",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "Child": {
+            "properties": {
+                "birthDate": {
+                    "description": "Day on which child was born as ISO 8601",
+                    "type": "string"
+                },
+                "contactPeople": {
+                    "items": {
+                        "properties": {
+                            "contactPersonId": {
+                                "type": "string"
+                            },
+                            "relationship": {
+                                "description": "The relationship between the person and the contact person. E.g. 'Father', 'Grandparent'",
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "gender": {
+                    "enum": [
+                        "female",
+                        "male",
+                        "other"
+                    ],
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "legacyAddress": {
+                    "$ref": "#/definitions/Address"
+                },
+                "legacyContact": {
+                    "$ref": "#/definitions/ContactInfo"
+                },
+                "remarks": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ContactInfo": {
+            "properties": {
+                "email": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "phone": {
+                    "items": {
+                        "$ref": "#/definitions/PhoneContact"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Crew": {
+            "properties": {
+                "active": {
+                    "type": "boolean"
+                },
+                "address": {
+                    "$ref": "#/definitions/Address"
+                },
+                "bankAccount": {
+                    "description": "Bank account of the person, preferably IBAN format",
+                    "type": "string"
+                },
+                "birthDate": {
+                    "description": "Day on which child was born as ISO 8601",
+                    "type": "string"
+                },
+                "contact": {
+                    "$ref": "#/definitions/ContactInfo"
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "remarks": {
+                    "type": "string"
+                },
+                "yearStarted": {
+                    "description": "In which year the crew member started volunteering/working",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "Day": {
+            "description": "A day, possibly containing shifts on that day",
+            "properties": {
+                "date": {
+                    "type": "string"
+                },
+                "shifts": {
+                    "items": {
+                        "$ref": "#/definitions/Shift"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "PhoneContact": {
+            "description": "Phone contact information for a person. Includes phone number and phone number meta-information.",
+            "properties": {
+                "comment": {
+                    "type": "string"
+                },
+                "kind": {
+                    "type": "string"
+                },
+                "phoneNumber": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Price": {
+            "properties": {
+                "cents": {
+                    "type": "integer"
+                },
+                "euro": {
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "RelativeTime": {
+            "properties": {
+                "hour": {
+                    "type": "integer"
+                },
+                "minute": {
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "Shift": {
+            "properties": {
+                "childrenCanBePresent": {
+                    "type": "boolean"
+                },
+                "crewCanBePresent": {
+                    "type": "boolean"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "kind": {
+                    "type": "string"
+                },
+                "location": {
+                    "type": "string"
+                },
+                "price": {
+                    "$ref": "#/definitions/Price"
+                },
+                "startAndEnd": {
+                    "$ref": "#/definitions/StartAndEndTime"
+                }
+            },
+            "type": "object"
+        },
+        "StartAndEndTime": {
+            "properties": {
+                "end": {
+                    "$ref": "#/definitions/RelativeTime"
+                },
+                "start": {
+                    "$ref": "#/definitions/RelativeTime"
+                }
+            },
+            "type": "object"
+        }
+    }
+}
+
