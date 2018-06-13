@@ -2,6 +2,7 @@
     "$schema": "http://json-schema.org/draft-06/schema#",
     "definitions": {
         "Address": {
+            "additionalProperties": false,
             "description": "A physical street address",
             "properties": {
                 "city": {
@@ -24,6 +25,7 @@
             "type": "object"
         },
         "Child": {
+            "additionalProperties": false,
             "properties": {
                 "birthDate": {
                     "description": "Day on which child was born as ISO 8601",
@@ -31,6 +33,7 @@
                 },
                 "contactPeople": {
                     "items": {
+                        "additionalProperties": false,
                         "properties": {
                             "contactPersonId": {
                                 "type": "string"
@@ -68,9 +71,16 @@
                     "type": "string"
                 }
             },
+            "required": [
+                "contactPeople",
+                "firstName",
+                "lastName",
+                "remarks"
+            ],
             "type": "object"
         },
         "ContactInfo": {
+            "additionalProperties": false,
             "properties": {
                 "email": {
                     "items": {
@@ -85,9 +95,14 @@
                     "type": "array"
                 }
             },
+            "required": [
+                "email",
+                "phone"
+            ],
             "type": "object"
         },
         "Crew": {
+            "additionalProperties": false,
             "properties": {
                 "active": {
                     "type": "boolean"
@@ -120,9 +135,18 @@
                     "type": "integer"
                 }
             },
+            "required": [
+                "active",
+                "address",
+                "contact",
+                "firstName",
+                "lastName",
+                "remarks"
+            ],
             "type": "object"
         },
         "Day": {
+            "additionalProperties": false,
             "description": "A day, possibly containing shifts on that day",
             "properties": {
                 "date": {
@@ -135,9 +159,14 @@
                     "type": "array"
                 }
             },
+            "required": [
+                "date",
+                "shifts"
+            ],
             "type": "object"
         },
         "PhoneContact": {
+            "additionalProperties": false,
             "description": "Phone contact information for a person. Includes phone number and phone number meta-information.",
             "properties": {
                 "comment": {
@@ -150,9 +179,13 @@
                     "type": "string"
                 }
             },
+            "required": [
+                "phoneNumber"
+            ],
             "type": "object"
         },
         "Price": {
+            "additionalProperties": false,
             "properties": {
                 "cents": {
                     "type": "integer"
@@ -161,9 +194,14 @@
                     "type": "integer"
                 }
             },
+            "required": [
+                "cents",
+                "euro"
+            ],
             "type": "object"
         },
         "RelativeTime": {
+            "additionalProperties": false,
             "properties": {
                 "hour": {
                     "type": "integer"
@@ -172,9 +210,14 @@
                     "type": "integer"
                 }
             },
+            "required": [
+                "hour",
+                "minute"
+            ],
             "type": "object"
         },
         "Shift": {
+            "additionalProperties": false,
             "properties": {
                 "childrenCanBePresent": {
                     "type": "boolean"
@@ -201,9 +244,17 @@
                     "$ref": "#/definitions/StartAndEndTime"
                 }
             },
+            "required": [
+                "childrenCanBePresent",
+                "crewCanBePresent",
+                "id",
+                "kind",
+                "price"
+            ],
             "type": "object"
         },
         "StartAndEndTime": {
+            "additionalProperties": false,
             "properties": {
                 "end": {
                     "$ref": "#/definitions/RelativeTime"
@@ -212,6 +263,10 @@
                     "$ref": "#/definitions/RelativeTime"
                 }
             },
+            "required": [
+                "end",
+                "start"
+            ],
             "type": "object"
         }
     }

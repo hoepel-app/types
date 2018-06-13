@@ -7,7 +7,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "make-schema": "typescript-json-schema \"interfaces/**/*.ts\" \"*\" -o schema.json"
+    "make-schema": "typescript-json-schema \"interfaces/**/*.ts\" \"*\" --noExtraProps --required -o schema.json"
   },
   "repository": {
     "type": "git",
