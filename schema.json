@@ -165,6 +165,26 @@
             ],
             "type": "object"
         },
+        "DayDate": {
+            "additionalProperties": false,
+            "properties": {
+                "day": {
+                    "type": "number"
+                },
+                "month": {
+                    "type": "number"
+                },
+                "year": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "day",
+                "month",
+                "year"
+            ],
+            "type": "object"
+        },
         "PhoneContact": {
             "additionalProperties": false,
             "description": "Phone contact information for a person. Includes phone number and phone number meta-information.",
