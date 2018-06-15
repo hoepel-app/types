@@ -1,9 +1,9 @@
-import { Shift } from './shift';
+import { IShift } from './shift';
 
 /**
  * A day, possibly containing shifts on that day
  */
-export interface Day {
+export interface IDay {
     date: string;
-    shifts: Shift[];
+    shifts: IShift[];
 }

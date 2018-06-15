@@ -1,6 +1,6 @@
-import { RelativeTime } from './relative-time';
+import { IRelativeTime } from './relative-time';
 
-export interface StartAndEndTime {
-    start: RelativeTime;
-    end: RelativeTime;
+export interface IStartAndEndTime {
+    start: IRelativeTime;
+    end: IRelativeTime;
 }

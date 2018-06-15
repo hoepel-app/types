@@ -1,4 +1,4 @@
-export interface RelativeTime {
+export interface IRelativeTime {
     /**
      * @TJS-type integer
      */

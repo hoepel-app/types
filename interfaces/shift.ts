@@ -1,16 +1,16 @@
 /**
  * A shift: an activity or period of a day
  */
-import { Price } from './price';
-import { StartAndEndTime } from './start-and-end-time';
+import { IPrice } from './price';
+import { IStartAndEndTime } from './start-and-end-time';
 
-export interface Shift {
+export interface IShift {
     id: string;
-    price: Price;
+    price: IPrice;
     childrenCanBePresent: boolean;
     crewCanBePresent: boolean;
     kind: string;
     location?: string;
     description?: string;
-    startAndEnd?: StartAndEndTime;
+    startAndEnd?: IStartAndEndTime;
 }

@@ -1,4 +1,4 @@
-export interface DetailedAttendance {
+export interface IDetailedAttendance {
     /**
      * The shift this attendance is about
      */

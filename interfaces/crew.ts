@@ -1,19 +1,19 @@
 /**
  * A crew member
  */
-import { Address } from './address';
-import { ContactInfo } from './contact-info';
+import { IAddress } from './address';
+import { IContactInfo } from './contact-info';
 
-export interface Crew {
+export interface ICrew {
     firstName: string;
     lastName: string;
-    address: Address;
+    address: IAddress;
     active: boolean;
     /**
      * Bank account of the person, preferably IBAN format
      */
     bankAccount?: string;
-    contact: ContactInfo;
+    contact: IContactInfo;
     /**
      * In which year the crew member started volunteering/working
      * @TJS-type integer

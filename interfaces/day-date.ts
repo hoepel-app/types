@@ -1,4 +1,4 @@
-export interface DayDate {
+export interface IDayDate {
     day: number;
     month: number;
     year: number;

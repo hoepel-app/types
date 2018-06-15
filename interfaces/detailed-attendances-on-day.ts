@@ -1,6 +1,6 @@
-import { DetailedAttendance } from './detailed-attendance';
+import { IDetailedAttendance } from './detailed-attendance';
 
-export interface DetailedAttendancesOnDay {
+export interface IDetailedAttendancesOnDay {
     /**
      * Day id of the day
      */
@@ -9,5 +9,5 @@ export interface DetailedAttendancesOnDay {
     /**
      * The shifts this child attended on this day
      */
-    shifts: DetailedAttendance[];
+    shifts: IDetailedAttendance[];
 }

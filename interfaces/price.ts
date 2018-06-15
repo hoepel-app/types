@@ -1,4 +1,4 @@
-export interface Price {
+export interface IPrice {
     /**
      * @TJS-type integer
      */

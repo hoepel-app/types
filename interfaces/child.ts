@@ -1,14 +1,14 @@
 /**
  * A child
  */
-import { Address } from './address';
-import { ContactInfo } from './contact-info';
+import { IAddress } from './address';
+import { IContactInfo } from './contact-info';
 
-export interface Child {
+export interface IChild {
     firstName: string;
     lastName: string;
-    legacyAddress?: Address;
-    legacyContact?: ContactInfo;
+    legacyAddress?: IAddress;
+    legacyContact?: IContactInfo;
     gender?: "male" | "female" | "other";
     contactPeople: {
         contactPersonId?: string;

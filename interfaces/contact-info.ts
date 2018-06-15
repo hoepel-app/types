@@ -1,9 +1,9 @@
 /**
  * Contact information for a person. Describes how a person can be contacted.
  */
-import { PhoneContact } from './phone-contact';
+import { IPhoneContact } from './phone-contact';
 
-export interface ContactInfo {
-    phone: PhoneContact[];
+export interface IContactInfo {
+    phone: IPhoneContact[];
     email: string[];
 }

@@ -1,7 +1,7 @@
 /**
  * A physical street address
  */
-export interface Address {
+export interface IAddress {
     /**
      * The street component of the address, e.g. 'Baker Street'
      */
