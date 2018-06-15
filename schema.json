@@ -185,6 +185,68 @@
             ],
             "type": "object"
         },
+        "DetailedAttendance": {
+            "additionalProperties": false,
+            "properties": {
+                "ageGroupName": {
+                    "description": "If child is part of an age group",
+                    "type": "string"
+                },
+                "arrived": {
+                    "description": "When the child arrived to participate in an activity\nFormat: JS date, e.g. 2018-04-13T11:14:54.411Z",
+                    "type": "string"
+                },
+                "arrivedRegisteredBy": {
+                    "description": "Which crew member registered the child as arrived\nCrew id",
+                    "type": "string"
+                },
+                "enrolled": {
+                    "description": "When the child was enrolled (intention to participate in an activity)\nFormat: JS date (e.g. 2018-04-13T11:14:54.411Z)",
+                    "type": "string"
+                },
+                "enrolledRegisteredBy": {
+                    "description": "Who registered the child's intent to participate in an activity\nCrew id",
+                    "type": "string"
+                },
+                "left": {
+                    "description": "When the child left/went home after the activity\nFormat: JS date, e.g. 2018-04-13T11:14:54.411Z",
+                    "type": "string"
+                },
+                "leftRegisteredBy": {
+                    "description": "Who registered the child leaving\nCrew id",
+                    "type": "string"
+                },
+                "shiftId": {
+                    "description": "The shift this attendance is about",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "shiftId"
+            ],
+            "type": "object"
+        },
+        "DetailedAttendancesOnDay": {
+            "additionalProperties": false,
+            "properties": {
+                "day": {
+                    "description": "Day id of the day",
+                    "type": "string"
+                },
+                "shifts": {
+                    "description": "The shifts this child attended on this day",
+                    "items": {
+                        "$ref": "#/definitions/DetailedAttendance"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "day",
+                "shifts"
+            ],
+            "type": "object"
+        },
         "PhoneContact": {
             "additionalProperties": false,
             "description": "Phone contact information for a person. Includes phone number and phone number meta-information.",
