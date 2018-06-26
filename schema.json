@@ -1,6 +1,25 @@
 {
     "$schema": "http://json-schema.org/draft-06/schema#",
     "definitions": {
+        "Day": {
+            "additionalProperties": false,
+            "properties": {
+                "date": {
+                    "type": "string"
+                },
+                "shifts": {
+                    "items": {
+                        "$ref": "#/definitions/IShift"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "date",
+                "shifts"
+            ],
+            "type": "object"
+        },
         "IAddress": {
             "additionalProperties": false,
             "description": "A physical street address",
@@ -28,8 +47,8 @@
             "additionalProperties": false,
             "properties": {
                 "birthDate": {
-                    "description": "Day on which child was born as ISO 8601",
-                    "type": "string"
+                    "$ref": "#/definitions/IDayDate",
+                    "description": "Day on which child was born as ISO 8601"
                 },
                 "contactPeople": {
                     "items": {
