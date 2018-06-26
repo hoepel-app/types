@@ -3,6 +3,7 @@
  */
 import { IAddress } from './address';
 import { IContactInfo } from './contact-info';
+import { IDayDate } from './day-date';
 
 export interface IChild {
     firstName: string;
@@ -20,6 +21,6 @@ export interface IChild {
     /**
      * Day on which child was born as ISO 8601
      */
-    birthDate?: string;
+    birthDate?: IDayDate;
     remarks: string;
 }
