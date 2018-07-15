@@ -1,4 +1,4 @@
-# docs.hoepel.app
+# types.hoepel.app
 
 ## Models, interfaces, schema
 

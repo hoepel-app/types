@@ -1,7 +1,7 @@
 {
-  "name": "docs.hoepel.app",
+  "name": "types.hoepel.app",
   "version": "1.0.0",
-  "description": "Docs, interfaces, models and schemas for hoepel.app",
+  "description": "Interfaces, models and schemas for hoepel.app",
   "dependencies": {
     "typescript-json-schema": "^0.24.1"
   },
@@ -11,11 +11,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thomastoye/docs.hoepel.app.git"
+    "url": "git+https://github.com/thomastoye/types.hoepel.app.git"
   },
   "author": "Thomas Toye",
   "bugs": {
-    "url": "https://github.com/thomastoye/docs.hoepel.app/issues"
+    "url": "https://github.com/thomastoye/types.hoepel.app/issues"
   },
-  "homepage": "https://github.com/thomastoye/docs.hoepel.app#readme"
+  "homepage": "https://github.com/thomastoye/types.hoepel.app#readme"
 }
