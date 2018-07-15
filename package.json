@@ -2,12 +2,16 @@
   "name": "types.hoepel.app",
   "version": "1.0.0",
   "description": "Interfaces, models and schemas for hoepel.app",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "dependencies": {
     "typescript-json-schema": "^0.24.1"
   },
   "devDependencies": {},
   "scripts": {
-    "make-schema": "typescript-json-schema \"interfaces/**/*.ts\" \"*\" --noExtraProps --required -o schema.json"
+    "build": "npm run make-schema && echo \"export const test = \"\"$(cat schema.json)\" > schema.ts && tsc",
+    "make-schema": "typescript-json-schema \"src/**/*.ts\" \"*\" --noExtraProps --required -o schema.json",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
