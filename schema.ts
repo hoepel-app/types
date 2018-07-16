@@ -1,4 +1,4 @@
-export const test = {
+export const schema = {
     "$schema": "http://json-schema.org/draft-06/schema#",
     "definitions": {
         "AgeGroup": {
