@@ -306,6 +306,22 @@ export const schema = {
             ],
             "type": "object"
         },
+        "IPermission": {
+            "additionalProperties": false,
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "description",
+                "id"
+            ],
+            "type": "object"
+        },
         "IPhoneContact": {
             "additionalProperties": false,
             "description": "Phone contact information for a person. Includes phone number and phone number meta-information.",
@@ -354,6 +370,33 @@ export const schema = {
             "required": [
                 "hour",
                 "minute"
+            ],
+            "type": "object"
+        },
+        "IRole": {
+            "additionalProperties": false,
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "impliedPermissions": {
+                    "items": {
+                        "$ref": "#/definitions/IPermission"
+                    },
+                    "type": "array"
+                },
+                "longerDescription": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "description",
+                "id",
+                "impliedPermissions",
+                "longerDescription"
             ],
             "type": "object"
         },
@@ -407,6 +450,49 @@ export const schema = {
             "required": [
                 "end",
                 "start"
+            ],
+            "type": "object"
+        },
+        "Permission": {
+            "additionalProperties": false,
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "description",
+                "id"
+            ],
+            "type": "object"
+        },
+        "Role": {
+            "additionalProperties": false,
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "impliedPermissions": {
+                    "items": {
+                        "$ref": "#/definitions/IPermission"
+                    },
+                    "type": "array"
+                },
+                "longerDescription": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "description",
+                "id",
+                "impliedPermissions",
+                "longerDescription"
             ],
             "type": "object"
         }

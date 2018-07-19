@@ -5,6 +5,8 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "dependencies": {
+    "@types/lodash": "^4.14.112",
+    "lodash": "^4.17.10",
     "typescript-json-schema": "^0.24.1"
   },
   "devDependencies": {},
