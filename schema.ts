@@ -83,6 +83,44 @@ export const schema = {
             ],
             "type": "object"
         },
+        "IAppMetadata": {
+            "additionalProperties": false,
+            "properties": {
+                "tenants": {
+                    "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "permissions": {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            "roles": {
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            }
+                        },
+                        "required": [
+                            "name",
+                            "permissions",
+                            "roles"
+                        ],
+                        "type": "object"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "tenants"
+            ],
+            "type": "object"
+        },
         "IChild": {
             "additionalProperties": false,
             "properties": {
