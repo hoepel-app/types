@@ -1,4 +1,4 @@
-import { flatMap, map } from 'lodash';
+import { flatMap, map, head } from 'lodash';
 
 export interface IPermission {
     id: string;
@@ -116,6 +116,10 @@ export class Permission implements IPermission{
     ];
 
     public static readonly all: ReadonlyArray<IPermission> = flatMap(map(Permission.allByCategory, x => x.permissions));
+
+    public static parsePermissionName(permissionId: string): IPermission | null {
+        return head(Permission.all.filter(permission => permission.id === permissionId)) || null
+    }
 
     constructor(
         public readonly id: string,
