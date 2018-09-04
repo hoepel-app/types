@@ -65,7 +65,7 @@ export class Permission implements IPermission{
     public static readonly auditLogRead = { id: 'audit-log:read', description: 'Data in het audit-logboek bekijken (wie wat heeft aangemaakt en opgevraagd};' };
 
     public static readonly ageGroupsRead = { id: 'age-groups:retrieve', description:  'Leeftijdsgroepen ophalen en bekijken' };
-    public static readonly ageGroupsCreateAndUpdate = { id: 'age-groups:retrieve', description:  'Leeftijdsgroepen aanmaken en updaten' };
+    public static readonly ageGroupsCreateAndUpdate = { id: 'age-groups:update', description:  'Leeftijdsgroepen aanmaken en updaten' };
 
     public static readonly allByCategory: ReadonlyArray<{ category: string, permissions: ReadonlyArray<IPermission> }> = [
         {
