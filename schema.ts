@@ -121,6 +121,100 @@ export const schema = {
             ],
             "type": "object"
         },
+        "IAuditLogData": {
+            "additionalProperties": false,
+            "description": "Extra information about the logged action",
+            "properties": {
+                "childAbsorbedIntoId": {
+                    "type": "string"
+                },
+                "childId": {
+                    "type": "string"
+                },
+                "childRetiredId": {
+                    "type": "string"
+                },
+                "contactPersonId": {
+                    "type": "string"
+                },
+                "crewId": {
+                    "type": "string"
+                },
+                "dayId": {
+                    "type": "string"
+                },
+                "tenantName": {
+                    "type": "string"
+                },
+                "userId": {
+                    "type": "string"
+                },
+                "year": {
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "IAuditLogEntry": {
+            "additionalProperties": false,
+            "description": "An entry in the audit log. The audit log system helps to see which crew members took certain actions",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/IAuditLogData"
+                },
+                "eventId": {
+                    "description": "Allows manipulation and formatting of text strings and determination and location of substrings within strings.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "loggedBy": {
+                    "description": "Allows manipulation and formatting of text strings and determination and location of substrings within strings.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "receivedTimestamp": {
+                    "type": "number"
+                },
+                "timestamp": {
+                    "type": "number"
+                },
+                "triggeredBy": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "jwt": {
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "tenantId": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "jwt",
+                        "tenantId"
+                    ],
+                    "type": "object"
+                }
+            },
+            "required": [
+                "data",
+                "eventId",
+                "loggedBy",
+                "receivedTimestamp",
+                "timestamp",
+                "triggeredBy"
+            ],
+            "type": "object"
+        },
         "IChild": {
             "additionalProperties": false,
             "properties": {
