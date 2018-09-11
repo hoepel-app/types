@@ -85,6 +85,9 @@
                     ],
                     "type": "string"
                 },
+                "id": {
+                    "type": "string"
+                },
                 "lastName": {
                     "type": "string"
                 },
@@ -464,6 +467,9 @@
                         "male",
                         "other"
                     ],
+                    "type": "string"
+                },
+                "id": {
                     "type": "string"
                 },
                 "lastName": {

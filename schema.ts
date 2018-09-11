@@ -85,6 +85,9 @@ export const schema = {
                     ],
                     "type": "string"
                 },
+                "id": {
+                    "type": "string"
+                },
                 "lastName": {
                     "type": "string"
                 },
@@ -464,6 +467,9 @@ export const schema = {
                         "male",
                         "other"
                     ],
+                    "type": "string"
+                },
+                "id": {
                     "type": "string"
                 },
                 "lastName": {

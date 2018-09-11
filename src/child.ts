@@ -8,6 +8,7 @@ import { IDayDate } from './day-date';
 export interface IChild {
     firstName: string;
     lastName: string;
+    id?: string;
     legacyAddress?: IAddress;
     legacyContact?: IContactInfo;
     gender?: "male" | "female" | "other";
@@ -48,6 +49,7 @@ export class Child implements IChild {
     public readonly legacyAddress?: Address;
     public readonly legacyContact?: IContactInfo;
     public readonly remarks: string;
+    public readonly id?: string;
 
     constructor(obj: IChild) {
         this.birthDate = obj.birthDate;
@@ -58,6 +60,7 @@ export class Child implements IChild {
         this.legacyAddress = obj.legacyAddress ? new Address(obj.legacyAddress) : undefined;
         this.legacyContact = obj.legacyContact;
         this.remarks = obj.remarks;
+        this.id = obj.id;
     }
 
     get fullName() { return `${this.firstName} ${this.lastName}`; }
