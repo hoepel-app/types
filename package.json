@@ -7,7 +7,8 @@
   "dependencies": {
     "@types/lodash": "^4.14.112",
     "lodash": "^4.17.10",
-    "typescript-json-schema": "^0.32.0"
+    "typescript-json-schema": "^0.32.0",
+    "virginity": "^0.1.0"
   },
   "devDependencies": {},
   "scripts": {

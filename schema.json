@@ -21,6 +21,50 @@
             ],
             "type": "object"
         },
+        "Crew": {
+            "additionalProperties": false,
+            "properties": {
+                "active": {
+                    "type": "boolean"
+                },
+                "address": {
+                    "$ref": "#/definitions/IAddress"
+                },
+                "bankAccount": {
+                    "description": "Bank account of the person, preferably IBAN format",
+                    "type": "string"
+                },
+                "birthDate": {
+                    "$ref": "#/definitions/IDayDate",
+                    "description": "Day on which crew member was born as ISO 8601"
+                },
+                "contact": {
+                    "$ref": "#/definitions/IContactInfo"
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "remarks": {
+                    "type": "string"
+                },
+                "yearStarted": {
+                    "description": "In which year the crew member started volunteering/working",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "active",
+                "address",
+                "contact",
+                "firstName",
+                "lastName",
+                "remarks"
+            ],
+            "type": "object"
+        },
         "Day": {
             "additionalProperties": false,
             "properties": {
@@ -163,18 +207,10 @@
                     "$ref": "#/definitions/IAuditLogData"
                 },
                 "eventId": {
-                    "description": "Allows manipulation and formatting of text strings and determination and location of substrings within strings.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
+                    "type": "string"
                 },
                 "loggedBy": {
-                    "description": "Allows manipulation and formatting of text strings and determination and location of substrings within strings.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
+                    "type": "string"
                 },
                 "receivedTimestamp": {
                     "type": "number"
@@ -306,8 +342,8 @@
                     "type": "string"
                 },
                 "birthDate": {
-                    "description": "Day on which child was born as ISO 8601",
-                    "type": "string"
+                    "$ref": "#/definitions/IDayDate",
+                    "description": "Day on which crew member was born as ISO 8601"
                 },
                 "contact": {
                     "$ref": "#/definitions/IContactInfo"

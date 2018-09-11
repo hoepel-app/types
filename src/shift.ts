@@ -3,6 +3,8 @@
  */
 import { IPrice } from './price';
 import { IStartAndEndTime } from './start-and-end-time';
+import { isUndefined } from 'lodash';
+import { LocalTime } from './local-time';
 
 export interface IShift {
     id: string;
@@ -13,4 +15,43 @@ export interface IShift {
     location?: string;
     description?: string;
     startAndEnd?: IStartAndEndTime;
+}
+
+export class Shift implements IShift {
+    static sort(shifts: ReadonlyArray<Shift>) {
+        const mutableShifts = [ ...shifts ];
+
+        return mutableShifts.sort( (a, b) => {
+            if (isUndefined(a.startAndEnd) && isUndefined(b.startAndEnd)) {
+                return a.kind.localeCompare(b.kind);
+            } else if (isUndefined(a.startAndEnd)) {
+                return 1; // corect? shifts with undefined startAndEnd should end up at the end
+            } else if (isUndefined(b.startAndEnd)) {
+                return -1; // correct?
+            }
+
+            return new LocalTime(a.startAndEnd.start).compareTo(b.startAndEnd.start);
+        });
+    }
+
+
+    public readonly childrenCanBePresent: boolean;
+    public readonly crewCanBePresent: boolean;
+    public readonly description?: string;
+    public readonly id: string;
+    public readonly kind: string;
+    public readonly location?: string;
+    public readonly price: IPrice;
+    public readonly startAndEnd?: IStartAndEndTime;
+
+    constructor (obj: IShift) {
+        this.childrenCanBePresent = obj.childrenCanBePresent;
+        this.crewCanBePresent = obj.crewCanBePresent;
+        this.description = obj.description;
+        this.id = obj.id;
+        this.kind = obj.kind;
+        this.location = obj.location;
+        this.price = obj.price;
+        this.startAndEnd = obj.startAndEnd;
+    }
 }

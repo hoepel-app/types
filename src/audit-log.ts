@@ -31,7 +31,7 @@ export interface IAuditLogEntry {
         tenantId: string, // organisation the crew member belongs to
         jwt: string, // JSON web token used to submit audit log entry
     },
-    readonly eventId: String,
+    readonly eventId: string,
     readonly data: IAuditLogData,
-    readonly loggedBy: String
+    readonly loggedBy: string
 }
