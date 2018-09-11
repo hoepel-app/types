@@ -1,6 +1,34 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "definitions": {
+        "Address": {
+            "additionalProperties": false,
+            "properties": {
+                "city": {
+                    "description": "The city, e.g. 'Brussels'",
+                    "type": "string"
+                },
+                "isValid": {
+                    "type": "boolean"
+                },
+                "number": {
+                    "description": "The house number, e.g. '12A'",
+                    "type": "string"
+                },
+                "street": {
+                    "description": "The street component of the address, e.g. 'Baker Street'",
+                    "type": "string"
+                },
+                "zipCode": {
+                    "description": "The zip code of the city, e.g. '1200'",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "isValid"
+            ],
+            "type": "object"
+        },
         "AgeGroup": {
             "additionalProperties": false,
             "properties": {
@@ -18,6 +46,102 @@
                 "bornOnOrAfter",
                 "bornOnOrBefore",
                 "name"
+            ],
+            "type": "object"
+        },
+        "Child": {
+            "additionalProperties": false,
+            "properties": {
+                "birthDate": {
+                    "$ref": "#/definitions/IDayDate",
+                    "description": "Day on which child was born as ISO 8601"
+                },
+                "contactPeople": {
+                    "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                            "contactPersonId": {
+                                "type": "string"
+                            },
+                            "relationship": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "fullName": {
+                    "type": "string"
+                },
+                "gender": {
+                    "enum": [
+                        "female",
+                        "male",
+                        "other"
+                    ],
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "legacyAddress": {
+                    "$ref": "#/definitions/Address"
+                },
+                "legacyContact": {
+                    "$ref": "#/definitions/IContactInfo"
+                },
+                "remarks": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "contactPeople",
+                "firstName",
+                "fullName",
+                "lastName",
+                "remarks"
+            ],
+            "type": "object"
+        },
+        "ContactPerson": {
+            "additionalProperties": false,
+            "properties": {
+                "address": {
+                    "$ref": "#/definitions/IAddress"
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "fullName": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "phone": {
+                    "items": {
+                        "$ref": "#/definitions/IPhoneContact"
+                    },
+                    "type": "array"
+                },
+                "vcard": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "address",
+                "firstName",
+                "fullName",
+                "lastName",
+                "phone",
+                "vcard"
             ],
             "type": "object"
         },
@@ -44,10 +168,16 @@
                 "firstName": {
                     "type": "string"
                 },
+                "fullName": {
+                    "type": "string"
+                },
                 "lastName": {
                     "type": "string"
                 },
                 "remarks": {
+                    "type": "string"
+                },
+                "vcard": {
                     "type": "string"
                 },
                 "yearStarted": {
@@ -60,8 +190,10 @@
                 "address",
                 "contact",
                 "firstName",
+                "fullName",
                 "lastName",
-                "remarks"
+                "remarks",
+                "vcard"
             ],
             "type": "object"
         },
@@ -69,6 +201,9 @@
             "additionalProperties": false,
             "properties": {
                 "date": {
+                    "$ref": "#/definitions/DayDate"
+                },
+                "id": {
                     "type": "string"
                 },
                 "shifts": {
@@ -81,6 +216,52 @@
             "required": [
                 "date",
                 "shifts"
+            ],
+            "type": "object"
+        },
+        "DayDate": {
+            "additionalProperties": false,
+            "properties": {
+                "day": {
+                    "type": "number"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "month": {
+                    "type": "number"
+                },
+                "nativeDate": {
+                    "description": "Enables basic storage and retrieval of dates and times.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "year": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "day",
+                "id",
+                "month",
+                "nativeDate",
+                "year"
+            ],
+            "type": "object"
+        },
+        "DayDateRange": {
+            "additionalProperties": false,
+            "properties": {
+                "from": {
+                    "$ref": "#/definitions/DayDate"
+                },
+                "to": {
+                    "$ref": "#/definitions/DayDate"
+                }
+            },
+            "required": [
+                "from",
+                "to"
             ],
             "type": "object"
         },
@@ -289,7 +470,8 @@
                     "type": "string"
                 },
                 "legacyAddress": {
-                    "$ref": "#/definitions/IAddress"
+                    "$ref": "#/definitions/IAddress",
+                    "description": "A physical street address"
                 },
                 "legacyContact": {
                     "$ref": "#/definitions/IContactInfo"
@@ -328,8 +510,39 @@
             ],
             "type": "object"
         },
+        "IContactPerson": {
+            "additionalProperties": false,
+            "properties": {
+                "address": {
+                    "$ref": "#/definitions/IAddress"
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "phone": {
+                    "items": {
+                        "$ref": "#/definitions/IPhoneContact"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "address",
+                "firstName",
+                "lastName",
+                "phone"
+            ],
+            "type": "object"
+        },
         "ICrew": {
             "additionalProperties": false,
+            "description": "A crew member",
             "properties": {
                 "active": {
                     "type": "boolean"
@@ -377,6 +590,9 @@
             "description": "A day, possibly containing shifts on that day",
             "properties": {
                 "date": {
+                    "$ref": "#/definitions/IDayDate"
+                },
+                "id": {
                     "type": "string"
                 },
                 "shifts": {
@@ -409,6 +625,22 @@
                 "day",
                 "month",
                 "year"
+            ],
+            "type": "object"
+        },
+        "IDayDateRange": {
+            "additionalProperties": false,
+            "properties": {
+                "from": {
+                    "$ref": "#/definitions/IDayDate"
+                },
+                "to": {
+                    "$ref": "#/definitions/IDayDate"
+                }
+            },
+            "required": [
+                "from",
+                "to"
             ],
             "type": "object"
         },
@@ -474,6 +706,22 @@
             ],
             "type": "object"
         },
+        "ILocalTime": {
+            "additionalProperties": false,
+            "properties": {
+                "hour": {
+                    "type": "integer"
+                },
+                "minute": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "hour",
+                "minute"
+            ],
+            "type": "object"
+        },
         "IPermission": {
             "additionalProperties": false,
             "properties": {
@@ -522,22 +770,6 @@
             "required": [
                 "cents",
                 "euro"
-            ],
-            "type": "object"
-        },
-        "IRelativeTime": {
-            "additionalProperties": false,
-            "properties": {
-                "hour": {
-                    "type": "integer"
-                },
-                "minute": {
-                    "type": "integer"
-                }
-            },
-            "required": [
-                "hour",
-                "minute"
             ],
             "type": "object"
         },
@@ -609,15 +841,31 @@
             "additionalProperties": false,
             "properties": {
                 "end": {
-                    "$ref": "#/definitions/IRelativeTime"
+                    "$ref": "#/definitions/ILocalTime"
                 },
                 "start": {
-                    "$ref": "#/definitions/IRelativeTime"
+                    "$ref": "#/definitions/ILocalTime"
                 }
             },
             "required": [
                 "end",
                 "start"
+            ],
+            "type": "object"
+        },
+        "LocalTime": {
+            "additionalProperties": false,
+            "properties": {
+                "hour": {
+                    "type": "number"
+                },
+                "minute": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "hour",
+                "minute"
             ],
             "type": "object"
         },
@@ -634,6 +882,22 @@
             "required": [
                 "description",
                 "id"
+            ],
+            "type": "object"
+        },
+        "Price": {
+            "additionalProperties": false,
+            "properties": {
+                "cents": {
+                    "type": "number"
+                },
+                "euro": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "cents",
+                "euro"
             ],
             "type": "object"
         },
@@ -661,6 +925,59 @@
                 "id",
                 "impliedPermissions",
                 "longerDescription"
+            ],
+            "type": "object"
+        },
+        "Shift": {
+            "additionalProperties": false,
+            "properties": {
+                "childrenCanBePresent": {
+                    "type": "boolean"
+                },
+                "crewCanBePresent": {
+                    "type": "boolean"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "kind": {
+                    "type": "string"
+                },
+                "location": {
+                    "type": "string"
+                },
+                "price": {
+                    "$ref": "#/definitions/IPrice"
+                },
+                "startAndEnd": {
+                    "$ref": "#/definitions/IStartAndEndTime"
+                }
+            },
+            "required": [
+                "childrenCanBePresent",
+                "crewCanBePresent",
+                "id",
+                "kind",
+                "price"
+            ],
+            "type": "object"
+        },
+        "StartAndEndTime": {
+            "additionalProperties": false,
+            "properties": {
+                "end": {
+                    "$ref": "#/definitions/ILocalTime"
+                },
+                "start": {
+                    "$ref": "#/definitions/ILocalTime"
+                }
+            },
+            "required": [
+                "end",
+                "start"
             ],
             "type": "object"
         }
