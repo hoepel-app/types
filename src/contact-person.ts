@@ -69,4 +69,7 @@ export class ContactPerson implements IContactPerson {
         return vcard(address ? Object.assign(obj, { adr: address}) : obj);
     }
 
+    public withId(id?: string): ContactPerson {
+        return Object.assign(this, { id });
+    }
 }

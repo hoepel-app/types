@@ -24,7 +24,7 @@ export class Price implements IPrice {
         return `€${this.euro}.${c}`;
     }
 
-    add(that: Price): Price {
+    add(that: IPrice): Price {
         const resCents = this.cents + that.cents;
         const carry = (resCents - (resCents % 100)) / 100;
         const resEuro = this.euro + that.euro + carry;

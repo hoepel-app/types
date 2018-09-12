@@ -12,13 +12,13 @@ export interface IChild {
     legacyAddress?: IAddress;
     legacyContact?: IContactInfo;
     gender?: "male" | "female" | "other";
-    contactPeople: {
+    contactPeople: ReadonlyArray<{
         contactPersonId?: string;
         /**
          * The relationship between the person and the contact person. E.g. 'Father', 'Grandparent'
          */
         relationship?: string;
-    }[];
+    }>;
     /**
      * Day on which child was born as ISO 8601
      */
@@ -42,7 +42,7 @@ export class Child implements IChild {
     }
 
     public readonly birthDate?: IDayDate;
-    public readonly contactPeople: { contactPersonId?: string; relationship?: string }[];
+    public readonly contactPeople: ReadonlyArray<{ contactPersonId?: string; relationship?: string }>;
     public readonly firstName: string;
     public readonly gender?: "male" | "female" | "other";
     public readonly lastName: string;
@@ -52,11 +52,11 @@ export class Child implements IChild {
     public readonly id?: string;
 
     constructor(obj: IChild) {
+        this.firstName = obj.firstName;
+        this.lastName = obj.lastName;
         this.birthDate = obj.birthDate;
         this.contactPeople = obj.contactPeople;
-        this.firstName = obj.firstName;
         this.gender = obj.gender;
-        this.lastName = obj.lastName;
         this.legacyAddress = obj.legacyAddress ? new Address(obj.legacyAddress) : undefined;
         this.legacyContact = obj.legacyContact;
         this.remarks = obj.remarks;
@@ -64,4 +64,40 @@ export class Child implements IChild {
     }
 
     get fullName() { return `${this.firstName} ${this.lastName}`; }
+
+    withId(id?: string): Child {
+        return Object.assign(this, { id });
+    }
+
+    withContactPeople(people: ReadonlyArray<{ contactPersonId?: string; relationship?: string }>): Child {
+        return Object.assign(this, { contactPeople: people });
+    }
+
+    withFirstName(firstName: string): Child {
+        return Object.assign(this, { firstName });
+    }
+
+    withLastName(lastName: string): Child {
+        return Object.assign(this, { lastName });
+    }
+
+    withBirthDate(date: IDayDate): Child {
+        return Object.assign(this, { date });
+    }
+
+    withGender(gender: "male" | "female" | "other"): Child {
+        return Object.assign(this, { gender });
+    }
+
+    withLegacyAddress(address: Address): Child {
+        return Object.assign(this, { address });
+    }
+
+    withLegacyContact(legacyContact: IContactInfo): Child {
+        return Object.assign(this, { legacyContact });
+    }
+
+    withRemarks(remarks: string): Child {
+        return Object.assign(this, { remarks });
+    }
 }

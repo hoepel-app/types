@@ -36,6 +36,17 @@ export class Crew implements ICrew {
         return [ ...list ].sort((a: Crew, b: Crew) => a.fullName.localeCompare(b.fullName));
     }
 
+    static empty() {
+        return new Crew({
+            active: true,
+            address: {},
+            contact: { email: [], phone: [] },
+            firstName: '',
+            lastName: '',
+            remarks: '',
+        });
+    }
+
     public readonly id?: string;
     public readonly active: boolean;
     public readonly address: IAddress;
@@ -101,5 +112,45 @@ export class Crew implements ICrew {
         };
 
         return vcard(address ? Object.assign(obj, address) : obj);
+    }
+
+    public withId(id?: string): Crew {
+        return Object.assign(this, { id });
+    }
+
+    public withActive(active: boolean): Crew {
+        return Object.assign(this, { active });
+    }
+
+    public withAddress(address: IAddress): Crew {
+        return Object.assign(this, { address });
+    }
+
+    public withBankAccount(bankAccount?: string): Crew {
+        return Object.assign(this, { bankAccount });
+    }
+
+    public withBirthDate(birthDate: IDayDate): Crew {
+        return Object.assign(this, { birthDate });
+    }
+
+    public withContact(contact: IContactInfo): Crew {
+        return Object.assign(this, { contact });
+    }
+
+    public withFirstName(firstName: string): Crew {
+        return Object.assign(this, { firstName });
+    }
+
+    public withLastName(lastName: string): Crew {
+        return Object.assign(this, { lastName });
+    }
+
+    public withRemarks(remarks: string): Crew {
+        return Object.assign(this, { remarks });
+    }
+
+    public withYearStarted(yearStarted: number): Crew {
+        return Object.assign(this, { yearStarted });
     }
 }
