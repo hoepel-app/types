@@ -8,6 +8,8 @@ import * as vcard from 'virginity';
  */
 
 export interface ICrew {
+    id?: string;
+
     firstName: string;
     lastName: string;
     address: IAddress;
@@ -34,6 +36,7 @@ export class Crew implements ICrew {
         return [ ...list ].sort((a: Crew, b: Crew) => a.fullName.localeCompare(b.fullName));
     }
 
+    public readonly id?: string;
     public readonly active: boolean;
     public readonly address: IAddress;
     public readonly bankAccount?: string;
@@ -45,6 +48,7 @@ export class Crew implements ICrew {
     public readonly yearStarted?: number;
 
     constructor (obj: ICrew) {
+        this.id = obj.id;
         this.active = obj.active;
         this.address = obj.address;
         this.bankAccount = obj.bankAccount;

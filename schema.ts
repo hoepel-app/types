@@ -174,6 +174,9 @@ export const schema = {
                 "fullName": {
                     "type": "string"
                 },
+                "id": {
+                    "type": "string"
+                },
                 "lastName": {
                     "type": "string"
                 },
@@ -568,6 +571,9 @@ export const schema = {
                     "$ref": "#/definitions/IContactInfo"
                 },
                 "firstName": {
+                    "type": "string"
+                },
+                "id": {
                     "type": "string"
                 },
                 "lastName": {
