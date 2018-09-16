@@ -47,7 +47,7 @@ export class DayDate implements IDayDate {
     constructor(daydate: IDayDate) {
         this.day = daydate.day;
         this.month = daydate.month;
-        this.year = daydate.month;
+        this.year = daydate.year;
     }
 
     get id(): string {

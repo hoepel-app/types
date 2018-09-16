@@ -1,6 +1,6 @@
 import { IPhoneContact } from './phone-contact';
 import { IAddress } from './address';
-import * as vcard from 'virginity';
+import { compile } from 'virginity-ts';
 
 export interface IContactPerson {
     readonly firstName: string,
@@ -18,6 +18,10 @@ export class ContactPerson implements IContactPerson {
             lastName: '',
             phone: []
         });
+    }
+
+    static sorted(list: ReadonlyArray<ContactPerson>): ReadonlyArray<ContactPerson> {
+        return [ ... list ].sort((a: ContactPerson, b: ContactPerson) => a.fullName.localeCompare(b.fullName));
     }
 
     public readonly address: IAddress;
@@ -66,7 +70,7 @@ export class ContactPerson implements IContactPerson {
             })
         };
 
-        return vcard(address ? Object.assign(obj, { adr: address}) : obj);
+        return compile(address ? Object.assign(obj, { adr: address}) : obj);
     }
 
     public withId(id?: string): ContactPerson {

@@ -90,7 +90,7 @@ export class Child implements IChild {
     }
 
     withLegacyAddress(address: Address): Child {
-        return Object.assign(this, { address });
+        return Object.assign(this, { legacyAddress: address });
     }
 
     withLegacyContact(legacyContact: IContactInfo): Child {

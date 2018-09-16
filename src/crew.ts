@@ -1,7 +1,7 @@
 import { IAddress } from './address';
 import { IContactInfo } from './contact-info';
 import { DayDate, IDayDate } from './day-date';
-import * as vcard from 'virginity';
+import { compile } from 'virginity-ts';
 
 /**
  * A crew member
@@ -108,10 +108,10 @@ export class Crew implements ICrew {
             email: this.contact.email.map(e => {
                 return { type: 'personal', address: e };
             }),
-            bday: bday
+            bday: bday || undefined
         };
 
-        return vcard(address ? Object.assign(obj, address) : obj);
+        return compile(address ? Object.assign(obj, address) : obj);
     }
 
     public withId(id?: string): Crew {
