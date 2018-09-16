@@ -7,10 +7,11 @@
   "dependencies": {
     "@types/lodash": "^4.14.112",
     "lodash": "^4.17.10",
-    "typescript-json-schema": "^0.32.0",
     "virginity-ts": "^0.1.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "typescript-json-schema": "^0.32.0"
+  },
   "scripts": {
     "build": "npm run make-schema && echo \"export const schema = \"\"$(cat schema.json)\" > schema.ts && tsc",
     "make-schema": "typescript-json-schema tsconfig.json \"*\" --noExtraProps --required  > schema.json",
