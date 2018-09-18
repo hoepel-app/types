@@ -41,7 +41,7 @@ export class Shift implements IShift {
     public readonly id: string;
     public readonly kind: string;
     public readonly location?: string;
-    public readonly price: IPrice;
+    public readonly price: IPrice; // TODO this'd better be Price instead of IPrice - if only for the toString() method
     public readonly startAndEnd?: IStartAndEndTime;
 
     constructor (obj: IShift) {

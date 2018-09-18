@@ -16,7 +16,7 @@ export class Day {
     }
 
     public readonly date: DayDate;
-    public readonly shifts: ReadonlyArray<IShift>;
+    public readonly shifts: ReadonlyArray<IShift>; // TODO this'd better be Shift instead of IShift
     public readonly id?: string;
 
     constructor(day: IDay) {
@@ -27,5 +27,9 @@ export class Day {
 
     withShifts(shifts: ReadonlyArray<IShift>) {
         return new Day({ id: this.id, date: this.date, shifts: shifts });
+    }
+
+    toString() {
+        return this.date.toString();
     }
 }
