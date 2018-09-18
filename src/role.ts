@@ -41,6 +41,8 @@ export class Role implements IRole {
             Permission.exportChildrenPerDay,
             Permission.exportCrewCompensation,
             Permission.auditLogAddEntry,
+            Permission.exportCrewAttandence,
+            Permission.exportChildAttendance,
         ]
     };
 

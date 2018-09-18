@@ -39,8 +39,10 @@ export class Permission implements IPermission{
     public static readonly exportChildren = { id: 'export:children', description:  'Een lijst exporteren van alle kinderen' };
     public static readonly exportCrew = { id: 'export:crew', description:  'Een lijst exporteren van alle animatoren' };
     public static readonly exportFiscalCert = { id: 'export:fiscalcert', description: 'Een lijst exporteren met data voor fiscale attesten' };
-    public static readonly exportCrewCompensation = { id: 'export:crewpcomensation', description: 'Een lijst exporteren met wanneer animatoren aanwezig waren.' };
+    public static readonly exportCrewCompensation = { id: 'export:crewcompensation', description: 'Een lijst exporteren met wanneer animatoren aanwezig waren.' };
     public static readonly exportChildrenPerDay = { id: 'report:children-per-day', description: 'Een lijst exporteren met hoeveel kinderen er per dag aanwezig waren' };
+    public static readonly exportChildAttendance = { id: 'report:child-attendance', description: 'Een lijst exporteren met welke kinderen op welke dag aanwezig waren' };
+    public static readonly exportCrewAttandence = { id: 'report:crew-attendance', description: 'Een lijst exporteren met welke animatoren op welke dag aanwezig waren' };
 
     public static readonly listDatabases = { id: 'superuser:list-databases', description:  'Toon een lijst met alle databases' };
 
@@ -98,7 +100,8 @@ export class Permission implements IPermission{
         },
         {
             category: 'Exporteren van lijsten',
-            permissions: [ Permission.exportChildren, Permission.exportCrew, Permission.exportFiscalCert, Permission.exportChildrenPerDay, Permission.exportCrewCompensation ],
+            permissions: [ Permission.exportChildren, Permission.exportCrew, Permission.exportFiscalCert, Permission.exportChildrenPerDay,
+                Permission.exportCrewCompensation, Permission.exportChildAttendance, Permission.exportCrewAttandence ],
         },
         {
             category: 'Platformbeheer',
