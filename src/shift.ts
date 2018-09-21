@@ -1,7 +1,7 @@
 /**
  * A shift: an activity or period of a day
  */
-import { IPrice } from './price';
+import { IPrice, Price } from './price';
 import { IStartAndEndTime } from './start-and-end-time';
 import { isUndefined } from 'lodash';
 import { LocalTime } from './local-time';
@@ -41,7 +41,7 @@ export class Shift implements IShift {
     public readonly id: string;
     public readonly kind: string;
     public readonly location?: string;
-    public readonly price: IPrice; // TODO this'd better be Price instead of IPrice - if only for the toString() method
+    public readonly price: Price;
     public readonly startAndEnd?: IStartAndEndTime;
 
     constructor (obj: IShift) {
@@ -51,7 +51,7 @@ export class Shift implements IShift {
         this.id = obj.id;
         this.kind = obj.kind;
         this.location = obj.location;
-        this.price = obj.price;
+        this.price = new Price(obj.price);
         this.startAndEnd = obj.startAndEnd;
     }
 }

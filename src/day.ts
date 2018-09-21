@@ -1,4 +1,4 @@
-import { IShift } from './shift';
+import { IShift, Shift } from './shift';
 import { DayDate, IDayDate } from './day-date';
 
 /**
@@ -16,16 +16,16 @@ export class Day {
     }
 
     public readonly date: DayDate;
-    public readonly shifts: ReadonlyArray<IShift>; // TODO this'd better be Shift instead of IShift
+    public readonly shifts: ReadonlyArray<Shift>;
     public readonly id?: string;
 
     constructor(day: IDay) {
         this.date = new DayDate(day.date);
-        this.shifts = day.shifts;
+        this.shifts = day.shifts.map(ishift => new Shift(ishift));
         this.id = day.id;
     }
 
-    withShifts(shifts: ReadonlyArray<IShift>) {
+    withShifts(shifts: ReadonlyArray<Shift>) {
         return new Day({ id: this.id, date: this.date, shifts: shifts });
     }
 

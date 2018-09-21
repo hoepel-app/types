@@ -214,7 +214,7 @@ export const schema = {
                 },
                 "shifts": {
                     "items": {
-                        "$ref": "#/definitions/IShift"
+                        "$ref": "#/definitions/Shift"
                     },
                     "type": "array"
                 }
@@ -962,7 +962,7 @@ export const schema = {
                     "type": "string"
                 },
                 "price": {
-                    "$ref": "#/definitions/IPrice"
+                    "$ref": "#/definitions/Price"
                 },
                 "startAndEnd": {
                     "$ref": "#/definitions/IStartAndEndTime"
