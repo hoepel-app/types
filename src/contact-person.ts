@@ -1,5 +1,5 @@
 import { IPhoneContact } from './phone-contact';
-import { IAddress } from './address';
+import { Address, IAddress } from './address';
 import { compile } from 'virginity-ts';
 
 export interface IContactPerson {
@@ -24,7 +24,7 @@ export class ContactPerson implements IContactPerson {
         return [ ... list ].sort((a: ContactPerson, b: ContactPerson) => a.fullName.localeCompare(b.fullName));
     }
 
-    public readonly address: IAddress;
+    public readonly address: Address;
     public readonly firstName: string;
     public readonly id?: string;
     public readonly lastName: string;
@@ -32,7 +32,7 @@ export class ContactPerson implements IContactPerson {
 
 
     constructor(obj: IContactPerson) {
-        this.address = obj.address;
+        this.address = new Address(obj.address);
         this.firstName = obj.firstName;
         this.lastName = obj.lastName;
         this.id = obj.id;

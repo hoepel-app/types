@@ -1,4 +1,4 @@
-import { ILocalTime } from './local-time';
+import { ILocalTime, LocalTime } from './local-time';
 
 export interface IStartAndEndTime {
     start: ILocalTime;
@@ -6,12 +6,12 @@ export interface IStartAndEndTime {
 }
 
 export class StartAndEndTime implements IStartAndEndTime {
-    public readonly end: ILocalTime;
-    public readonly start: ILocalTime;
+    public readonly end: LocalTime;
+    public readonly start: LocalTime;
 
     constructor (obj: IStartAndEndTime) {
-        this.start = obj.start;
-        this.end = obj.end;
+        this.start = new LocalTime(obj.start);
+        this.end = new LocalTime(obj.end);
     }
 
     toString() {

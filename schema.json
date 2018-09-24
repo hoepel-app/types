@@ -53,7 +53,7 @@
             "additionalProperties": false,
             "properties": {
                 "birthDate": {
-                    "$ref": "#/definitions/IDayDate",
+                    "$ref": "#/definitions/DayDate",
                     "description": "Day on which child was born as ISO 8601"
                 },
                 "contactPeople": {
@@ -114,7 +114,7 @@
             "additionalProperties": false,
             "properties": {
                 "address": {
-                    "$ref": "#/definitions/IAddress"
+                    "$ref": "#/definitions/Address"
                 },
                 "firstName": {
                     "type": "string"
@@ -965,7 +965,7 @@
                     "$ref": "#/definitions/Price"
                 },
                 "startAndEnd": {
-                    "$ref": "#/definitions/IStartAndEndTime"
+                    "$ref": "#/definitions/StartAndEndTime"
                 }
             },
             "required": [
@@ -981,10 +981,10 @@
             "additionalProperties": false,
             "properties": {
                 "end": {
-                    "$ref": "#/definitions/ILocalTime"
+                    "$ref": "#/definitions/LocalTime"
                 },
                 "start": {
-                    "$ref": "#/definitions/ILocalTime"
+                    "$ref": "#/definitions/LocalTime"
                 }
             },
             "required": [

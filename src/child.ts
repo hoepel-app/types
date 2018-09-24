@@ -3,7 +3,7 @@
  */
 import { Address, IAddress } from './address';
 import { IContactInfo } from './contact-info';
-import { IDayDate } from './day-date';
+import { DayDate, IDayDate } from './day-date';
 
 export interface IChild {
     firstName: string;
@@ -41,7 +41,7 @@ export class Child implements IChild {
         });
     }
 
-    public readonly birthDate?: IDayDate;
+    public readonly birthDate?: DayDate;
     public readonly contactPeople: ReadonlyArray<{ contactPersonId?: string; relationship?: string }>;
     public readonly firstName: string;
     public readonly gender?: "male" | "female" | "other";
@@ -54,7 +54,7 @@ export class Child implements IChild {
     constructor(obj: IChild) {
         this.firstName = obj.firstName;
         this.lastName = obj.lastName;
-        this.birthDate = obj.birthDate;
+        this.birthDate = obj.birthDate ? new DayDate(obj.birthDate) : undefined;
         this.contactPeople = obj.contactPeople;
         this.gender = obj.gender;
         this.legacyAddress = obj.legacyAddress ? new Address(obj.legacyAddress) : undefined;
@@ -82,7 +82,7 @@ export class Child implements IChild {
     }
 
     withBirthDate(date: IDayDate): Child {
-        return Object.assign(this, { date });
+        return Object.assign(this, { birthDate: new DayDate(date) });
     }
 
     withGender(gender: "male" | "female" | "other"): Child {

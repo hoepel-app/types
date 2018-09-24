@@ -2,7 +2,7 @@
  * A shift: an activity or period of a day
  */
 import { IPrice, Price } from './price';
-import { IStartAndEndTime } from './start-and-end-time';
+import { IStartAndEndTime, StartAndEndTime } from './start-and-end-time';
 import { isUndefined } from 'lodash';
 import { LocalTime } from './local-time';
 
@@ -42,7 +42,7 @@ export class Shift implements IShift {
     public readonly kind: string;
     public readonly location?: string;
     public readonly price: Price;
-    public readonly startAndEnd?: IStartAndEndTime;
+    public readonly startAndEnd?: StartAndEndTime;
 
     constructor (obj: IShift) {
         this.childrenCanBePresent = obj.childrenCanBePresent;
@@ -52,6 +52,6 @@ export class Shift implements IShift {
         this.kind = obj.kind;
         this.location = obj.location;
         this.price = new Price(obj.price);
-        this.startAndEnd = obj.startAndEnd;
+        this.startAndEnd = obj.startAndEnd ? new StartAndEndTime(obj.startAndEnd) : undefined;
     }
 }
