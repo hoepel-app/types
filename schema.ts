@@ -67,6 +67,10 @@ export const schema = {
                                 "type": "string"
                             }
                         },
+                        "required": [
+                            "contactPersonId",
+                            "relationship"
+                        ],
                         "type": "object"
                     },
                     "type": "array"
@@ -457,6 +461,10 @@ export const schema = {
                                 "type": "string"
                             }
                         },
+                        "required": [
+                            "contactPersonId",
+                            "relationship"
+                        ],
                         "type": "object"
                     },
                     "type": "array"

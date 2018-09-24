@@ -13,11 +13,11 @@ export interface IChild {
     legacyContact?: IContactInfo;
     gender?: "male" | "female" | "other";
     contactPeople: ReadonlyArray<{
-        contactPersonId?: string;
+        contactPersonId: string;
         /**
          * The relationship between the person and the contact person. E.g. 'Father', 'Grandparent'
          */
-        relationship?: string;
+        relationship: string;
     }>;
     /**
      * Day on which child was born as ISO 8601
@@ -42,7 +42,7 @@ export class Child implements IChild {
     }
 
     public readonly birthDate?: DayDate;
-    public readonly contactPeople: ReadonlyArray<{ contactPersonId?: string; relationship?: string }>;
+    public readonly contactPeople: ReadonlyArray<{ contactPersonId: string; relationship: string }>;
     public readonly firstName: string;
     public readonly gender?: "male" | "female" | "other";
     public readonly lastName: string;
@@ -69,7 +69,7 @@ export class Child implements IChild {
         return Object.assign(this, { id });
     }
 
-    withContactPeople(people: ReadonlyArray<{ contactPersonId?: string; relationship?: string }>): Child {
+    withContactPeople(people: ReadonlyArray<{ contactPersonId: string; relationship: string }>): Child {
         return Object.assign(this, { contactPeople: people });
     }
 
