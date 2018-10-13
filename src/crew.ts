@@ -51,7 +51,7 @@ export class Crew implements ICrew {
     public readonly active: boolean;
     public readonly address: IAddress;
     public readonly bankAccount?: string;
-    public readonly birthDate?: IDayDate;
+    public readonly birthDate?: DayDate;
     public readonly contact: IContactInfo;
     public readonly firstName: string;
     public readonly lastName: string;
@@ -63,7 +63,7 @@ export class Crew implements ICrew {
         this.active = obj.active;
         this.address = obj.address;
         this.bankAccount = obj.bankAccount;
-        this.birthDate = obj.birthDate;
+        this.birthDate = obj.birthDate ? new DayDate(obj.birthDate) : undefined;
         this.contact = obj.contact;
         this.firstName = obj.firstName;
         this.lastName = obj.lastName;

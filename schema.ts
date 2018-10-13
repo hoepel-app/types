@@ -166,7 +166,7 @@ export const schema = {
                     "type": "string"
                 },
                 "birthDate": {
-                    "$ref": "#/definitions/IDayDate",
+                    "$ref": "#/definitions/DayDate",
                     "description": "Day on which crew member was born as ISO 8601"
                 },
                 "contact": {
