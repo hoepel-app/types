@@ -10,7 +10,6 @@ export * from './src/day';
 export * from './src/day-date';
 export * from './src/day-date-range';
 export * from './src/detailed-attendance';
-export * from './src/detailed-attendances-on-day';
 export * from './src/local-time';
 export * from './src/permission';
 export * from './src/phone-contact';

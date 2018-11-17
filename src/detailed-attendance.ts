@@ -1,10 +1,11 @@
-export interface IDetailedAttendance {
+export interface IDetailedChildAttendance {
     /**
-     * The shift this attendance is about
+     * Whether the child participated in this activity - if false, this attendance is an intention to attend
      */
-    shiftId: string;
+    didAttend: boolean;
 
-    /** When the child was enrolled (intention to participate in an activity). Format: JS date (e.g. 2018-04-13T11:14:54.411Z)
+    /**
+     * When the child was enrolled (intention to participate in an activity). Format: JS date (e.g. 2018-04-13T11:14:54.411Z)
      */
     enrolled?: string;
 

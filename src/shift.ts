@@ -7,7 +7,8 @@ import { isUndefined } from 'lodash';
 import { LocalTime } from './local-time';
 
 export interface IShift {
-    id: string;
+    id?: string;
+    dayId: string;
     price: IPrice;
     childrenCanBePresent: boolean;
     crewCanBePresent: boolean;
@@ -35,20 +36,22 @@ export class Shift implements IShift {
     }
 
 
+    public readonly id?: string;
     public readonly childrenCanBePresent: boolean;
     public readonly crewCanBePresent: boolean;
     public readonly description?: string;
-    public readonly id: string;
+    public readonly dayId: string;
     public readonly kind: string;
     public readonly location?: string;
     public readonly price: Price;
     public readonly startAndEnd?: StartAndEndTime;
 
     constructor (obj: IShift) {
+        this.id = obj.id;
         this.childrenCanBePresent = obj.childrenCanBePresent;
         this.crewCanBePresent = obj.crewCanBePresent;
         this.description = obj.description;
-        this.id = obj.id;
+        this.dayId = obj.dayId;
         this.kind = obj.kind;
         this.location = obj.location;
         this.price = new Price(obj.price);

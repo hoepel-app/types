@@ -664,7 +664,7 @@
             ],
             "type": "object"
         },
-        "IDetailedAttendance": {
+        "IDetailedChildAttendance": {
             "additionalProperties": false,
             "properties": {
                 "ageGroupName": {
@@ -678,6 +678,10 @@
                 "arrivedRegisteredBy": {
                     "description": "Which crew member registered the child as arrived. Crew id",
                     "type": "string"
+                },
+                "didAttend": {
+                    "description": "Whether the child participated in this activity - if false, this attendance is an intention to attend",
+                    "type": "boolean"
                 },
                 "enrolled": {
                     "description": "When the child was enrolled (intention to participate in an activity). Format: JS date (e.g. 2018-04-13T11:14:54.411Z)",
@@ -694,35 +698,10 @@
                 "leftRegisteredBy": {
                     "description": "Who registered the child leaving. Crew id",
                     "type": "string"
-                },
-                "shiftId": {
-                    "description": "The shift this attendance is about",
-                    "type": "string"
                 }
             },
             "required": [
-                "shiftId"
-            ],
-            "type": "object"
-        },
-        "IDetailedAttendancesOnDay": {
-            "additionalProperties": false,
-            "properties": {
-                "day": {
-                    "description": "Day id of the day",
-                    "type": "string"
-                },
-                "shifts": {
-                    "description": "The shifts this child attended on this day",
-                    "items": {
-                        "$ref": "#/definitions/IDetailedAttendance"
-                    },
-                    "type": "array"
-                }
-            },
-            "required": [
-                "day",
-                "shifts"
+                "didAttend"
             ],
             "type": "object"
         },
@@ -829,6 +808,9 @@
                 "crewCanBePresent": {
                     "type": "boolean"
                 },
+                "dayId": {
+                    "type": "string"
+                },
                 "description": {
                     "type": "string"
                 },
@@ -851,7 +833,7 @@
             "required": [
                 "childrenCanBePresent",
                 "crewCanBePresent",
-                "id",
+                "dayId",
                 "kind",
                 "price"
             ],
@@ -957,6 +939,9 @@
                 "crewCanBePresent": {
                     "type": "boolean"
                 },
+                "dayId": {
+                    "type": "string"
+                },
                 "description": {
                     "type": "string"
                 },
@@ -979,7 +964,7 @@
             "required": [
                 "childrenCanBePresent",
                 "crewCanBePresent",
-                "id",
+                "dayId",
                 "kind",
                 "price"
             ],
@@ -998,6 +983,18 @@
             "required": [
                 "end",
                 "start"
+            ],
+            "type": "object"
+        },
+        "WithId": {
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id"
             ],
             "type": "object"
         }
