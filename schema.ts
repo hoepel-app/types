@@ -275,6 +275,41 @@ export const schema = {
             ],
             "type": "object"
         },
+        "FileMetadata": {
+            "additionalProperties": false,
+            "properties": {
+                "createdBy": {
+                    "type": "string"
+                },
+                "format": {
+                    "enum": [
+                        "PDF",
+                        "XLSX"
+                    ],
+                    "type": "string"
+                },
+                "tenant": {
+                    "type": "string"
+                },
+                "year": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "createdBy",
+                "format",
+                "tenant"
+            ],
+            "type": "object"
+        },
+        "FileType": {
+            "enum": [
+                "all-children",
+                "all-crew",
+                "children-with-comment"
+            ],
+            "type": "string"
+        },
         "IAddress": {
             "additionalProperties": false,
             "description": "A physical street address",
