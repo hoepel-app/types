@@ -289,7 +289,7 @@ export const schema = {
                     "type": "string"
                 },
                 "year": {
-                    "type": "string"
+                    "type": "number"
                 }
             },
             "required": [

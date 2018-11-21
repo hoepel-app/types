@@ -8,5 +8,5 @@ export interface FileRequestMetadata {
     format: 'PDF' | 'XLSX';
     tenant: string;
 
-    year?: string;
+    year?: number;
 }

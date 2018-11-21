@@ -289,7 +289,7 @@
                     "type": "string"
                 },
                 "year": {
-                    "type": "string"
+                    "type": "number"
                 }
             },
             "required": [
