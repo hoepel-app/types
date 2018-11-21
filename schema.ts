@@ -302,6 +302,7 @@ export const schema = {
             "enum": [
                 "all-children",
                 "all-crew",
+                "child-attendances",
                 "children-with-comment",
                 "crew-attendances",
                 "fiscal-certificates-list"
