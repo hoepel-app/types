@@ -4,10 +4,9 @@ export type FileType = 'all-children'
     | 'fiscal-certificates-list'
     | 'crew-attendances';
 
-export interface FileMetadata {
+export interface FileRequestMetadata {
     format: 'PDF' | 'XLSX';
     tenant: string;
-    createdBy: string;
 
     year?: string;
 }

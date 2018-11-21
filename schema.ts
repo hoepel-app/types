@@ -275,12 +275,9 @@ export const schema = {
             ],
             "type": "object"
         },
-        "FileMetadata": {
+        "FileRequestMetadata": {
             "additionalProperties": false,
             "properties": {
-                "createdBy": {
-                    "type": "string"
-                },
                 "format": {
                     "enum": [
                         "PDF",
@@ -296,7 +293,6 @@ export const schema = {
                 }
             },
             "required": [
-                "createdBy",
                 "format",
                 "tenant"
             ],

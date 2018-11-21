@@ -275,12 +275,9 @@
             ],
             "type": "object"
         },
-        "FileMetadata": {
+        "FileRequestMetadata": {
             "additionalProperties": false,
             "properties": {
-                "createdBy": {
-                    "type": "string"
-                },
                 "format": {
                     "enum": [
                         "PDF",
@@ -296,7 +293,6 @@
                 }
             },
             "required": [
-                "createdBy",
                 "format",
                 "tenant"
             ],
