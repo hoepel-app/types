@@ -5,6 +5,7 @@ import { IPrice, Price } from './price';
 import { IStartAndEndTime, StartAndEndTime } from './start-and-end-time';
 import { isUndefined } from 'lodash';
 import { LocalTime } from './local-time';
+import { DayDate } from './day-date';
 
 export interface IShift {
     id?: string;
@@ -23,6 +24,10 @@ export class Shift implements IShift {
         const mutableShifts = [ ...shifts ];
 
         return mutableShifts.sort( (a, b) => {
+            if (DayDate.fromDayId(a.dayId).compareTo(DayDate.fromDayId(b.dayId)) !== 0) {
+                return DayDate.fromDayId(a.dayId).compareTo(DayDate.fromDayId(b.dayId));
+            }
+
             if (isUndefined(a.startAndEnd) && isUndefined(b.startAndEnd)) {
                 return a.kind.localeCompare(b.kind);
             } else if (isUndefined(a.startAndEnd)) {
