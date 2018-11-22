@@ -1,7 +1,5 @@
 export * from './src/address';
 export * from './src/age-group';
-export * from './src/app-metadata';
-export * from './src/audit-log';
 export * from './src/child';
 export * from './src/contact-info';
 export * from './src/contact-person';
@@ -11,7 +9,6 @@ export * from './src/day-date';
 export * from './src/day-date-range';
 export * from './src/detailed-attendance';
 export * from './src/local-time';
-export * from './src/permission';
 export * from './src/phone-contact';
 export * from './src/price';
 export * from './src/shift';

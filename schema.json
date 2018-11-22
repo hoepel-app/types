@@ -352,130 +352,6 @@
             ],
             "type": "object"
         },
-        "IAppMetadata": {
-            "additionalProperties": false,
-            "properties": {
-                "tenants": {
-                    "items": {
-                        "additionalProperties": false,
-                        "properties": {
-                            "name": {
-                                "type": "string"
-                            },
-                            "permissions": {
-                                "items": {
-                                    "type": "string"
-                                },
-                                "type": "array"
-                            },
-                            "roles": {
-                                "items": {
-                                    "type": "string"
-                                },
-                                "type": "array"
-                            }
-                        },
-                        "required": [
-                            "name",
-                            "permissions",
-                            "roles"
-                        ],
-                        "type": "object"
-                    },
-                    "type": "array"
-                }
-            },
-            "required": [
-                "tenants"
-            ],
-            "type": "object"
-        },
-        "IAuditLogData": {
-            "additionalProperties": false,
-            "description": "Extra information about the logged action",
-            "properties": {
-                "childAbsorbedIntoId": {
-                    "type": "string"
-                },
-                "childId": {
-                    "type": "string"
-                },
-                "childRetiredId": {
-                    "type": "string"
-                },
-                "contactPersonId": {
-                    "type": "string"
-                },
-                "crewId": {
-                    "type": "string"
-                },
-                "dayId": {
-                    "type": "string"
-                },
-                "tenantName": {
-                    "type": "string"
-                },
-                "userId": {
-                    "type": "string"
-                },
-                "year": {
-                    "type": "number"
-                }
-            },
-            "type": "object"
-        },
-        "IAuditLogEntry": {
-            "additionalProperties": false,
-            "description": "An entry in the audit log. The audit log system helps to see which crew members took certain actions",
-            "properties": {
-                "data": {
-                    "$ref": "#/definitions/IAuditLogData"
-                },
-                "eventId": {
-                    "type": "string"
-                },
-                "loggedBy": {
-                    "type": "string"
-                },
-                "receivedTimestamp": {
-                    "type": "number"
-                },
-                "timestamp": {
-                    "type": "number"
-                },
-                "triggeredBy": {
-                    "additionalProperties": false,
-                    "properties": {
-                        "id": {
-                            "type": "string"
-                        },
-                        "jwt": {
-                            "type": "string"
-                        },
-                        "name": {
-                            "type": "string"
-                        },
-                        "tenantId": {
-                            "type": "string"
-                        }
-                    },
-                    "required": [
-                        "jwt",
-                        "tenantId"
-                    ],
-                    "type": "object"
-                }
-            },
-            "required": [
-                "data",
-                "eventId",
-                "loggedBy",
-                "receivedTimestamp",
-                "timestamp",
-                "triggeredBy"
-            ],
-            "type": "object"
-        },
         "IChild": {
             "additionalProperties": false,
             "properties": {
@@ -755,22 +631,6 @@
             ],
             "type": "object"
         },
-        "IPermission": {
-            "additionalProperties": false,
-            "properties": {
-                "description": {
-                    "type": "string"
-                },
-                "id": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "description",
-                "id"
-            ],
-            "type": "object"
-        },
         "IPhoneContact": {
             "additionalProperties": false,
             "description": "Phone contact information for a person. Includes phone number and phone number meta-information.",
@@ -803,33 +663,6 @@
             "required": [
                 "cents",
                 "euro"
-            ],
-            "type": "object"
-        },
-        "IRole": {
-            "additionalProperties": false,
-            "properties": {
-                "description": {
-                    "type": "string"
-                },
-                "id": {
-                    "type": "string"
-                },
-                "impliedPermissions": {
-                    "items": {
-                        "$ref": "#/definitions/IPermission"
-                    },
-                    "type": "array"
-                },
-                "longerDescription": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "description",
-                "id",
-                "impliedPermissions",
-                "longerDescription"
             ],
             "type": "object"
         },
@@ -905,22 +738,6 @@
             ],
             "type": "object"
         },
-        "Permission": {
-            "additionalProperties": false,
-            "properties": {
-                "description": {
-                    "type": "string"
-                },
-                "id": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "description",
-                "id"
-            ],
-            "type": "object"
-        },
         "Price": {
             "additionalProperties": false,
             "properties": {
@@ -934,33 +751,6 @@
             "required": [
                 "cents",
                 "euro"
-            ],
-            "type": "object"
-        },
-        "Role": {
-            "additionalProperties": false,
-            "properties": {
-                "description": {
-                    "type": "string"
-                },
-                "id": {
-                    "type": "string"
-                },
-                "impliedPermissions": {
-                    "items": {
-                        "$ref": "#/definitions/IPermission"
-                    },
-                    "type": "array"
-                },
-                "longerDescription": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "description",
-                "id",
-                "impliedPermissions",
-                "longerDescription"
             ],
             "type": "object"
         },
