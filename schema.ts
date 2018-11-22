@@ -810,6 +810,21 @@ export const schema = {
             ],
             "type": "object"
         },
+        "Tenant": {
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "type": "object"
+        },
         "WithId": {
             "additionalProperties": false,
             "properties": {
