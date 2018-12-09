@@ -1,7 +1,7 @@
 {
   "name": "@hoepel.app/types",
   "version": "1.0.30",
-  "description": "Interfaces, models and schemas for hoepel.app",
+  "description": "Interfaces and models for hoepel.app",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "dependencies": {
@@ -9,12 +9,9 @@
     "lodash": "^4.17.10",
     "virginity-ts": "^0.1.0"
   },
-  "devDependencies": {
-    "typescript-json-schema": "^0.32.0"
-  },
+  "devDependencies": {},
   "scripts": {
-    "build": "npm run make-schema && echo \"export const schema = \"\"$(cat schema.json)\" > schema.ts && tsc",
-    "make-schema": "typescript-json-schema tsconfig.json \"*\" --noExtraProps --required  > schema.json",
+    "build": "tsc",
     "prepublishOnly": "npm run build"
   },
   "repository": {
