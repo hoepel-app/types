@@ -304,6 +304,8 @@ export const schema = {
                 "all-children",
                 "all-crew",
                 "child-attendances",
+                "child-fiscal-certificate",
+                "child-health-insurance-certificate",
                 "children-with-comment",
                 "crew-attendances",
                 "fiscal-certificates-list"
@@ -617,6 +619,23 @@ export const schema = {
             },
             "required": [
                 "amountPaid",
+                "didAttend"
+            ],
+            "type": "object"
+        },
+        "IDetailedCrewAttendance": {
+            "additionalProperties": false,
+            "properties": {
+                "didAttend": {
+                    "description": "Whether the crew member was present for this activity - if false, this attendance is an intention to attend",
+                    "type": "boolean"
+                },
+                "enrolled": {
+                    "description": "When the crew was enrolled (intention to participate in an activity). Format: JS date (e.g. 2018-04-13T11:14:54.411Z)",
+                    "type": "string"
+                }
+            },
+            "required": [
                 "didAttend"
             ],
             "type": "object"
