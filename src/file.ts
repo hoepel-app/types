@@ -6,7 +6,7 @@ export type FileType = 'all-children'
     | 'child-attendances';
 
 export interface FileRequestMetadata {
-    format: 'PDF' | 'XLSX';
+    format: 'PDF' | 'XLSX' | 'DOCX';
     tenant: string;
 
     year?: number;

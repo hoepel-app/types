@@ -1,3 +1,5 @@
+import {IPrice} from "./price";
+
 export interface IDetailedChildAttendance {
     /**
      * Whether the child participated in this activity - if false, this attendance is an intention to attend
@@ -38,4 +40,9 @@ export interface IDetailedChildAttendance {
      * If child is part of an age group
      */
     ageGroupName?: string;
+
+    /**
+     * The amount paid to attend this can be different from the shift's price due to discounts.
+     */
+    amountPaid: IPrice;
 }
