@@ -46,3 +46,15 @@ export interface IDetailedChildAttendance {
      */
     amountPaid: IPrice;
 }
+
+export interface IDetailedCrewAttendance {
+    /**
+     * Whether the crew member was present for this activity - if false, this attendance is an intention to attend
+     */
+    didAttend: boolean;
+
+    /**
+     * When the crew was enrolled (intention to participate in an activity). Format: JS date (e.g. 2018-04-13T11:14:54.411Z)
+     */
+    enrolled?: string;
+}

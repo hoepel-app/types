@@ -280,6 +280,7 @@ export const schema = {
             "properties": {
                 "format": {
                     "enum": [
+                        "DOCX",
                         "PDF",
                         "XLSX"
                     ],
@@ -581,6 +582,10 @@ export const schema = {
                     "description": "If child is part of an age group",
                     "type": "string"
                 },
+                "amountPaid": {
+                    "$ref": "#/definitions/IPrice",
+                    "description": "The amount paid to attend this can be different from the shift's price due to discounts."
+                },
                 "arrived": {
                     "description": "When the child arrived to participate in an activity. Format: JS date, e.g. 2018-04-13T11:14:54.411Z",
                     "type": "string"
@@ -611,6 +616,7 @@ export const schema = {
                 }
             },
             "required": [
+                "amountPaid",
                 "didAttend"
             ],
             "type": "object"
