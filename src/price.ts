@@ -3,11 +3,11 @@ export interface IPrice {
      * @TJS-type integer
      */
 
-    euro: number;
+    readonly euro: number;
     /**
      * @TJS-type integer
      */
-    cents: number;
+    readonly cents: number;
 }
 
 export class Price implements IPrice {

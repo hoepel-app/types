@@ -1,8 +1,8 @@
 import { ILocalTime, LocalTime } from "./local-time";
 
 export interface IStartAndEndTime {
-    start: ILocalTime;
-    end: ILocalTime;
+    readonly start: ILocalTime;
+    readonly end: ILocalTime;
 }
 
 export class StartAndEndTime implements IStartAndEndTime {

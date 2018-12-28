@@ -41,7 +41,7 @@ export class Child implements IChild {
     }
 
     readonly birthDate?: DayDate;
-    readonly contactPeople: ReadonlyArray<{ contactPersonId: string; relationship: string }>;
+    readonly contactPeople: ReadonlyArray<{ readonly contactPersonId: string; readonly relationship: string }>;
     readonly firstName: string;
     readonly gender?: "male" | "female" | "other";
     readonly lastName: string;
@@ -68,7 +68,7 @@ export class Child implements IChild {
         return Object.assign(this, { id });
     }
 
-    withContactPeople(people: ReadonlyArray<{ contactPersonId: string; relationship: string }>): Child {
+    withContactPeople(people: ReadonlyArray<{ readonly contactPersonId: string; readonly relationship: string }>): Child {
         return Object.assign(this, { contactPeople: people });
     }
 

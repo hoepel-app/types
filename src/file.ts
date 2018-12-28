@@ -8,8 +8,8 @@ export type FileType = "all-children"
     | "child-fiscal-certificate";
 
 export interface FileRequestMetadata {
-    format: "PDF" | "XLSX" | "DOCX";
-    tenant: string;
+    readonly format: "PDF" | "XLSX" | "DOCX";
+    readonly tenant: string;
 
-    year?: number;
+    readonly year?: number;
 }

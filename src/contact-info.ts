@@ -4,6 +4,6 @@
 import { IPhoneContact } from "./phone-contact";
 
 export interface IContactInfo {
-    readonly phone: IPhoneContact[];
-    readonly email: string[];
+    readonly phone: ReadonlyArray<IPhoneContact>;
+    readonly email: ReadonlyArray<string>;
 }

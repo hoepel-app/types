@@ -3,12 +3,12 @@ export interface ILocalTime {
     /**
      * @TJS-type integer
      */
-    hour: number;
+    readonly hour: number;
 
     /**
      * @TJS-type integer
      */
-    minute: number;
+    readonly minute: number;
 }
 
 export class LocalTime implements ILocalTime {

@@ -2,14 +2,22 @@
     "defaultSeverity": "error",
     "extends": [
         "tslint:recommended",
-        "tslint-immutable/all"
+        "tslint-immutable"
     ],
     "jsRules": {},
     "rules": {
       "member-access": [ true, "no-public" ],
       "interface-name": false,
       "object-literal-sort-keys": false,
-      "max-line-length": [true, 140]
+      "max-line-length": [true, 140],
+      "readonly-array": true,
+      "readonly-keyword": true,
+      "no-let": true,
+      "no-object-mutation": true,
+      "no-delete": true,
+      "no-mixed-interface": true,
+      "no-loop-statement": true,
+      "no-try": true
     },
     "rulesDirectory": []
 }

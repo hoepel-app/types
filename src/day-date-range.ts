@@ -1,8 +1,8 @@
 import { DayDate, IDayDate } from "./day-date";
 
 export interface IDayDateRange {
-    from: IDayDate;
-    to: IDayDate;
+    readonly from: IDayDate;
+    readonly to: IDayDate;
 }
 
 export class DayDateRange implements IDayDateRange {

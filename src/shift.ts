@@ -1,29 +1,27 @@
 /**
  * A shift: an activity or period of a day
  */
-import { isUndefined } from "lodash";
-import { DayDate } from "./day-date";
-import { LocalTime } from "./local-time";
-import { IPrice, Price } from "./price";
-import { IStartAndEndTime, StartAndEndTime } from "./start-and-end-time";
+import {isUndefined} from "lodash";
+import {DayDate} from "./day-date";
+import {LocalTime} from "./local-time";
+import {IPrice, Price} from "./price";
+import {IStartAndEndTime, StartAndEndTime} from "./start-and-end-time";
 
 export interface IShift {
-    id?: string;
-    dayId: string;
-    price: IPrice;
-    childrenCanBePresent: boolean;
-    crewCanBePresent: boolean;
-    kind: string;
-    location?: string;
-    description?: string;
-    startAndEnd?: IStartAndEndTime;
+    readonly id?: string;
+    readonly dayId: string;
+    readonly price: IPrice;
+    readonly childrenCanBePresent: boolean;
+    readonly crewCanBePresent: boolean;
+    readonly kind: string;
+    readonly location?: string;
+    readonly description?: string;
+    readonly startAndEnd?: IStartAndEndTime;
 }
 
 export class Shift implements IShift {
     static sort(shifts: ReadonlyArray<Shift>) {
-        const mutableShifts = [ ...shifts ];
-
-        return mutableShifts.sort( (a, b) => {
+        return [...shifts].sort( (a, b) => {
             if (DayDate.fromDayId(a.dayId).compareTo(DayDate.fromDayId(b.dayId)) !== 0) {
                 return DayDate.fromDayId(a.dayId).compareTo(DayDate.fromDayId(b.dayId));
             }

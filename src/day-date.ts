@@ -4,17 +4,17 @@ export interface IDayDate {
     /*
     * @TJS-type integer
     */
-    day: number;
+    readonly day: number;
 
     /*
     * @TJS-type integer
     */
-    month: number;
+    readonly month: number;
 
     /*
     * @TJS-type integer
     */
-    year: number;
+    readonly year: number;
 }
 
 export class DayDate implements IDayDate {

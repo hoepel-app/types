@@ -1,30 +1,30 @@
 export interface Tenant {
-    id?: string;
-    name: string;
+    readonly id?: string;
+    readonly name: string;
 
     /**
      * General email address for this tenant
      *
      * E.g. info@organisation.org
      */
-    email?: string;
+    readonly email?: string;
 
     /**
      * Mail address for this organisation - not necessarily the address of the organisation itself
      */
-    address: {
-        streetAndNumber?: string;
-        zipCode?: string;
-        city?: string;
+    readonly address: {
+        readonly streetAndNumber?: string;
+        readonly zipCode?: string;
+        readonly city?: string;
     };
 
     /**
      * The contact person for this organisation
      */
-    contactPerson: {
-        name?: string;
-        phone?: string;
-        email?: string;
+    readonly contactPerson: {
+        readonly name?: string;
+        readonly phone?: string;
+        readonly email?: string;
     };
 
 }
