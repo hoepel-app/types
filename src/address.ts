@@ -5,28 +5,27 @@ export interface IAddress {
     /**
      * The street component of the address, e.g. 'Baker Street'
      */
-    street?: string;
+    readonly street?: string;
     /**
      * The house number, e.g. '12A'
      */
-    number?: string;
+    readonly number?: string;
     /**
      * The zip code of the city, e.g. '1200'
      * @TJS-type integer
      */
-    zipCode?: number;
+    readonly zipCode?: number;
     /**
      * The city, e.g. 'Brussels'
      */
-    city?: string;
+    readonly city?: string;
 }
 
 export class Address implements IAddress {
-    public readonly city?: string;
-    public readonly number?: string;
-    public readonly street?: string;
-    public readonly zipCode?: number;
-
+    readonly city?: string;
+    readonly number?: string;
+    readonly street?: string;
+    readonly zipCode?: number;
 
     constructor(obj: IAddress) {
         this.city = obj.city;

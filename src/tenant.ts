@@ -25,6 +25,6 @@ export interface Tenant {
         name?: string;
         phone?: string;
         email?: string;
-    }
+    };
 
 }

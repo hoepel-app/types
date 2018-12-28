@@ -1,11 +1,11 @@
 /**
  * A shift: an activity or period of a day
  */
-import { IPrice, Price } from './price';
-import { IStartAndEndTime, StartAndEndTime } from './start-and-end-time';
-import { isUndefined } from 'lodash';
-import { LocalTime } from './local-time';
-import { DayDate } from './day-date';
+import { isUndefined } from "lodash";
+import { DayDate } from "./day-date";
+import { LocalTime } from "./local-time";
+import { IPrice, Price } from "./price";
+import { IStartAndEndTime, StartAndEndTime } from "./start-and-end-time";
 
 export interface IShift {
     id?: string;
@@ -40,18 +40,17 @@ export class Shift implements IShift {
         });
     }
 
+    readonly id?: string;
+    readonly childrenCanBePresent: boolean;
+    readonly crewCanBePresent: boolean;
+    readonly description?: string;
+    readonly dayId: string;
+    readonly kind: string;
+    readonly location?: string;
+    readonly price: Price;
+    readonly startAndEnd?: StartAndEndTime;
 
-    public readonly id?: string;
-    public readonly childrenCanBePresent: boolean;
-    public readonly crewCanBePresent: boolean;
-    public readonly description?: string;
-    public readonly dayId: string;
-    public readonly kind: string;
-    public readonly location?: string;
-    public readonly price: Price;
-    public readonly startAndEnd?: StartAndEndTime;
-
-    constructor (obj: IShift) {
+    constructor(obj: IShift) {
         this.id = obj.id;
         this.childrenCanBePresent = obj.childrenCanBePresent;
         this.crewCanBePresent = obj.crewCanBePresent;

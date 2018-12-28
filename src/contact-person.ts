@@ -1,22 +1,22 @@
-import { IPhoneContact } from './phone-contact';
-import { Address, IAddress } from './address';
-import { compile } from 'virginity-ts';
+import { compile } from "virginity-ts";
+import { Address, IAddress } from "./address";
+import { IPhoneContact } from "./phone-contact";
 
 export interface IContactPerson {
-    readonly firstName: string,
-    readonly lastName: string,
-    readonly address: IAddress,
-    readonly phone: ReadonlyArray<IPhoneContact>,
-    readonly id?: string,
+    readonly firstName: string;
+    readonly lastName: string;
+    readonly address: IAddress;
+    readonly phone: ReadonlyArray<IPhoneContact>;
+    readonly id?: string;
 }
 
 export class ContactPerson implements IContactPerson {
     static empty() {
         return new ContactPerson({
             address: {},
-            firstName: '',
-            lastName: '',
-            phone: []
+            firstName: "",
+            lastName: "",
+            phone: [],
         });
     }
 
@@ -24,12 +24,11 @@ export class ContactPerson implements IContactPerson {
         return [ ... list ].sort((a: ContactPerson, b: ContactPerson) => a.fullName.localeCompare(b.fullName));
     }
 
-    public readonly address: Address;
-    public readonly firstName: string;
-    public readonly id?: string;
-    public readonly lastName: string;
-    public readonly phone: ReadonlyArray<IPhoneContact>;
-
+    readonly address: Address;
+    readonly firstName: string;
+    readonly id?: string;
+    readonly lastName: string;
+    readonly phone: ReadonlyArray<IPhoneContact>;
 
     constructor(obj: IContactPerson) {
         this.address = new Address(obj.address);
@@ -43,37 +42,37 @@ export class ContactPerson implements IContactPerson {
 
     get vcard(): string {
         const telType = (tel: string) => {
-            if (tel.startsWith('04') || tel.startsWith('+324')) {
-                return 'cell';
+            if (tel.startsWith("04") || tel.startsWith("+324")) {
+                return "cell";
             } else {
-                return 'home';
+                return "home";
             }
         };
 
         const address = this.address.street ?  [{
-            type: 'home',
+            type: "home",
             street: `${this.address.street} ${this.address.number}`,
             city: this.address.city,
             zip: this.address.zipCode,
-            country: 'Belgium'
+            country: "Belgium",
         }] : null;
 
         const obj = {
             name: {
                 first: this.firstName,
-                last: this.lastName
+                last: this.lastName,
             },
-            categories: ['Speelplein (contactpersonen)'],
-            note: 'Geimporteerde contactpersoon (speelplein)',
-            tel: this.phone.map(p => {
+            categories: ["Speelplein (contactpersonen)"],
+            note: "Geimporteerde contactpersoon (speelplein)",
+            tel: this.phone.map((p) => {
                 return { number: p.phoneNumber, type: telType(p.phoneNumber) };
-            })
+            }),
         };
 
         return compile(address ? Object.assign(obj, { adr: address}) : obj);
     }
 
-    public withId(id?: string): ContactPerson {
+    withId(id?: string): ContactPerson {
         return Object.assign(this, { id });
     }
 }

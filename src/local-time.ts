@@ -11,9 +11,9 @@ export interface ILocalTime {
     minute: number;
 }
 
-export class LocalTime implements ILocalTime{
-    public readonly hour: number;
-    public readonly minute: number;
+export class LocalTime implements ILocalTime {
+    readonly hour: number;
+    readonly minute: number;
 
     constructor(obj: ILocalTime) {
         this.hour = obj.hour;
@@ -25,7 +25,7 @@ export class LocalTime implements ILocalTime{
     }
 
     toString() {
-        const min = this.minute <= 9 ? '0' + this.minute : this.minute;
-        return this.hour.toString() + ':' + min;
+        const min = this.minute <= 9 ? "0" + this.minute : this.minute;
+        return this.hour.toString() + ":" + min;
     }
 }

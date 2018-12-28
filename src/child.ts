@@ -1,31 +1,30 @@
 /**
  * A child
  */
-import { Address, IAddress } from './address';
-import { IContactInfo } from './contact-info';
-import { DayDate, IDayDate } from './day-date';
+import { Address, IAddress } from "./address";
+import { IContactInfo } from "./contact-info";
+import { DayDate, IDayDate } from "./day-date";
 
 export interface IChild {
-    firstName: string;
-    lastName: string;
-    id?: string;
-    legacyAddress?: IAddress;
-    legacyContact?: IContactInfo;
-    gender?: "male" | "female" | "other";
-    contactPeople: ReadonlyArray<{
-        contactPersonId: string;
+    readonly firstName: string;
+    readonly lastName: string;
+    readonly id?: string;
+    readonly legacyAddress?: IAddress;
+    readonly legacyContact?: IContactInfo;
+    readonly gender?: "male" | "female" | "other";
+    readonly contactPeople: ReadonlyArray<{
+        readonly contactPersonId: string;
         /**
          * The relationship between the person and the contact person. E.g. 'Father', 'Grandparent'
          */
-        relationship: string;
+        readonly relationship: string;
     }>;
     /**
      * Day on which child was born as ISO 8601
      */
-    birthDate?: IDayDate;
-    remarks: string;
+    readonly birthDate?: IDayDate;
+    readonly remarks: string;
 }
-
 
 export class Child implements IChild {
     static sorted(list: ReadonlyArray<Child>): ReadonlyArray<Child> {
@@ -35,21 +34,21 @@ export class Child implements IChild {
     static empty(): Child {
         return new Child({
             contactPeople: [],
-            firstName: '',
-            lastName: '',
-            remarks: '',
+            firstName: "",
+            lastName: "",
+            remarks: "",
         });
     }
 
-    public readonly birthDate?: DayDate;
-    public readonly contactPeople: ReadonlyArray<{ contactPersonId: string; relationship: string }>;
-    public readonly firstName: string;
-    public readonly gender?: "male" | "female" | "other";
-    public readonly lastName: string;
-    public readonly legacyAddress?: Address;
-    public readonly legacyContact?: IContactInfo;
-    public readonly remarks: string;
-    public readonly id?: string;
+    readonly birthDate?: DayDate;
+    readonly contactPeople: ReadonlyArray<{ contactPersonId: string; relationship: string }>;
+    readonly firstName: string;
+    readonly gender?: "male" | "female" | "other";
+    readonly lastName: string;
+    readonly legacyAddress?: Address;
+    readonly legacyContact?: IContactInfo;
+    readonly remarks: string;
+    readonly id?: string;
 
     constructor(obj: IChild) {
         this.firstName = obj.firstName;

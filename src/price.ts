@@ -11,16 +11,16 @@ export interface IPrice {
 }
 
 export class Price implements IPrice {
-    public readonly cents: number;
-    public readonly euro: number;
+    readonly cents: number;
+    readonly euro: number;
 
-    constructor (obj: IPrice) {
+    constructor(obj: IPrice) {
         this.cents = obj.cents;
         this.euro = obj.euro;
     }
 
     toString() {
-        const c = this.cents <= 9 ? '0' + this.cents.toString() : this.cents.toString();
+        const c = this.cents <= 9 ? "0" + this.cents.toString() : this.cents.toString();
         return `€${this.euro}.${c}`;
     }
 
