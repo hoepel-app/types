@@ -11,4 +11,6 @@ export interface Person {
 
     readonly phone: ReadonlyArray<IPhoneContact>;
     readonly email: ReadonlyArray<string>;
+
+    readonly remarks: string;
 }

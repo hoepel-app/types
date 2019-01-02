@@ -10,6 +10,7 @@ export interface IContactPerson extends Person {
     readonly phone: ReadonlyArray<IPhoneContact>;
     readonly email: ReadonlyArray<string>;
     readonly id?: string;
+    readonly remarks: string;
 }
 
 export class ContactPerson implements IContactPerson {
@@ -20,6 +21,7 @@ export class ContactPerson implements IContactPerson {
             lastName: "",
             phone: [],
             email: [],
+            remarks: '',
         });
     }
 
@@ -33,14 +35,16 @@ export class ContactPerson implements IContactPerson {
     readonly email: ReadonlyArray<string>;
     readonly lastName: string;
     readonly phone: ReadonlyArray<IPhoneContact>;
+    readonly remarks: string;
 
     constructor(obj: IContactPerson) {
         this.address = new Address(obj.address);
         this.firstName = obj.firstName;
         this.lastName = obj.lastName;
         this.id = obj.id;
-        this.phone = obj.phone;
-        this.email = obj.email;
+        this.phone = obj.phone || [];
+        this.email = obj.email || [];
+        this.remarks = obj.remarks;
     }
 
     get fullName() { return `${this.firstName} ${this.lastName}`; }
