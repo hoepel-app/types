@@ -1,7 +1,6 @@
 export * from "./src/address";
 export * from "./src/age-group";
 export * from "./src/child";
-export * from "./src/contact-info";
 export * from "./src/contact-person";
 export * from "./src/crew";
 export * from "./src/day";

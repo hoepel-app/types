@@ -2,15 +2,17 @@
  * A child
  */
 import { Address, IAddress } from "./address";
-import { IContactInfo } from "./contact-info";
 import { DayDate, IDayDate } from "./day-date";
+import {Person} from "./person";
+import {IPhoneContact} from "./phone-contact";
 
-export interface IChild {
+export interface IChild extends Person {
     readonly firstName: string;
     readonly lastName: string;
     readonly id?: string;
-    readonly legacyAddress?: IAddress;
-    readonly legacyContact?: IContactInfo;
+    readonly address: IAddress;
+    readonly phone: ReadonlyArray<IPhoneContact>;
+    readonly email: ReadonlyArray<string>;
     readonly gender?: "male" | "female" | "other";
     readonly contactPeople: ReadonlyArray<{
         readonly contactPersonId: string;
@@ -37,6 +39,9 @@ export class Child implements IChild {
             firstName: "",
             lastName: "",
             remarks: "",
+            address: {},
+            phone: [],
+            email: [],
         });
     }
 
@@ -45,8 +50,9 @@ export class Child implements IChild {
     readonly firstName: string;
     readonly gender?: "male" | "female" | "other";
     readonly lastName: string;
-    readonly legacyAddress?: Address;
-    readonly legacyContact?: IContactInfo;
+    readonly address: Address;
+    readonly phone: ReadonlyArray<IPhoneContact>;
+    readonly email: ReadonlyArray<string>;
     readonly remarks: string;
     readonly id?: string;
 
@@ -56,8 +62,9 @@ export class Child implements IChild {
         this.birthDate = obj.birthDate ? new DayDate(obj.birthDate) : undefined;
         this.contactPeople = obj.contactPeople;
         this.gender = obj.gender;
-        this.legacyAddress = obj.legacyAddress ? new Address(obj.legacyAddress) : undefined;
-        this.legacyContact = obj.legacyContact;
+        this.address = new Address(obj.address || {});
+        this.email = obj.email || [];
+        this.phone = obj.phone || [];
         this.remarks = obj.remarks;
         this.id = obj.id;
     }
@@ -88,12 +95,16 @@ export class Child implements IChild {
         return Object.assign(this, { gender });
     }
 
-    withLegacyAddress(address: Address): Child {
-        return Object.assign(this, { legacyAddress: address });
+    withAddress(address: Address): Child {
+        return Object.assign(this, { address });
     }
 
-    withLegacyContact(legacyContact: IContactInfo): Child {
-        return Object.assign(this, { legacyContact });
+    withEmail(email: ReadonlyArray<string>) {
+        return Object.assign(this, { email });
+    }
+
+    withPhoneContact(phone: ReadonlyArray<IPhoneContact>) {
+        return Object.assign(this, { phone });
     }
 
     withRemarks(remarks: string): Child {

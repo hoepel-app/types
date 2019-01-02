@@ -1,12 +1,14 @@
 import { compile } from "virginity-ts";
 import { Address, IAddress } from "./address";
+import {Person} from "./person";
 import { IPhoneContact } from "./phone-contact";
 
-export interface IContactPerson {
+export interface IContactPerson extends Person {
     readonly firstName: string;
     readonly lastName: string;
     readonly address: IAddress;
     readonly phone: ReadonlyArray<IPhoneContact>;
+    readonly email: ReadonlyArray<string>;
     readonly id?: string;
 }
 
@@ -17,6 +19,7 @@ export class ContactPerson implements IContactPerson {
             firstName: "",
             lastName: "",
             phone: [],
+            email: [],
         });
     }
 
@@ -27,6 +30,7 @@ export class ContactPerson implements IContactPerson {
     readonly address: Address;
     readonly firstName: string;
     readonly id?: string;
+    readonly email: ReadonlyArray<string>;
     readonly lastName: string;
     readonly phone: ReadonlyArray<IPhoneContact>;
 
@@ -36,6 +40,7 @@ export class ContactPerson implements IContactPerson {
         this.lastName = obj.lastName;
         this.id = obj.id;
         this.phone = obj.phone;
+        this.email = obj.email;
     }
 
     get fullName() { return `${this.firstName} ${this.lastName}`; }

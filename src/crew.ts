@@ -1,13 +1,14 @@
 import { compile } from "virginity-ts";
 import { IAddress } from "./address";
-import { IContactInfo } from "./contact-info";
 import { DayDate, IDayDate } from "./day-date";
+import {Person} from "./person";
+import {IPhoneContact} from "./phone-contact";
 
 /**
  * A crew member
  */
 
-export interface ICrew {
+export interface ICrew extends Person {
     readonly id?: string;
 
     readonly firstName: string;
@@ -18,7 +19,8 @@ export interface ICrew {
      * Bank account of the person, preferably IBAN format
      */
     readonly bankAccount?: string;
-    readonly contact: IContactInfo;
+    readonly phone: ReadonlyArray<IPhoneContact>;
+    readonly email: ReadonlyArray<string>;
     /**
      * In which year the crew member started volunteering/working
      * @TJS-type integer
@@ -40,10 +42,11 @@ export class Crew implements ICrew {
         return new Crew({
             active: true,
             address: {},
-            contact: { email: [], phone: [] },
             firstName: "",
             lastName: "",
             remarks: "",
+            email: [],
+            phone: [],
         });
     }
 
@@ -52,9 +55,10 @@ export class Crew implements ICrew {
     readonly address: IAddress;
     readonly bankAccount?: string;
     readonly birthDate?: DayDate;
-    readonly contact: IContactInfo;
     readonly firstName: string;
     readonly lastName: string;
+    readonly phone: ReadonlyArray<IPhoneContact>;
+    readonly email: ReadonlyArray<string>;
     readonly remarks: string;
     readonly yearStarted?: number;
 
@@ -64,7 +68,8 @@ export class Crew implements ICrew {
         this.address = obj.address;
         this.bankAccount = obj.bankAccount;
         this.birthDate = obj.birthDate ? new DayDate(obj.birthDate) : undefined;
-        this.contact = obj.contact;
+        this.phone = obj.phone;
+        this.email = obj.email;
         this.firstName = obj.firstName;
         this.lastName = obj.lastName;
         this.remarks = obj.remarks;
@@ -102,10 +107,10 @@ export class Crew implements ICrew {
             },
             categories: ["Speelplein (animator)"],
             note: "Geimporteerde animator (speelplein)",
-            tel: this.contact.phone.map((p) => {
+            tel: this.phone.map((p) => {
                 return { number: p.phoneNumber, type: telType(p.phoneNumber) };
             }),
-            email: this.contact.email.map((e) => {
+            email: this.email.map((e) => {
                 return { type: "personal", address: e };
             }),
             bday: bday || undefined,
@@ -134,8 +139,12 @@ export class Crew implements ICrew {
         return Object.assign(this, { birthDate });
     }
 
-    withContact(contact: IContactInfo): Crew {
-        return Object.assign(this, { contact });
+    withEmail(email: ReadonlyArray<string>) {
+        return Object.assign(this, { email });
+    }
+
+    withPhoneContact(phone: ReadonlyArray<IPhoneContact>) {
+        return Object.assign(this, { phone });
     }
 
     withFirstName(firstName: string): Crew {
