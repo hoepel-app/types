@@ -21,7 +21,7 @@ export class ContactPerson implements IContactPerson {
             lastName: "",
             phone: [],
             email: [],
-            remarks: '',
+            remarks: "",
         });
     }
 
