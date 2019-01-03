@@ -78,10 +78,10 @@ export class ContactPerson implements IContactPerson {
             }),
         };
 
-        return compile(address ? Object.assign(obj, { adr: address}) : obj);
+        return compile(address ? Object.assign({}, { adr: address}, obj) : obj);
     }
 
     withId(id?: string): ContactPerson {
-        return Object.assign(this, { id });
+        return Object.assign({}, this, { id });
     }
 }
