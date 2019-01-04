@@ -82,6 +82,6 @@ export class ContactPerson implements IContactPerson {
     }
 
     withId(id?: string): ContactPerson {
-        return Object.assign({}, this, { id });
+        return new ContactPerson({...(this as any),  id });
     }
 }

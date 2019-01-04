@@ -72,42 +72,42 @@ export class Child implements IChild {
     get fullName() { return `${this.firstName} ${this.lastName}`; }
 
     withId(id?: string): Child {
-        return Object.assign({}, this, { id });
+        return new Child({ ...(this as any),  id });
     }
 
     withContactPeople(people: ReadonlyArray<{ readonly contactPersonId: string; readonly relationship: string }>): Child {
-        return Object.assign({}, this, { contactPeople: people });
+        return new Child({ ...(this as any),  contactPeople: people });
     }
 
     withFirstName(firstName: string): Child {
-        return Object.assign({}, this, { firstName });
+        return new Child({ ...(this as any),  firstName });
     }
 
     withLastName(lastName: string): Child {
-        return Object.assign({}, this, { lastName });
+        return new Child({ ...(this as any),  lastName });
     }
 
     withBirthDate(date: IDayDate): Child {
-        return Object.assign({}, this, { birthDate: new DayDate(date) });
+        return new Child({ ...(this as any),  birthDate: new DayDate(date) });
     }
 
     withGender(gender: "male" | "female" | "other"): Child {
-        return Object.assign({}, this, { gender });
+        return new Child({ ...(this as any),  gender });
     }
 
     withAddress(address: Address): Child {
-        return Object.assign({}, this, { address });
+        return new Child({ ...(this as any),  address });
     }
 
     withEmail(email: ReadonlyArray<string>) {
-        return Object.assign({}, this, { email });
+        return new Child({ ...(this as any),  email });
     }
 
     withPhoneContact(phone: ReadonlyArray<IPhoneContact>) {
-        return Object.assign({}, this, { phone });
+        return new Child({ ...(this as any),  phone });
     }
 
     withRemarks(remarks: string): Child {
-        return Object.assign({}, this, { remarks });
+        return new Child({ ...(this as any),  remarks });
     }
 }

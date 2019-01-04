@@ -120,46 +120,46 @@ export class Crew implements ICrew {
     }
 
     withId(id?: string): Crew {
-        return Object.assign({}, this, { id });
+        return new Crew({ ...(this as any), id });
     }
 
     withActive(active: boolean): Crew {
-        return Object.assign({}, this, { active });
+        return new Crew({ ...(this as any), active });
     }
 
     withAddress(address: IAddress): Crew {
-        return Object.assign({}, this, { address });
+        return new Crew({ ...(this as any), address });
     }
 
     withBankAccount(bankAccount?: string): Crew {
-        return Object.assign({}, this, { bankAccount });
+        return new Crew({ ...(this as any), bankAccount });
     }
 
     withBirthDate(birthDate: IDayDate): Crew {
-        return Object.assign({}, this, { birthDate });
+        return new Crew({ ...(this as any), birthDate });
     }
 
     withEmail(email: ReadonlyArray<string>) {
-        return Object.assign({}, this, { email });
+        return new Crew({ ...(this as any), email });
     }
 
     withPhoneContact(phone: ReadonlyArray<IPhoneContact>) {
-        return Object.assign({}, this, { phone });
+        return new Crew({ ...(this as any), phone });
     }
 
     withFirstName(firstName: string): Crew {
-        return Object.assign({}, this, { firstName });
+        return new Crew({ ...(this as any), firstName });
     }
 
     withLastName(lastName: string): Crew {
-        return Object.assign({}, this, { lastName });
+        return new Crew({ ...(this as any), lastName });
     }
 
     withRemarks(remarks: string): Crew {
-        return Object.assign({}, this, { remarks });
+        return new Crew({ ...(this as any), remarks });
     }
 
     withYearStarted(yearStarted: number): Crew {
-        return Object.assign({}, this, { yearStarted });
+        return new Crew({ ...(this as any), yearStarted });
     }
 }
