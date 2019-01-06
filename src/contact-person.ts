@@ -42,8 +42,8 @@ export class ContactPerson implements IContactPerson {
         this.firstName = obj.firstName;
         this.lastName = obj.lastName;
         this.id = obj.id;
-        this.phone = obj.phone || [];
-        this.email = obj.email || [];
+        this.phone = obj.phone ? obj.phone.filter(phone => !!phone.phoneNumber) : [];
+        this.email = obj.email ? obj.email.filter(email => !!email) : [];
         this.remarks = obj.remarks;
     }
 

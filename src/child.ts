@@ -63,8 +63,8 @@ export class Child implements IChild {
         this.contactPeople = obj.contactPeople;
         this.gender = obj.gender;
         this.address = new Address(obj.address || {});
-        this.email = obj.email || [];
-        this.phone = obj.phone || [];
+        this.email = obj.email ? obj.email.filter(email => !!email) : [];
+        this.phone = obj.phone ? obj.phone.filter(phone => !!phone.phoneNumber) : [];
         this.remarks = obj.remarks;
         this.id = obj.id;
     }

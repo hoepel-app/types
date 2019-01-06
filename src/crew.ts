@@ -68,8 +68,8 @@ export class Crew implements ICrew {
         this.address = obj.address;
         this.bankAccount = obj.bankAccount;
         this.birthDate = obj.birthDate ? new DayDate(obj.birthDate) : undefined;
-        this.phone = obj.phone;
-        this.email = obj.email;
+        this.phone = obj.phone ? obj.phone.filter(phone => !!phone.phoneNumber) : [];
+        this.email = obj.email ? obj.email.filter(email => !!email) : [];
         this.firstName = obj.firstName;
         this.lastName = obj.lastName;
         this.remarks = obj.remarks;
