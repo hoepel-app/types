@@ -21,7 +21,7 @@ export class Day {
 
     constructor(day: IDay) {
         this.date = new DayDate(day.date);
-        this.shifts = day.shifts.map((ishift) => new Shift(ishift));
+        this.shifts = day.shifts.map(ishift => new Shift(ishift));
         this.id = day.id;
     }
 

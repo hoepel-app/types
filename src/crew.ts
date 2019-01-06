@@ -107,10 +107,10 @@ export class Crew implements ICrew {
             },
             categories: ["Speelplein (animator)"],
             note: "Geimporteerde animator (speelplein)",
-            tel: this.phone.map((p) => {
+            tel: this.phone.map(p => {
                 return { number: p.phoneNumber, type: telType(p.phoneNumber) };
             }),
-            email: this.email.map((e) => {
+            email: this.email.map(e => {
                 return { type: "personal", address: e };
             }),
             bday: bday || undefined,

@@ -73,7 +73,7 @@ export class ContactPerson implements IContactPerson {
             },
             categories: ["Speelplein (contactpersonen)"],
             note: "Geimporteerde contactpersoon (speelplein)",
-            tel: this.phone.map((p) => {
+            tel: this.phone.map(p => {
                 return { number: p.phoneNumber, type: telType(p.phoneNumber) };
             }),
         };
