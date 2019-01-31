@@ -7,6 +7,7 @@ export * from "./src/day";
 export * from "./src/day-date";
 export * from "./src/day-date-range";
 export * from "./src/detailed-attendance";
+export * from "./src/discount";
 export * from "./src/local-time";
 export * from "./src/phone-contact";
 export * from "./src/price";
