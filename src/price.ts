@@ -20,7 +20,7 @@ export class Price implements IPrice {
 
     constructor(obj: IPrice) {
         if (obj.cents < 0 || obj.euro < 0) {
-            throw new Error('Tried to create a price with a negative value for cents or euro. Input: ' + JSON.stringify(obj));
+            throw new Error("Tried to create a price with a negative value for cents or euro. Input: " + JSON.stringify(obj));
         }
 
         this.cents = (obj.cents % 100) || 0;
@@ -60,7 +60,7 @@ export class Price implements IPrice {
     applyAllDiscounts(discounts: ReadonlyArray<Discount>): Price {
         return discounts.reduce( ((previousValue: Price, currentValue: Discount) => {
             return previousValue.applyDiscount(currentValue);
-        }), this)
+        }), this);
     }
 
     /**

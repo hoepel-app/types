@@ -25,15 +25,17 @@ export interface IDiscount {
 }
 
 export class Discount implements IDiscount {
+    static readonly noopDiscount = new Discount(
+        { name: "No-operation discount", relativeDiscount: 0, absoluteDiscount: { cents: 0, euro: 0 } },
+    );
+
     readonly name: string;
     readonly absoluteDiscount?: IPrice;
     readonly relativeDiscount?: number;
 
-    static readonly noopDiscount = new Discount({ name: "No-operation discount", relativeDiscount: 0, absoluteDiscount: { cents: 0, euro: 0 } });
-
     constructor(idiscount: IDiscount) {
         if (idiscount.relativeDiscount && (idiscount.relativeDiscount < 0 || idiscount.relativeDiscount > 100)) {
-            throw new Error('relativeDiscount must be a number between 0 and 100');
+            throw new Error("relativeDiscount must be a number between 0 and 100");
         }
 
         this.absoluteDiscount = idiscount.absoluteDiscount;
