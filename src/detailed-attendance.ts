@@ -45,6 +45,12 @@ export interface IDetailedChildAttendance {
      * The amount paid to attend this can be different from the shift's price due to discounts.
      */
     readonly amountPaid: IPrice;
+
+    /**
+     * The discounts that were applied for this attendance. Each discount has the name of the discount and the amount
+     * that was saved by using this discount (as a positive price).
+     */
+    readonly discounts?: ReadonlyArray<{ readonly amountSaved: IPrice, readonly name: string }>;
 }
 
 export interface IDetailedCrewAttendance {
