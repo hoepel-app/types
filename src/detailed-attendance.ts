@@ -47,8 +47,7 @@ export interface IDetailedChildAttendance {
     readonly amountPaid: IPrice;
 
     /**
-     * The discounts that were applied for this attendance. Each discount has the name of the discount and the amount
-     * that was saved by using this discount (as a positive price).
+     * The discounts that were applied for this attendance. Only the name of the discount is saved.
      */
     readonly discounts?: ReadonlyArray<{ readonly amountSaved: IPrice, readonly name: string }>;
 }
