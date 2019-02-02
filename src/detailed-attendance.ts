@@ -49,7 +49,7 @@ export interface IDetailedChildAttendance {
     /**
      * The discounts that were applied for this attendance. Only the name of the discount is saved.
      */
-    readonly discounts?: ReadonlyArray<{ readonly amountSaved: IPrice, readonly name: string }>;
+    readonly discounts?: ReadonlyArray<{ readonly name: string }>;
 }
 
 export interface IDetailedCrewAttendance {
