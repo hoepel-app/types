@@ -62,4 +62,9 @@ export interface IDetailedCrewAttendance {
      * When the crew was enrolled (intention to participate in an activity). Format: JS date (e.g. 2018-04-13T11:14:54.411Z)
      */
     readonly enrolled?: string;
+
+    /**
+     * If crew member belongs to an age group for this shift
+     */
+    readonly ageGroupName?: string;
 }
