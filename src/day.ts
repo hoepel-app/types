@@ -10,7 +10,7 @@ export interface IDay {
     readonly id?: string;
 }
 
-export class Day {
+export class Day implements IDay {
     static sorted(list: ReadonlyArray<Day>): ReadonlyArray<Day> {
         return [ ...list ].sort((a: Day, b: Day) => a.date.compareTo(b.date));
     }
