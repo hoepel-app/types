@@ -10,6 +10,7 @@ export class StartAndEndTime implements IStartAndEndTime {
     readonly start: LocalTime;
 
     constructor(obj: IStartAndEndTime) {
+        // TODO check if start < end, switch if necessary
         this.start = new LocalTime(obj.start);
         this.end = new LocalTime(obj.end);
     }
