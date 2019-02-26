@@ -60,3 +60,6 @@ export class Shift implements IShift {
         this.startAndEnd = obj.startAndEnd ? new StartAndEndTime(obj.startAndEnd) : undefined;
     }
 }
+
+// IShift without dayId key
+export type IShiftPreset = Pick<IShift, Exclude<keyof IShift, "dayId">>;
