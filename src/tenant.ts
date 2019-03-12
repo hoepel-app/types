@@ -27,4 +27,6 @@ export interface Tenant {
         readonly email?: string;
     };
 
+    // TODO Missing: logo url, address of playground, short description of playground
+
 }
