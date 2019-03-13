@@ -27,6 +27,23 @@ export interface Tenant {
         readonly email?: string;
     };
 
-    // TODO Missing: logo url, address of playground, short description of playground
+    /**
+     * A short, public-facing description of the playground
+     */
+    readonly description: string;
 
+    /**
+     * Url of the logo of the playground. Suggested 300x300 px or bigger
+     */
+    readonly logoUrl?: string;
+
+    /**
+     * Url of a smaller version of the logo of the playground. 70x70 px.
+     */
+    readonly logoSmallUrl?: string;
+
+    /**
+     * A link to the privacy policy of the playground
+     */
+    readonly privacyPolicyUrl?: string;
 }
