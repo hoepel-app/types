@@ -119,6 +119,6 @@ export class Child implements IChild {
     }
 
     withManagedByParents(parentUids: ReadonlyArray<string>) {
-        return new Child({ ...(this as any), parentUids });
+        return new Child({ ...(this as any), managedByParents: parentUids });
     }
 }
