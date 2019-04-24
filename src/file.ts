@@ -9,7 +9,6 @@ export type FileType = "all-children"
 
 export interface FileRequestMetadata {
     readonly format: "PDF" | "XLSX" | "DOCX";
-    readonly tenant: string;
 
     readonly year?: number;
 }
