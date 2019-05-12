@@ -58,6 +58,12 @@ export class DayDate implements IDayDate {
         return "" + this.year + "-" + (this.month < 10 ? "0" + this.month : this.month) + "-" + (this.day < 10 ? "0" + this.day : this.day);
     }
 
+    toDDMMYYYY(seperator = "/"): string {
+        const day = this.day < 10 ? "0" + this.day : this.day;
+        const month = this.month < 10 ? "0" + this.month : this.month;
+        return "" + day + seperator + month + seperator + this.year;
+    }
+
     get nativeDate() {
         return new Date(this.year, this.month - 1, this.day);
     }
