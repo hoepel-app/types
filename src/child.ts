@@ -78,6 +78,10 @@ export class Child implements IChild {
 
     get fullName() { return `${this.firstName} ${this.lastName}`; }
 
+    get primaryContactPerson(): { contactPersonId: string; relationship: string } {
+        return this.contactPeople[0];
+    }
+
     withId(id?: string): Child {
         return new Child({ ...(this as any),  id });
     }
