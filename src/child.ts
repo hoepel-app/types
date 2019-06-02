@@ -78,7 +78,7 @@ export class Child implements IChild {
 
     get fullName() { return `${this.firstName} ${this.lastName}`; }
 
-    get primaryContactPerson(): { contactPersonId: string; relationship: string } {
+    get primaryContactPerson(): { readonly contactPersonId: string; readonly relationship: string } {
         return this.contactPeople[0];
     }
 
