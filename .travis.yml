@@ -1,21 +1,21 @@
 language: node_js
 sudo: false
 node_js:
-  - node
-  - 11
-  - 10
-  - 9
-
+- node
+- 11
+- 10
+- 9
 script:
 - npm run lint
 - npm test
-
 deploy:
   provider: npm
-  email: "thomas@toye.io"
-  api_key: "YOUR_AUTH_TOKEN"
+  email: thomas@toye.io
+  api_key: "$NPM_TOKEN"
   skip_cleanup: true
   on:
     node_js: '11'
     tags: true
-
+env:
+  global:
+    secure: YQ0QS2IfHCDPkWd57krxK0lCJJ8hP1NkvezAxAE7KdXbe/o6gmKtu4xPkALhhYt/mkC0y7SMc6pN7W/e+KAgFDtC7GRkeikcalYSJ5UnN7jZ3HfJ8Ib4xczR1OCKdRFGFjZBgwl4zu5uh7zdDjXs7Yd3oJ48rh67PT04szgrKIA9lQJTe/1ulF+pvzMVRaNzJUCsWKjEB0dVuITwot6KwH0TjsFHUSSZgZ/WAMcj3aC09RDgjzmF3nlhLGo9p6CmpBTjoQrATD8qfd/imACiEZQxkUq/7zDAn7gc7+DZyHbA3H6rjsd8iQxGihEIH6U2heKsW16PDXnyWz/GtOsIULXEUk6xeHhDvmbPpOz222lXSkFb56WNWDm5BY5vMMBo0M3YOn9sFAImR3vQzE9BdadmGy8URPFyyZc2bQB3waxqTyw+mW0z5x8joEzl2jazCX4QLX7TrifMjzuY44X15ZbHj4uk64rW8lO/FEGi0VdSaxVaKpsKl34XQfGJQMsW7IMk2ozOOwYpcoF85pEJKtEsLPhBEjzjSr9tSbEB5stHLt9aRTxrHHOsKY9ypqQ6lVVyvl/lNb7+Bx4Z0SGZFj6eU1mOqbYX2NpXwggHx5eC2ds4CKKcc1OTHG0QqvexiahuewzApf0a4ZJoepLCy1oGzY5nYcUWDkD02OpuJRY=
