@@ -1,9 +1,4 @@
-# types.hoepel.app
+# types.hoepel.app: Models and interfaces
 
-## Models, interfaces, schema
+This repository houses the TS models used in `hoepel.app`. 
 
-Do not forget to regenerate `schema.json` when updating interfaces!
-
-```
-npm run make-schema
-```

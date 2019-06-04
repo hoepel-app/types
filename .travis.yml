@@ -1,0 +1,21 @@
+language: node_js
+sudo: false
+node_js:
+  - node
+  - 11
+  - 10
+  - 9
+
+script:
+- npm run lint
+- npm test
+
+deploy:
+  provider: npm
+  email: "thomas@toye.io"
+  api_key: "YOUR_AUTH_TOKEN"
+  skip_cleanup: true
+  on:
+    node_js: '11'
+    tags: true
+
