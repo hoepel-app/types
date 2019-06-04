@@ -49,6 +49,12 @@ export class Price implements IPrice {
         }
     }
 
+    /**
+     * Apply a discount
+     *
+     * When a discount has both an absolute and a relative component, the relative component is applied first
+     * When a discount would make the resulting price negative, a zero price is returned
+     */
     applyDiscount(discount: Discount): Price {
         const appliedAbsoluteDiscount = this.subtract(discount.absoluteDiscount || Price.zero);
 
@@ -57,6 +63,11 @@ export class Price implements IPrice {
 
     }
 
+    /**
+     * Apply a list of discounts
+     *
+     * Discounts are applied left to right.
+     */
     applyAllDiscounts(discounts: ReadonlyArray<Discount>): Price {
         return discounts.reduce( ((previousValue: Price, currentValue: Discount) => {
             return previousValue.applyDiscount(currentValue);
