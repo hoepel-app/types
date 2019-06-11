@@ -1,9 +1,9 @@
 import { compile } from "virginity-ts";
 import { IAddress } from "./address";
+import { CrewCertificates, ICrewCertificates } from "./crew-certificates";
 import { DayDate, IDayDate } from "./day-date";
 import {Person} from "./person";
 import {IPhoneContact} from "./phone-contact";
-import { CrewCertificates, ICrewCertificates } from './crew-certificates';
 
 /**
  * A crew member
@@ -30,7 +30,7 @@ export interface ICrew extends Person {
      * Day on which crew member was born as ISO 8601
      */
     readonly birthDate?: IDayDate;
-    readonly certificates?: ICrewCertificates,
+    readonly certificates?: ICrewCertificates;
     readonly remarks: string;
 }
 
