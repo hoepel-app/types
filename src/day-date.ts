@@ -1,19 +1,8 @@
 import { LocalTime } from "./local-time";
 
 export interface IDayDate {
-    /*
-    * @TJS-type integer
-    */
     readonly day: number;
-
-    /*
-    * @TJS-type integer
-    */
     readonly month: number;
-
-    /*
-    * @TJS-type integer
-    */
     readonly year: number;
 }
 

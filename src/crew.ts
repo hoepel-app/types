@@ -23,7 +23,6 @@ export interface ICrew extends Person {
     readonly email: ReadonlyArray<string>;
     /**
      * In which year the crew member started volunteering/working
-     * @TJS-type integer
      */
     readonly yearStarted?: number;
     /**

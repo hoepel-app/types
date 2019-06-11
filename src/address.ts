@@ -12,7 +12,6 @@ export interface IAddress {
     readonly number?: string;
     /**
      * The zip code of the city, e.g. '1200'
-     * @TJS-type integer
      */
     readonly zipCode?: number;
     /**

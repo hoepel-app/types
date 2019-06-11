@@ -1,13 +1,6 @@
 
 export interface ILocalTime {
-    /**
-     * @TJS-type integer
-     */
     readonly hour: number;
-
-    /**
-     * @TJS-type integer
-     */
     readonly minute: number;
 }
 

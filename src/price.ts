@@ -1,14 +1,7 @@
 import {Discount} from "./discount";
 
 export interface IPrice {
-    /**
-     * @TJS-type integer
-     */
-
     readonly euro: number;
-    /**
-     * @TJS-type integer
-     */
     readonly cents: number;
 }
 
