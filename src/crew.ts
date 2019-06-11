@@ -3,6 +3,7 @@ import { IAddress } from "./address";
 import { DayDate, IDayDate } from "./day-date";
 import {Person} from "./person";
 import {IPhoneContact} from "./phone-contact";
+import { CrewCertificates, ICrewCertificates } from './crew-certificates';
 
 /**
  * A crew member
@@ -29,6 +30,7 @@ export interface ICrew extends Person {
      * Day on which crew member was born as ISO 8601
      */
     readonly birthDate?: IDayDate;
+    readonly certificates?: ICrewCertificates,
     readonly remarks: string;
 }
 
@@ -58,6 +60,7 @@ export class Crew implements ICrew {
     readonly lastName: string;
     readonly phone: ReadonlyArray<IPhoneContact>;
     readonly email: ReadonlyArray<string>;
+    readonly certificates: CrewCertificates;
     readonly remarks: string;
     readonly yearStarted?: number;
 
@@ -73,6 +76,11 @@ export class Crew implements ICrew {
         this.lastName = obj.lastName;
         this.remarks = obj.remarks;
         this.yearStarted = obj.yearStarted;
+        this.certificates = new CrewCertificates(obj.certificates || {
+            hasPlayworkerCertificate: false,
+            hasTeamleaderCertificate: false,
+            hasTrainerCertificate: false,
+        });
     }
 
     get fullName() {
