@@ -5,7 +5,8 @@ export type FileType = "all-children"
     | "crew-attendances"
     | "child-attendances"
     | "child-health-insurance-certificate"
-    | "child-fiscal-certificate";
+    | "child-fiscal-certificate"
+    | "children-per-day";
 
 export interface FileRequestMetadata {
     readonly format: "PDF" | "XLSX" | "DOCX";
