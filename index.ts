@@ -15,3 +15,4 @@ export * from "./src/shift";
 export * from "./src/start-and-end-time";
 export * from "./src/file";
 export * from "./src/tenant";
+export * from "./src/crew-certificates";
