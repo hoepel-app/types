@@ -8,6 +8,10 @@ export interface IPrice {
 export class Price implements IPrice {
     static readonly zero = new Price({ euro: 0, cents: 0 });
 
+    static total(...prices: ReadonlyArray<Price>): Price {
+        return prices.reduce((a, b) => a.add(b), Price.zero);
+    }
+
     readonly cents: number;
     readonly euro: number;
 

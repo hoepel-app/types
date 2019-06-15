@@ -109,4 +109,15 @@ describe("Price", () => {
         expect(price1.applyAllDiscounts([ discount1, discount2, discount2 ]).totalCents).to.equal(100);
         expect(price1.applyAllDiscounts([ discount2, discount2, discount2 ]).totalCents).to.equal(250);
     });
+
+    it("Should total prices", () => {
+        const price1 = new Price({ euro: 10, cents: 0 });
+        const price2 = new Price({ euro: 6, cents: 57 });
+        const price3 = new Price({ euro: 0, cents: 0 });
+
+        const total = Price.total(price1, price2, price2, price3);
+
+        expect(total.euro).to.equal(23);
+        expect(total.cents).to.equal(14);
+    });
 });
