@@ -28,3 +28,5 @@ export enum Permission {
     TenantRemoveMember = "tenant:remove-member",
     TenantWrite = "tenant:write",
 }
+
+export const permissions = Object.keys(Permission).map(key => Permission[key as any]);
