@@ -1,6 +1,6 @@
 {
   "name": "@hoepel.app/types",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Interfaces and models for hoepel.app",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
