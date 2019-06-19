@@ -29,4 +29,4 @@ export enum Permission {
     TenantWrite = "tenant:write",
 }
 
-export const permissions = Object.keys(Permission).map(key => Permission[key as any]);
+export const permissions: ReadonlyArray<string> = Object.keys(Permission).map(key => Permission[key as any]);
