@@ -7,8 +7,8 @@ import {
 
 import { CrudIndexedByTenantService, CrudService } from "./crud-service";
 
-type CrudServiceCreator<T> = ((collection: Collection<T>) => CrudService<T>) |
-    ((collection: TenantIndexedCollection<T>) => CrudIndexedByTenantService<T>);
-
-type MappingCrudServiceCreator<IT, T> = ((collection: MappingCollection<IT, T>) => CrudService<T>) |
-    ((collection: TenantIndexedMappingCollection<IT, T>) => CrudIndexedByTenantService<T>);
+export type CrudServiceCreator<T> = (collection: Collection<T>) => CrudService<T>;
+export type TenantIndexedCrudServiceCreator<T> = (collection: TenantIndexedCollection<T>) => CrudIndexedByTenantService<T>;
+export type MappingCrudServiceCreator<IT, T> = (collection: MappingCollection<IT, T>) => CrudService<T>;
+export type TenantIndexedMappingCrudServiceCreator<IT, T> = (collection: TenantIndexedMappingCollection<IT, T>) =>
+    CrudIndexedByTenantService<T>;
