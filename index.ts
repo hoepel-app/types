@@ -26,3 +26,4 @@ export * from "./src/collections/store";
 export * from "./src/mappers/mapper";
 export * from "./src/mappers/mappers";
 export * from "./src/services/crud-service";
+export * from "./src/errors";
