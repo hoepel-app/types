@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { Discount } from "../src/discount";
+import { Discount } from "../src/models/discount";
 
 describe("Discount", () => {
     it("Relative discount must be e [0, 100]", () => {

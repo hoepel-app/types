@@ -1,3 +1,4 @@
+// TODO move type Tenant => ITenant to be consistent
 export interface Tenant {
     readonly id?: string;
     readonly name: string;
@@ -47,3 +48,5 @@ export interface Tenant {
      */
     readonly privacyPolicyUrl?: string;
 }
+
+export type ITenant = Tenant;

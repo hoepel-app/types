@@ -1,6 +1,6 @@
 import { expect } from "chai";
-import { Discount } from "../src/discount";
-import { Price } from "../src/price";
+import { Discount } from "../src/models/discount";
+import { Price } from "../src/models/price";
 
 describe("Price", () => {
     it("Add cents to euros when >= 100", () => {

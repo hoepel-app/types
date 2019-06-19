@@ -18,7 +18,8 @@
       "no-mixed-interface": true,
       "no-loop-statement": true,
       "no-try": true,
-      "arrow-parens": [true, "ban-single-arg-parens"]
+      "arrow-parens": [true, "ban-single-arg-parens"],
+      "max-classes-per-file": false
     },
     "rulesDirectory": []
 }
