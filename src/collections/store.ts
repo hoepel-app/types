@@ -89,3 +89,13 @@ export const store = {
     tenants: new TenantIndexedCollection<ITenant>("tenants"),
     users: new Collection<IUser>("users"),
 };
+
+/**
+ * Collections that use a tenant name as the id for documents
+ */
+export const collectionsIndexedByTenant: ReadonlyArray<Collection> = [
+    store.ageGroups,
+    store.discounts,
+    store.shiftPresets,
+    store.tenants,
+];
