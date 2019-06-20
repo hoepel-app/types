@@ -18,47 +18,47 @@ import { ITenant } from "../models/tenant";
 import { IUser } from "../models/user";
 import { Collection, MappingCollection, TenantIndexedCollection, TenantIndexedMappingCollection } from "./collection";
 
-interface ChildAttendanceAddDoc {
+export interface ChildAttendanceAddDoc {
     readonly childId: string;
     readonly shiftId: string;
     readonly doc: IDetailedChildAttendance;
 }
 
-interface ChildAttendanceDeleteDoc {
+export interface ChildAttendanceDeleteDoc {
     readonly childId: string;
     readonly shiftId: string;
     readonly tenant: string;
 }
 
-interface ChildAttendancesByShiftDoc {
+export interface ChildAttendancesByShiftDoc {
     readonly attendances: { readonly [ childId: string ]: IDetailedChildAttendance };
 }
 
-interface ChildAttendancesByChildDoc {
+export interface ChildAttendancesByChildDoc {
     readonly attendances: { readonly [ shiftId: string ]: IDetailedChildAttendance };
 }
 
-interface CrewAttendanceAddDoc {
+export interface CrewAttendanceAddDoc {
     readonly crewId: string;
     readonly shiftId: string;
     readonly doc: IDetailedCrewAttendance;
 }
 
-interface CrewAttendanceDeleteDoc {
+export interface CrewAttendanceDeleteDoc {
     readonly crewId: string;
     readonly shiftId: string;
     readonly tenant: string;
 }
 
-interface CrewAttendancesByShiftDoc {
+export interface CrewAttendancesByShiftDoc {
     readonly attendances: { readonly [ childId: string ]: IDetailedCrewAttendance };
 }
 
-interface CrewAttendancesByCrewDoc {
+export interface CrewAttendancesByCrewDoc {
     readonly attendances: { readonly [ shiftId: string ]: IDetailedCrewAttendance };
 }
 
-interface DiscountDoc {
+export interface DiscountDoc {
     readonly discounts: ReadonlyArray<IDiscount>;
 }
 
