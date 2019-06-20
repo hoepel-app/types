@@ -1,6 +1,3 @@
-/**
- * @tparam T
- */
 import { Mapper } from "../mappers/mapper";
 
 /**
@@ -23,17 +20,6 @@ export class MappingCollection<IT extends { readonly [field: string]: any; }, T>
 
 /**
  * A collection that is indexed by tenant (every document contains a tenant field - e.g. { name: ..., tenant: ..., ... }
- *
- * @tparam T Type of the lifted object
- */
-export class TenantIndexedCollection<T extends Omit<{ readonly [field: string]: any; }, "tenant">> extends Collection<T> {
-    constructor(collectionName: string) {
-        super(collectionName);
-    }
-}
-
-/**
- * A collection that is indexed by tenant (every document contains a tenant field - e.g. { name: ..., tenant: ..., ... }
  * and mapping the plain objects it receives from the database to rich objects
  *
  * @tparam IT Interface type representing how the type is saved in the database
@@ -42,5 +28,27 @@ export class TenantIndexedCollection<T extends Omit<{ readonly [field: string]: 
 export class TenantIndexedMappingCollection<IT extends Omit<{ readonly [field: string]: any; }, "tenant">, T> extends Collection<T> {
     constructor(collectionName: string, readonly mapper: Mapper<Pick<IT & { readonly tenant: string }, Exclude<keyof IT, "tenant">>, T>) {
         super(collectionName);
+    }
+}
+
+/**
+ * A collection that is indexed by tenant (every document contains a tenant field - e.g. { name: ..., tenant: ..., ... }
+ *
+ * @tparam T Type of the lifted object
+ */
+export class TenantIndexedCollection<T extends Omit<{ readonly [field: string]: any; }, "tenant">>
+    extends TenantIndexedMappingCollection<T, T> {
+    constructor(collectionName: string) {
+        const mapper: Mapper<Pick<T & { readonly tenant: string }, Exclude<keyof T, "tenant">>, T> = {
+            lift(id: string, obj: Pick<T & { readonly tenant: string }, Exclude<keyof T, "tenant">>): T {
+                const { tenant, res } = obj;
+                return res;
+            },
+            unlift(obj: T): Pick<T & { readonly tenant: string }, Exclude<keyof T, "tenant">> {
+                return obj as any;
+            },
+        };
+
+        super(collectionName, mapper);
     }
 }
