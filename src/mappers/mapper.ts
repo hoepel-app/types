@@ -6,7 +6,7 @@ export const tenantName = Symbol("tenant-name");
 /**
  * An interface that describes how to lift a plain object (usually gotten from JSON) to a rich object of class T
  */
-export interface Mapper<IT, T> {
+export interface Mapper<IT extends { readonly [field: string]: any }, T> {
     lift(id: string, obj: IT): T;
 
     /**
