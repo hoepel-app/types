@@ -41,8 +41,8 @@ export class TenantIndexedCollection<T extends Omit<{ readonly [field: string]: 
     constructor(collectionName: string) {
         const mapper: Mapper<Pick<T & { readonly tenant: string }, Exclude<keyof T, "tenant">>, T> = {
             lift(id: string, obj: Pick<T & { readonly tenant: string }, Exclude<keyof T, "tenant">>): T {
-                const { tenant, res } = obj;
-                return res;
+                const { tenant, ...res } = obj;
+                return res as any;
             },
             unlift(obj: T): Pick<T & { readonly tenant: string }, Exclude<keyof T, "tenant">> {
                 return obj as any;
