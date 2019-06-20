@@ -17,7 +17,7 @@ export const ageGroupMapper: Mapper<IAgeGroup, AgeGroup> = {
 
 export const childMapper: Mapper<IChild, Child> = {
     lift(id: string, obj: IChild): Child {
-        return new Child(obj);
+        return new Child({ id, ...obj });
     },
     unlift(child: Child): { readonly obj: IChild, readonly id?: string } {
         const { id, ...obj } = child;
@@ -27,7 +27,7 @@ export const childMapper: Mapper<IChild, Child> = {
 
 export const contactPersonMapper: Mapper<IContactPerson, ContactPerson> = {
     lift(id: string, obj: IContactPerson): ContactPerson {
-        return new ContactPerson(obj);
+        return new ContactPerson({ id, ...obj });
     },
     unlift(contactPerson: ContactPerson): { readonly obj: IContactPerson, readonly id?: string } {
         const { id, ...obj } = contactPerson;
@@ -37,7 +37,7 @@ export const contactPersonMapper: Mapper<IContactPerson, ContactPerson> = {
 
 export const crewMapper: Mapper<ICrew, Crew> = {
     lift(id: string, obj: ICrew): Crew {
-        return new Crew(obj);
+        return new Crew({ id, ...obj });
     },
     unlift(crew: Crew): { readonly obj: ICrew, readonly id?: string } {
         const { id, ...obj } = crew;
@@ -61,7 +61,7 @@ export const discountMapper: Mapper<{ readonly discounts: ReadonlyArray<IDiscoun
 
 export const shiftMapper: Mapper<IShift, Shift> = {
     lift(id: string, obj: IShift): Shift {
-        return new Shift(obj);
+        return new Shift({ id, ...obj });
     },
     unlift(shift: Shift): { readonly obj: IShift, readonly id?: string } {
         const { id, ...obj } = shift;
