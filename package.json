@@ -26,7 +26,6 @@
     "prepublishOnly": "npm run lint && npm run build",
     "lint": "tslint --project tsconfig.json --config tslint.json",
     "lint-fix": "tslint --project tsconfig.json --config tslint.json --fix",
-    "precommit": "npm run lint && npm test",
     "test": "mocha -r ts-node/register tests/**/*.test.ts",
     "testWithCoverage": "nyc -r lcov -e .ts -x \"*.test.ts\" mocha -r ts-node/register tests/**/*.test.ts && nyc report"
   },
@@ -38,5 +37,10 @@
   "bugs": {
     "url": "https://github.com/thomastoye/types.hoepel.app/issues"
   },
-  "homepage": "https://github.com/thomastoye/types.hoepel.app#readme"
+  "homepage": "https://github.com/thomastoye/types.hoepel.app#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm test"
+    }
+  }
 }
