@@ -40,7 +40,7 @@ export class TenantIndexedCollection<T extends Omit<{ readonly [field: string]: 
  * @tparam T Type of the lifted object
  */
 export class TenantIndexedMappingCollection<IT extends Omit<{ readonly [field: string]: any; }, "tenant">, T> extends Collection<T> {
-    constructor(collectionName: string, readonly mapper: Mapper<IT, T>) {
+    constructor(collectionName: string, readonly mapper: Mapper<Pick<IT & { readonly tenant: string }, Exclude<keyof IT, "tenant">>, T>) {
         super(collectionName);
     }
 }
