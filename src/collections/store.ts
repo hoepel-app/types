@@ -66,7 +66,7 @@ export interface DiscountDoc {
  * Models Firestore contents with types
  */
 export const store = {
-    ageGroups: new MappingCollection<IAgeGroup, AgeGroup>("age-groups", ageGroupMapper),
+    ageGroups: new MappingCollection<IAgeGroup, AgeGroup>("age-groups", ageGroupMapper, true),
     childAttendanceAdd: new TenantIndexedCollection<ChildAttendanceAddDoc>("child-attendance-add"),
     childAttendanceDelete: new TenantIndexedCollection<ChildAttendanceDeleteDoc>("child-attendance-delete"),
     childAttendancesByChild: new TenantIndexedCollection<ChildAttendancesByChildDoc>("child-attendances-by-child"),
@@ -78,24 +78,14 @@ export const store = {
     crewAttendancesByShift: new TenantIndexedCollection<CrewAttendancesByShiftDoc>("crew-attendances-by-shift"),
     crewAttendancesByCrew: new TenantIndexedCollection<CrewAttendancesByCrewDoc>("crew-attendances-by-crew"),
     crewMembers: new TenantIndexedMappingCollection<ICrew, Crew>("crew-members", crewMapper),
-    discounts: new MappingCollection<DiscountDoc, ReadonlyArray<Discount>>("discounts", discountMapper),
+    discounts: new MappingCollection<DiscountDoc, ReadonlyArray<Discount>>("discounts", discountMapper, true),
     reports: new TenantIndexedCollection<IReport>("reports"), // TODO check if dates convert correctly (created and expires) for reports
     shiftPresets: new MappingCollection<
         { readonly presets: ReadonlyArray<IShiftPreset> },
         ReadonlyArray<Shift>
-        >("shift-presets", shiftPresetMapper),
+        >("shift-presets", shiftPresetMapper, true),
     shifts: new TenantIndexedMappingCollection<IShift, Shift>("shifts", shiftMapper),
     templates: new TenantIndexedCollection<ITemplate>("templates"),
-    tenants: new TenantIndexedCollection<ITenant>("tenants"),
+    tenants: new TenantIndexedCollection<ITenant>("tenants", true),
     users: new Collection<IUser>("users"),
 };
-
-/**
- * Collections that use a tenant name as the id for documents
- */
-export const collectionsIndexedByTenant: ReadonlyArray<Collection> = [
-    store.ageGroups,
-    store.discounts,
-    store.shiftPresets,
-    store.tenants,
-];
