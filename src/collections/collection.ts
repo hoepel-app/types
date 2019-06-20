@@ -26,7 +26,7 @@ export class MappingCollection<IT extends { readonly [field: string]: any; }, T>
  * @tparam T Type of the lifted object
  */
 export class TenantIndexedMappingCollection<IT extends Omit<{ readonly [field: string]: any; }, "tenant">, T> extends Collection<T> {
-    constructor(collectionName: string, readonly mapper: Mapper<Pick<IT & { readonly tenant: string }, Exclude<keyof IT, "tenant">>, T>) {
+    constructor(collectionName: string, readonly mapper: Mapper<Omit<IT & { readonly tenant: string }, "tenant">, T>) {
         super(collectionName);
     }
 }
@@ -34,18 +34,20 @@ export class TenantIndexedMappingCollection<IT extends Omit<{ readonly [field: s
 /**
  * A collection that is indexed by tenant (every document contains a tenant field - e.g. { name: ..., tenant: ..., ... }
  *
- * @tparam T Type of the lifted object
+ * @tparam T Type of the lifted object. May not contain "tenant" field - will be dropped. Likewise, an "id" field will be
+ *         added automatically when getting data, but will be stripped before persisting.
  */
 export class TenantIndexedCollection<T extends Omit<{ readonly [field: string]: any; }, "tenant">>
-    extends TenantIndexedMappingCollection<T, T> {
+    extends TenantIndexedMappingCollection<T, T & { readonly id: string }> {
     constructor(collectionName: string) {
-        const mapper: Mapper<Pick<T & { readonly tenant: string }, Exclude<keyof T, "tenant">>, T> = {
-            lift(id: string, obj: Pick<T & { readonly tenant: string }, Exclude<keyof T, "tenant">>): T {
+        const mapper: Mapper<Omit<T & { readonly tenant: string }, "tenant">, T & { readonly id: string }> = {
+            lift(id: string, obj: Omit<T & { readonly tenant: string }, "tenant">): T & { readonly id: string } {
                 const { tenant, ...res } = obj;
-                return res as any;
+                return { id, ...res } as any;
             },
-            unlift(obj: T): Pick<T & { readonly tenant: string }, Exclude<keyof T, "tenant">> {
-                return obj as any;
+            unlift(obj: T): Omit<T & { readonly tenant: string }, "tenant"> {
+                const { id, ...res } = obj;
+                return res as any;
             },
         };
 
