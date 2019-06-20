@@ -13,8 +13,8 @@ export interface Mapper<IT, T> {
      * Cneate a plain object from a rich object, to be saved into the database
      *
      * @param obj The rich object
-     * @return Object with obj being the plain object, and id either a string (the id to be used), undefined (no value) or
-     *         the tenantName symbol (the current tenant should be automagically used)
+     * @return The plain object, ready for saving in the database. The mapper is repsonsible for stripping of the id when
+     *         the rich object has an id and it may not be persisted in the object
      */
-    unlift(obj: T): { readonly obj: IT, readonly id?: string | symbol };
+    unlift(obj: T): IT;
 }
