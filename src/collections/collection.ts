@@ -15,7 +15,7 @@ export class Collection<T extends { readonly [key: string]: any }> {
 /**
  * A collection that maps plain objects received from Firestore using a mapper to rich object
  */
-export class MappingCollection<IT, T> extends Collection<T> {
+export class MappingCollection<IT extends { readonly [field: string]: any; }, T> extends Collection<T> {
     constructor(collectionName: string, readonly mapper: Mapper<IT, T>) {
         super(collectionName);
     }
@@ -26,7 +26,7 @@ export class MappingCollection<IT, T> extends Collection<T> {
  *
  * @tparam T Type of the lifted object
  */
-export class TenantIndexedCollection<T> extends Collection<T> {
+export class TenantIndexedCollection<T extends Omit<{ readonly [field: string]: any; }, "tenant">> extends Collection<T> {
     constructor(collectionName: string) {
         super(collectionName);
     }
@@ -39,7 +39,7 @@ export class TenantIndexedCollection<T> extends Collection<T> {
  * @tparam IT Interface type representing how the type is saved in the database
  * @tparam T Type of the lifted object
  */
-export class TenantIndexedMappingCollection<IT, T> extends Collection<T> {
+export class TenantIndexedMappingCollection<IT extends Omit<{ readonly [field: string]: any; }, "tenant">, T> extends Collection<T> {
     constructor(collectionName: string, readonly mapper: Mapper<IT, T>) {
         super(collectionName);
     }
