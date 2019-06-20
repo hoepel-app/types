@@ -3,7 +3,7 @@ import { Child, IChild } from "../models/child";
 import { ContactPerson, IContactPerson } from "../models/contact-person";
 import { Crew, ICrew } from "../models/crew";
 import { Discount, IDiscount } from "../models/discount";
-import { IShift, Shift } from "../models/shift";
+import { IShift, IShiftPreset, Shift } from "../models/shift";
 import { Mapper } from "./mapper";
 
 export const identityMapper = <T>(): Mapper<T, T & { readonly id: string }> => {
@@ -76,7 +76,7 @@ export const shiftMapper: Mapper<IShift, Shift> = {
     },
 };
 
-export const shiftPresetMapper: Mapper<{ readonly presets: ReadonlyArray<IShift> }, ReadonlyArray<Shift>> = {
+export const shiftPresetMapper: Mapper<{ readonly presets: ReadonlyArray<IShiftPreset> }, ReadonlyArray<Shift>> = {
     lift(id: string, obj: { readonly presets: ReadonlyArray<IShift> }): ReadonlyArray<Shift> {
         return obj.presets.map(shift => new Shift(shift));
     },

@@ -12,7 +12,7 @@ import { Crew, ICrew } from "../models/crew";
 import { IDetailedChildAttendance, IDetailedCrewAttendance } from "../models/detailed-attendance";
 import { Discount, IDiscount } from "../models/discount";
 import { IReport } from "../models/report";
-import { IShift, Shift } from "../models/shift";
+import { IShift, IShiftPreset, Shift } from "../models/shift";
 import { ITemplate } from "../models/template";
 import { ITenant } from "../models/tenant";
 import { IUser } from "../models/user";
@@ -81,7 +81,7 @@ export const store = {
     discounts: new MappingCollection<DiscountDoc, ReadonlyArray<Discount>>("discounts", discountMapper),
     reports: new TenantIndexedCollection<IReport>("reports"), // TODO check if dates convert correctly (created and expires) for reports
     shiftPresets: new MappingCollection<
-        { readonly presets: ReadonlyArray<IShift> },
+        { readonly presets: ReadonlyArray<IShiftPreset> },
         ReadonlyArray<Shift>
         >("shift-presets", shiftPresetMapper),
     shifts: new TenantIndexedMappingCollection<IShift, Shift>("shifts", shiftMapper),
