@@ -6,6 +6,7 @@ node_js:
 - 10
 - 9
 script:
+- npm run build
 - npm run lint
 - npm test
 deploy:
