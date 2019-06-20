@@ -1,10 +1,10 @@
-// TODO ObservableCrudService that return Observables instead of Promises (but I don't want to bring in rxjs dep
+// TODO ObservableRepositories that return Observables instead of Promises (but I don't want to bring in rxjs dep
 //      just to type an interface)
 
 /**
- * Crud service for a collection that returns the id with the object
+ * Repository for a collection that returns the id with the object
  */
-export interface CrudWithIdService<T> {
+export interface WithIdRepository<T> {
     get(id: string): Promise<T>;
     getAll(): Promise<ReadonlyArray<{ readonly obj: T, readonly id: string }>>;
     getMany(ids: ReadonlyArray<string>): Promise<ReadonlyArray<{ readonly obj: T, readonly id: string }>>;
@@ -14,9 +14,9 @@ export interface CrudWithIdService<T> {
 }
 
 /**
- * Crud service for a collection indexed by tenant that returns the id with the object
+ * Repository for a collection indexed by tenant that returns the id with the object
  */
-export interface TenantIndexedWithIdCrudService<T> {
+export interface TenantIndexedWithIdRepository<T> {
     get(tenant: string, id: string): Promise<T>;
     getAll(tenant: string): Promise<ReadonlyArray<{ readonly obj: T, readonly id: string }>>;
     getMany(tenant: string, ids: ReadonlyArray<string>): Promise<ReadonlyArray<{ readonly obj: T, readonly id: string }>>;
@@ -26,9 +26,9 @@ export interface TenantIndexedWithIdCrudService<T> {
 }
 
 /**
- * Crud service for a collection
+ * Repository for a collection
  */
-export interface CrudService<T> {
+export interface Repository<T> {
     get(id: string): Promise<T>;
     getAll(): Promise<ReadonlyArray<T>>;
     getMany(ids: ReadonlyArray<string>): Promise<ReadonlyArray<T>>;
@@ -38,9 +38,9 @@ export interface CrudService<T> {
 }
 
 /**
- * Crud service for a collection indexed by tenant
+ * Repository for a collection indexed by tenant
  */
-export interface TenantIndexedCrudService<T> {
+export interface TenantIndexedRepository<T> {
     get(tenant: string, id: string): Promise<T>;
     getAll(tenant: string): Promise<ReadonlyArray<T>>;
     getMany(tenant: string, ids: ReadonlyArray<string>): Promise<ReadonlyArray<T>>;
