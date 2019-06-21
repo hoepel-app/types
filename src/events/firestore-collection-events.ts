@@ -30,7 +30,7 @@ export class FirestoreCollectionEvents<T> {
             },
             name: this.collection.eventPrefix + "-created",
             resource: "firestore",
-            context,
+            context: { ...context, documentId: id },
             timestamp: timestamp.getTime(),
         };
     }
@@ -56,7 +56,7 @@ export class FirestoreCollectionEvents<T> {
             },
             name: this.collection.eventPrefix + "-updated",
             resource: "firestore",
-            context,
+            context: { ...context, documentId: id },
             timestamp: timestamp.getTime(),
         };
     }
@@ -80,7 +80,7 @@ export class FirestoreCollectionEvents<T> {
             },
             name: this.collection.eventPrefix + "-deleted",
             resource: "firestore",
-            context,
+            context: { ...context, documentId: id },
             timestamp: timestamp.getTime(),
         };
     }
