@@ -11,7 +11,7 @@ export class FirestoreCollectionEvents<T> {
         return this.collection.collectionName === collectionId;
     }
 
-    create(
+    created(
         id: string,
         entity: T,
         context: IEventContext,
