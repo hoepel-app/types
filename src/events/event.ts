@@ -35,5 +35,9 @@ export interface IEvent<T> {
         readonly after?: T,
     };
 
+    readonly auth?: {
+        readonly userRecord: T,
+    };
+
     readonly context: IEventContext;
 }
