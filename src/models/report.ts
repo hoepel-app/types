@@ -9,4 +9,5 @@ export interface IReport {
     readonly createdBy?: string;
     readonly createdByUid: string;
     readonly type: FileType;
+    // TODO this type could store context, like child id, input data, ...
 }
