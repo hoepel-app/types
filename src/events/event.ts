@@ -17,26 +17,6 @@ export interface IEventContext {
     readonly tenant: string | "global";
 }
 
-export interface FirestoreTimes {
-    /**
-     * The time the document was created. Not set for documents that don't
-     * exist. In ms since epoch.
-     */
-    readonly createTime?: number;
-
-    /**
-     * The time the document was last updated (at the time the snapshot was
-     * generated). Not set for documents that don't exist.
-     * In ms since epoch.
-     */
-    readonly updateTime?: number; // in ms since epoch
-
-    /**
-     * The time this snapshot was read in ms since epoch.
-     */
-    readonly readTime: number;
-}
-
 export type FirestoreAuthType = "ADMIN" | "USER" | "UNAUTHENTICATED";
 
 export interface IEvent<T> {
@@ -57,7 +37,6 @@ export interface IEvent<T> {
         readonly before?: T,
         readonly after?: T,
         readonly authType: FirestoreAuthType,
-        readonly times: FirestoreTimes;
     };
 
     readonly context: IEventContext;

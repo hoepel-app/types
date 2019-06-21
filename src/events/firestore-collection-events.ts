@@ -1,5 +1,5 @@
 import { Collection } from "../collections/collection";
-import { FirestoreAuthType, FirestoreTimes, IEvent, IEventContext } from "./event";
+import { FirestoreAuthType, IEvent, IEventContext } from "./event";
 
 export class FirestoreCollectionEvents<T> {
     constructor(
@@ -16,7 +16,6 @@ export class FirestoreCollectionEvents<T> {
         entity: T,
         context: IEventContext,
         timestamp: Date,
-        times: FirestoreTimes,
         authType: FirestoreAuthType,
     ): IEvent<T> {
         return {
@@ -25,7 +24,6 @@ export class FirestoreCollectionEvents<T> {
                 collectionId: this.collection.collectionName,
                 after: entity,
                 documentId: id,
-                times,
                 authType,
             },
             name: this.collection.eventPrefix + "-created",
@@ -41,7 +39,6 @@ export class FirestoreCollectionEvents<T> {
         after: T,
         context: IEventContext,
         timestamp: Date,
-        times: FirestoreTimes,
         authType: FirestoreAuthType,
     ): IEvent<T> {
         return {
@@ -51,7 +48,6 @@ export class FirestoreCollectionEvents<T> {
                 before,
                 after,
                 documentId: id,
-                times,
                 authType,
             },
             name: this.collection.eventPrefix + "-updated",
@@ -66,7 +62,6 @@ export class FirestoreCollectionEvents<T> {
         deletedEntity: T,
         context: IEventContext,
         timestamp: Date,
-        times: FirestoreTimes,
         authType: FirestoreAuthType,
     ): IEvent<T> {
         return {
@@ -75,7 +70,6 @@ export class FirestoreCollectionEvents<T> {
                 collectionId: this.collection.collectionName,
                 before: deletedEntity,
                 documentId: id,
-                times,
                 authType,
             },
             name: this.collection.eventPrefix + "-deleted",
