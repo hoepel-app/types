@@ -7,6 +7,7 @@ export interface IEventContext {
     readonly childId?: string;
     readonly crewId?: string;
     readonly shiftId?: string;
+    readonly contactPersonId?: string;
 
     /**
      * User that caused or initiated this event
