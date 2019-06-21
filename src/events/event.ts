@@ -2,6 +2,8 @@
  * Identifiers of objects an event relates to
  */
 export interface IEventContext {
+    readonly documentId?: string;
+
     readonly childId?: string;
     readonly crewId?: string;
     readonly shiftId?: string;
