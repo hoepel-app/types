@@ -16,9 +16,6 @@ export interface IEventContext {
 
     readonly tenant: string | "global";
 }
-
-export type FirestoreAuthType = "ADMIN" | "USER" | "UNAUTHENTICATED";
-
 export interface IEvent<T> {
     readonly name: string;
 
@@ -36,7 +33,6 @@ export interface IEvent<T> {
         readonly documentId: string,
         readonly before?: T,
         readonly after?: T,
-        readonly authType: FirestoreAuthType,
     };
 
     readonly context: IEventContext;
