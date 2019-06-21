@@ -27,3 +27,4 @@ export * from "./src/mappers/mapper";
 export * from "./src/mappers/mappers";
 export * from "./src/repositories/repositories";
 export * from "./src/errors";
+export * from "./src/events";
