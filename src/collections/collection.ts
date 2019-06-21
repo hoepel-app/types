@@ -7,11 +7,13 @@ export class Collection<T extends { readonly [key: string]: any }> {
 
     /**
      * @param collectionName Name of the collection in Firestore
+     * @param eventPrefix Prefix for events. E.g. prefix = 'child', events will be 'child-update', etc.
      * @param docIdIsTenantName Whether the document id's are the tenant name, e.g. doc(collection/example): example is
      *        the name of the tenant
      */
     constructor(
         readonly collectionName: string,
+        readonly eventPrefix: string,
         readonly docIdIsTenantName: boolean = false,
     ) {}
 }
@@ -20,8 +22,12 @@ export class Collection<T extends { readonly [key: string]: any }> {
  * A collection that maps plain objects received from Firestore using a mapper to rich object
  */
 export class MappingCollection<IT extends { readonly [field: string]: any; }, T> extends Collection<T> {
-    constructor(collectionName: string, readonly mapper: Mapper<IT, T>, docIdIsTenantName: boolean = false) {
-        super(collectionName, docIdIsTenantName);
+    constructor(
+        collectionName: string,
+        eventPrefix: string,
+        readonly mapper: Mapper<IT, T>, docIdIsTenantName: boolean = false,
+    ) {
+        super(collectionName, eventPrefix, docIdIsTenantName);
     }
 }
 
@@ -35,9 +41,10 @@ export class MappingCollection<IT extends { readonly [field: string]: any; }, T>
 export class TenantIndexedMappingCollection<IT extends Omit<{ readonly [field: string]: any; }, "tenant">, T> extends Collection<T> {
     constructor(
         collectionName: string,
+        eventPrefix: string,
         readonly mapper: Mapper<Omit<IT & { readonly tenant: string }, "tenant">, T>,
         docIdIsTenantName: boolean = false) {
-        super(collectionName, docIdIsTenantName);
+        super(collectionName, eventPrefix, docIdIsTenantName);
     }
 }
 
@@ -49,7 +56,7 @@ export class TenantIndexedMappingCollection<IT extends Omit<{ readonly [field: s
  */
 export class TenantIndexedCollection<T extends Omit<{ readonly [field: string]: any; }, "tenant">>
     extends TenantIndexedMappingCollection<T, T & { readonly id: string }> {
-    constructor(collectionName: string, docIdIsTenantName: boolean = false) {
+    constructor(collectionName: string, eventPrefix: string, docIdIsTenantName: boolean = false) {
         const mapper: Mapper<Omit<T & { readonly tenant: string }, "tenant">, T & { readonly id: string }> = {
             lift(id: string, obj: Omit<T & { readonly tenant: string }, "tenant">): T & { readonly id: string } {
                 const { tenant, ...res } = obj;
@@ -61,6 +68,6 @@ export class TenantIndexedCollection<T extends Omit<{ readonly [field: string]: 
             },
         };
 
-        super(collectionName, mapper, docIdIsTenantName);
+        super(collectionName, eventPrefix, mapper, docIdIsTenantName);
     }
 }
