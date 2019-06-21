@@ -1,3 +1,4 @@
+import { IEvent } from "../events";
 import {
     ageGroupMapper,
     childMapper,
@@ -107,6 +108,7 @@ export const store = {
     discounts: new MappingCollection<DiscountDoc, ReadonlyArray<Discount>>(
         "discounts", "discounts", discountMapper, true,
     ),
+    events: new Collection<IEvent<any>>("events", "event"),
     reports: new TenantIndexedCollection<IReport>(
         "reports", "report",
     ), // TODO check if dates convert correctly (created and expires) for reports
