@@ -73,10 +73,10 @@ export const store = {
         >("age-groups", "age-groups", ageGroupMapper, true),
 
     childAttendanceAdd: new TenantIndexedCollection<ChildAttendanceAddDoc>(
-        "child-attendance-add", "child-attendance-add",
+        "child-attendances-add", "child-attendance-add",
     ),
     childAttendanceDelete: new TenantIndexedCollection<ChildAttendanceDeleteDoc>(
-        "child-attendance-delete", "child-attendance-delete",
+        "child-attendances-delete", "child-attendance-delete",
     ),
     childAttendancesByChild: new TenantIndexedCollection<ChildAttendancesByChildDoc>(
         "child-attendances-by-child", "child-attendance-by-child",
