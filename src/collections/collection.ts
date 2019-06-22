@@ -1,5 +1,9 @@
 import { Mapper } from "../mappers/mapper";
 
+// TODO This project is depended upon by an Angular 8 application, which does not support TS 3.5 at the moment
+//      So this is a temporary polyfill for TS 3.5+'s Omit. Remove when no longer needed.
+type Omit<T, K extends keyof any> = Pick<T, Exclude<keyof T, K>>;
+
 /**
  * A collection in Firestore storing entities of type T
  */
