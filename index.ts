@@ -12,6 +12,7 @@ export * from "./src/models/local-time";
 export * from "./src/models/phone-contact";
 export * from "./src/models/price";
 export * from "./src/models/permission";
+export * from "./src/models/person";
 export * from "./src/models/report";
 export * from "./src/models/shift";
 export * from "./src/models/start-and-end-time";
