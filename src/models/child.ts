@@ -31,6 +31,11 @@ export interface IChild extends Person {
      * Firebase uid of parents managing this child. Users with this uid will be able to manage this child.
      */
     readonly managedByParents?: ReadonlyArray<string>;
+
+    /**
+     * Number of the UitPas of the child
+     */
+    readonly uitpasNumber?: string;
 }
 
 export class Child implements IChild {
@@ -61,6 +66,7 @@ export class Child implements IChild {
     readonly remarks: string;
     readonly id?: string;
     readonly managedByParents?: ReadonlyArray<string>;
+    readonly uitpasNumber?: string;
 
     constructor(obj: IChild) {
         this.firstName = obj.firstName;
@@ -74,6 +80,7 @@ export class Child implements IChild {
         this.remarks = obj.remarks;
         this.id = obj.id;
         this.managedByParents = obj.managedByParents;
+        this.uitpasNumber = obj.uitpasNumber;
     }
 
     get fullName() { return `${this.firstName} ${this.lastName}`; }
@@ -124,5 +131,9 @@ export class Child implements IChild {
 
     withManagedByParents(parentUids: ReadonlyArray<string>) {
         return new Child({ ...(this as any), managedByParents: parentUids });
+    }
+
+    withUitpasNumber(uitpasNumber?: string) {
+        return new Child({ ...(this as any), uitpasNumber });
     }
 }
