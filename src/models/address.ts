@@ -37,6 +37,24 @@ export class Address implements IAddress {
         return Boolean(this.street) && Boolean(this.number) && Boolean(this.zipCode) && Boolean(this.city);
     }
 
+    /**
+     * Return formatted address. even if fields are missing
+     */
+    formatted(): string {
+        const firstPart = "" + (this.street ? this.street + " " : "") + (this.number ? this.number : "");
+        const secondPart = "" + (this.zipCode ? this.zipCode + " " : "") + (this.city || "");
+
+        if (firstPart && secondPart) {
+            return `${firstPart}, ${secondPart}`;
+        } else if (firstPart) {
+            return firstPart.trim();
+        } else if (secondPart) {
+            return secondPart.trim();
+        } else {
+            return "";
+        }
+    }
+
     getGoogleMapsLink(): string {
         const encoded = encodeURI(`${this.street} ${this.number}, ${this.zipCode} ${this.city}`);
         return `https://maps.google.com/?q=${encoded}`;
