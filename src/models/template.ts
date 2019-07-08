@@ -3,5 +3,5 @@ export interface ITemplate {
     readonly createdBy: string;
     readonly fileName: string;
     readonly displayName: string;
-    readonly type: "child-fiscal-certificate" | "child-health-insurance-certificate";
+    readonly type: "child-fiscal-certificate" | "child-health-insurance-certificate" | "child-invoice";
 }

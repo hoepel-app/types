@@ -6,6 +6,7 @@ export type FileType = "all-children"
     | "child-attendances"
     | "child-health-insurance-certificate"
     | "child-fiscal-certificate"
+    | "child-invoice"
     | "children-per-day";
 
 export interface FileRequestMetadata {
