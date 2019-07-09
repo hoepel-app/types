@@ -1,6 +1,7 @@
 export * from "./src/models/address";
 export * from "./src/models/age-group";
 export * from "./src/models/child";
+export * from "./src/models/consumable";
 export * from "./src/models/contact-person";
 export * from "./src/models/crew";
 export * from "./src/models/day";

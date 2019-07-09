@@ -1,5 +1,6 @@
 import { AgeGroup, IAgeGroup } from "../models/age-group";
 import { Child, IChild } from "../models/child";
+import { Consumable, Consumption, IConsumable, IConsumption } from "../models/consumable";
 import { ContactPerson, IContactPerson } from "../models/contact-person";
 import { Crew, ICrew } from "../models/crew";
 import { Discount, IDiscount } from "../models/discount";
@@ -50,6 +51,24 @@ export const contactPersonMapper: Mapper<IContactPerson, ContactPerson> = {
     },
     unlift(contactPerson: ContactPerson): IContactPerson {
         const { id, ...obj } = contactPerson;
+        return obj;
+    },
+};
+
+export const consumableMapper: Mapper<{ readonly consumables: ReadonlyArray<IConsumable> }, ReadonlyArray<Consumable>> = {
+    lift(id: string, obj: { readonly consumables: ReadonlyArray<IConsumable> }): ReadonlyArray<Consumable> {
+        return obj.consumables.map(iconsumable => new Consumable(iconsumable));
+    },
+    unlift(obj: ReadonlyArray<Consumable>): { readonly consumables: ReadonlyArray<IConsumable> } {
+        return { consumables: obj };
+    },
+};
+
+export const consumptionMapper: Mapper<IConsumption, Consumption> = {
+    lift(id: string, obj: IConsumption): Consumption {
+        return new Consumption(obj);
+    },
+    unlift(obj: Consumption): IConsumption {
         return obj;
     },
 };

@@ -1,13 +1,14 @@
 import { IEvent } from "../events";
 import {
     ageGroupMapper,
-    childMapper,
+    childMapper, consumableMapper, consumptionMapper,
     contactPersonMapper,
     crewMapper,
     discountMapper, shiftMapper, shiftPresetMapper,
 } from "../mappers/mappers";
 import { AgeGroup, IAgeGroup } from "../models/age-group";
 import { Child, IChild } from "../models/child";
+import { Consumable, Consumption, IConsumable, IConsumption } from "../models/consumable";
 import { ContactPerson, IContactPerson } from "../models/contact-person";
 import { Crew, ICrew } from "../models/crew";
 import { IDetailedChildAttendance, IDetailedCrewAttendance } from "../models/detailed-attendance";
@@ -59,6 +60,10 @@ export interface CrewAttendancesByCrewDoc {
     readonly attendances: { readonly [shiftId: string]: IDetailedCrewAttendance };
 }
 
+export interface ConsumableDoc {
+    readonly consumables: ReadonlyArray<IConsumable>;
+}
+
 export interface DiscountDoc {
     readonly discounts: ReadonlyArray<IDiscount>;
 }
@@ -89,6 +94,12 @@ export const store = {
     ),
     contactPeople: new TenantIndexedMappingCollection<IContactPerson, ContactPerson>(
         "contact-people", "contact-person", contactPersonMapper,
+    ),
+    consumables: new MappingCollection<ConsumableDoc, ReadonlyArray<Consumable>>(
+        "consumables", "consumables", consumableMapper, true,
+    ),
+    consumptions: new TenantIndexedMappingCollection<IConsumption, Consumption>(
+        "consumables", "consumables", consumptionMapper, true,
     ),
     crewAttendancesAdd: new TenantIndexedCollection<CrewAttendanceAddDoc>(
         "crew-attendances-add", "crew-attendance-add",
