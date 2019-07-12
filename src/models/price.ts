@@ -20,7 +20,7 @@ export class Price implements IPrice {
             throw new Error("Tried to create a price with a negative value for cents or euro. Input: " + JSON.stringify(obj));
         }
 
-        this.cents = (obj.cents % 100) || 0;
+        this.cents = Math.round((obj.cents % 100) || 0);
         const carry = ((obj.cents - (obj.cents % 100)) / 100) || 0;
         this.euro = ((obj.euro || 0) + carry) || 0;
     }
@@ -44,6 +44,20 @@ export class Price implements IPrice {
         } else {
             return new Price({ euro: 0, cents: this.totalCents - new Price(that).totalCents });
         }
+    }
+
+    /**
+     * Multiply the current price by a factor. Does not allow negative prices: returns €0.00 if price were to become negative.
+     */
+    multiply(factor: number) {
+        const resultCents = this.totalCents * factor;
+
+        if (resultCents < 0) {
+            return Price.zero;
+        } else {
+            return new Price({ euro: 0, cents: resultCents });
+        }
+
     }
 
     /**

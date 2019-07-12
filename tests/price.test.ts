@@ -120,4 +120,21 @@ describe("Price", () => {
         expect(total.euro).to.equal(23);
         expect(total.cents).to.equal(14);
     });
+
+    it("Should multiply prices", () => {
+        const price1 = new Price({ euro: 10, cents: 0 });
+        const price2 = new Price({ euro: 6, cents: 57 });
+        const price3 = new Price({ euro: 12, cents: 69 });
+
+        expect(price1.multiply(1).euro).to.equal(10);
+        expect(price1.multiply(1).cents).to.equal(0);
+        expect(price2.multiply(2).euro).to.equal(13);
+        expect(price2.multiply(2).cents).to.equal(14);
+        expect(price2.multiply(0).euro).to.equal(0);
+        expect(price2.multiply(0).cents).to.equal(0);
+        expect(price2.multiply(-5).euro).to.equal(0);
+        expect(price2.multiply(-5).cents).to.equal(0);
+        expect(price3.multiply(3.5).euro).to.equal(44);
+        expect(price3.multiply(3.5).cents).to.equal(42);
+    });
 });
