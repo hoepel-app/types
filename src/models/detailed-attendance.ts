@@ -68,3 +68,32 @@ export interface IDetailedCrewAttendance {
      */
     readonly ageGroupName?: string;
 }
+
+class DetailedChildAttendancesOnShift {
+    constructor(
+        readonly shiftId: string,
+        readonly attendances: { readonly [childId: string]: IDetailedCrewAttendance },
+    ) {}
+
+    didAttend(childId: string) {
+        return this.attendances[childId] && this.attendances[childId].didAttend;
+    }
+
+    attendingChildren(): ReadonlyArray<string> {
+        return Object.keys(this.attendances).filter(childId => this.didAttend(childId));
+    }
+}
+
+class DetailedChildAttendancesOnShifts {
+    constructor(
+        readonly detailedChildAttendancesOnShift: ReadonlyArray<DetailedChildAttendancesOnShift>,
+    ) {}
+
+    uniqueAttendances(onShifts: ReadonlyArray<string>): number {
+        const allAttendances = this.detailedChildAttendancesOnShift
+            .filter(detailedAttendances => onShifts.indexOf(detailedAttendances.shiftId) !== -1)
+            .map(detailedAttendances => detailedAttendances.attendingChildren());
+
+        return new Set(allAttendances).size;
+    }
+}
