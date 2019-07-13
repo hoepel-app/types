@@ -127,4 +127,33 @@ describe("DetailedChildAttendancesOnShifts", () => {
         expect(attendances.amountPaidBy("id-3").totalCents).to.equal(440);
         expect(attendances.amountPaidBy("id-4").totalCents).to.equal(220);
     });
+
+    it("numberOfAttendances", () => {
+        const att1 = new DetailedChildAttendancesOnShift("shift-id-1", {
+            "id-1": { didAttend: true, amountPaid: Price.zero },
+            "id-2": { didAttend: false, amountPaid: Price.zero },
+            "id-3": { didAttend: true, amountPaid: Price.zero },
+        });
+
+        const att2 = new DetailedChildAttendancesOnShift("shift-id-2", {
+            "id-1": { didAttend: true, amountPaid: Price.zero },
+            "id-2": { didAttend: false, amountPaid: Price.zero },
+            "id-3": { didAttend: false, amountPaid: Price.zero },
+        });
+
+        const att3 = new DetailedChildAttendancesOnShift("shift-id-3", {
+            "id-1": { didAttend: false, amountPaid: Price.zero },
+            "id-2": { didAttend: true, amountPaid: Price.zero },
+            "id-3": { didAttend: true, amountPaid: Price.zero },
+            "id-4": { didAttend: true, amountPaid: Price.zero },
+        });
+
+        const attendances = new DetailedChildAttendancesOnShifts([ att1, att2, att3 ]);
+
+        expect(attendances.numberOfAttendances("id-1")).to.equal(2);
+        expect(attendances.numberOfAttendances("id-2")).to.equal(1);
+        expect(attendances.numberOfAttendances("id-3")).to.equal(2);
+        expect(attendances.numberOfAttendances("id-4")).to.equal(1);
+        expect(attendances.numberOfAttendances("id-5")).to.equal(0);
+    });
 });

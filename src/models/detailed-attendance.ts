@@ -131,6 +131,15 @@ export class DetailedChildAttendancesOnShifts {
     }
 
     /**
+     * Returns the number of shifts a child attended
+     */
+    numberOfAttendances(childId: string) {
+        return this.detailedChildAttendancesOnShift.reduce((previousValue, currentValue) => {
+            return previousValue + (currentValue.didAttend(childId) ? 1 : 0);
+        }, 0);
+    }
+
+    /**
      * Check if a given child did attend on a specific shift
      */
     didAttend(childId: string, shiftId: string): boolean {
