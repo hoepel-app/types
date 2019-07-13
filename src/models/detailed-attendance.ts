@@ -101,7 +101,7 @@ export class DetailedAttendancesOnShift {
      * Get an array of crew member id's that attended this shift
      */
     attendingCrewMembers(): ReadonlyArray<string> {
-        return Object.keys(this.crewAttendances).filter(childId => this.didCrewMemberAttend(childId));
+        return Object.keys(this.crewAttendances).filter(crewId => this.didCrewMemberAttend(crewId));
     }
 
     /**
@@ -185,13 +185,13 @@ export class DetailedAttendancesOnShifts {
     /**
      * Check if a given crew member did attend on a specific shift
      */
-    didCrewMemberAttend(childId: string, shiftId: string): boolean {
+    didCrewMemberAttend(crewId: string, shiftId: string): boolean {
         const attendancesForShift = this.detailedAttendancesOnShift.find(att => att.shiftId === shiftId);
 
         if (!attendancesForShift) {
             return false;
         } else {
-            return attendancesForShift.didCrewMemberAttend(childId);
+            return attendancesForShift.didCrewMemberAttend(crewId);
         }
     }
 
