@@ -1,6 +1,7 @@
 import { AgeGroup, IAgeGroup } from "../models/age-group";
 import { Child, IChild } from "../models/child";
-import { Consumable, Consumption, IConsumable, IConsumption } from "../models/consumable";
+import { Consumable, IConsumable } from "../models/consumable";
+import { Consumption, IConsumption } from "../models/consumption";
 import { ContactPerson, IContactPerson } from "../models/contact-person";
 import { Crew, ICrew } from "../models/crew";
 import { Discount, IDiscount } from "../models/discount";
