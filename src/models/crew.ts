@@ -169,4 +169,8 @@ export class Crew implements ICrew {
     withYearStarted(yearStarted: number): Crew {
         return new Crew({ ...(this as any), yearStarted });
     }
+
+    withCertificates(certificates?: ICrewCertificates): Crew {
+        return new Crew({ ...(this as any), certificates });
+    }
 }
