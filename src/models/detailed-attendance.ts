@@ -93,7 +93,11 @@ export class DetailedChildAttendancesOnShift {
 export class DetailedChildAttendancesOnShifts {
     constructor(
         readonly detailedChildAttendancesOnShift: ReadonlyArray<DetailedChildAttendancesOnShift>,
-    ) {}
+    ) {
+        if (new Set(detailedChildAttendancesOnShift.map(x => x.shiftId)).size !== detailedChildAttendancesOnShift.length) {
+            throw new Error("detailedChildAttendancesOnShift may not contain two shifts with the same id");
+        }
+    }
 
     /**
      * Get the number of unique child attendances on given shifts
@@ -112,5 +116,18 @@ export class DetailedChildAttendancesOnShifts {
         allAttendances.forEach(attendances => attendances.forEach(attendance => set.add(attendance)));
 
         return set.size;
+    }
+
+    /**
+     * Check if a given child did attend on a specific shift
+     */
+    didAttend(childId: string, shiftId: string): boolean {
+        const attendancesForShift = this.detailedChildAttendancesOnShift.find(att => att.shiftId === shiftId);
+
+        if (!attendancesForShift) {
+            return false;
+        } else {
+            return attendancesForShift.didAttend(childId);
+        }
     }
 }
