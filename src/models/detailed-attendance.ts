@@ -87,7 +87,7 @@ export class DetailedAttendancesOnShift {
      * Check if a given crew member attended this shift
      */
     didCrewMemberAttend(crewId: string) {
-        return !!this.crewAttendances[crewId] && this.childAttendances[crewId].didAttend;
+        return !!this.crewAttendances[crewId] && this.crewAttendances[crewId].didAttend;
     }
 
     /**
@@ -98,7 +98,7 @@ export class DetailedAttendancesOnShift {
     }
 
     /**
-     * Get an array of child id's that attended this shift
+     * Get an array of crew member id's that attended this shift
      */
     attendingCrewMembers(): ReadonlyArray<string> {
         return Object.keys(this.crewAttendances).filter(childId => this.didCrewMemberAttend(childId));
@@ -146,12 +146,53 @@ export class DetailedAttendancesOnShifts {
     }
 
     /**
+     * Get the number of unique crew attendances on given shifts
+     *
+     * @param onShifts The shifts to consider. If undefined, consider all shifts the object has
+     */
+    uniqueCrewMemberAttendances(onShifts?: ReadonlyArray<string>): number {
+        const allShiftIds = this.detailedAttendancesOnShift.map(attendances => attendances.shiftId);
+
+        const allAttendances = this.detailedAttendancesOnShift
+            .filter(detailedAttendances => (onShifts || allShiftIds).indexOf(detailedAttendances.shiftId) !== -1)
+            .map(detailedAttendances => detailedAttendances.attendingCrewMembers());
+
+        const set = new Set();
+
+        allAttendances.forEach(attendances => attendances.forEach(attendance => set.add(attendance)));
+
+        return set.size;
+    }
+
+    /**
+     * Returns the number of shifts a crew member attended
+     */
+    numberOfCrewMemberAttendances(crewId: string) {
+        return this.detailedAttendancesOnShift.reduce((previousValue, currentValue) => {
+            return previousValue + (currentValue.didCrewMemberAttend(crewId) ? 1 : 0);
+        }, 0);
+    }
+
+    /**
      * Returns the number of shifts a child attended
      */
     numberOfChildAttendances(childId: string) {
         return this.detailedAttendancesOnShift.reduce((previousValue, currentValue) => {
             return previousValue + (currentValue.didChildAttend(childId) ? 1 : 0);
         }, 0);
+    }
+
+    /**
+     * Check if a given crew member did attend on a specific shift
+     */
+    didCrewMemberAttend(childId: string, shiftId: string): boolean {
+        const attendancesForShift = this.detailedAttendancesOnShift.find(att => att.shiftId === shiftId);
+
+        if (!attendancesForShift) {
+            return false;
+        } else {
+            return attendancesForShift.didCrewMemberAttend(childId);
+        }
     }
 
     /**
