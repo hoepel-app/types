@@ -1,7 +1,6 @@
 /**
  * A shift: an activity or period of a day
  */
-import {isUndefined} from "lodash";
 import {DayDate} from "./day-date";
 import {LocalTime} from "./local-time";
 import {IPrice, Price} from "./price";
@@ -26,11 +25,11 @@ export class Shift implements IShift {
                 return DayDate.fromDayId(a.dayId).compareTo(DayDate.fromDayId(b.dayId));
             }
 
-            if (isUndefined(a.startAndEnd) && isUndefined(b.startAndEnd)) {
+            if (a.startAndEnd === undefined && b.startAndEnd === undefined) {
                 return a.kind.localeCompare(b.kind);
-            } else if (isUndefined(a.startAndEnd)) {
+            } else if (a.startAndEnd === undefined) {
                 return 1; // corect? shifts with undefined startAndEnd should end up at the end
-            } else if (isUndefined(b.startAndEnd)) {
+            } else if (b.startAndEnd === undefined) {
                 return -1; // correct?
             }
 
