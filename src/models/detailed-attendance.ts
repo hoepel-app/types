@@ -69,44 +69,59 @@ export interface IDetailedCrewAttendance {
     readonly ageGroupName?: string;
 }
 
-export class DetailedChildAttendancesOnShift {
+export class DetailedAttendancesOnShift {
     constructor(
         readonly shiftId: string,
-        readonly attendances: { readonly [childId: string]: IDetailedChildAttendance },
+        readonly childAttendances: { readonly [childId: string]: IDetailedChildAttendance },
+        readonly crewAttendances: { readonly [crew: string]: IDetailedCrewAttendance },
     ) {}
 
     /**
      * Check if a given child attended this shift
      */
-    didAttend(childId: string) {
-        return !!this.attendances[childId] && this.attendances[childId].didAttend;
+    didChildAttend(childId: string) {
+        return !!this.childAttendances[childId] && this.childAttendances[childId].didAttend;
+    }
+
+    /**
+     * Check if a given crew member attended this shift
+     */
+    didCrewMemberAttend(crewId: string) {
+        return !!this.crewAttendances[crewId] && this.childAttendances[crewId].didAttend;
     }
 
     /**
      * Get an array of child id's that attended this shift
      */
     attendingChildren(): ReadonlyArray<string> {
-        return Object.keys(this.attendances).filter(childId => this.didAttend(childId));
+        return Object.keys(this.childAttendances).filter(childId => this.didChildAttend(childId));
+    }
+
+    /**
+     * Get an array of child id's that attended this shift
+     */
+    attendingCrewMembers(): ReadonlyArray<string> {
+        return Object.keys(this.crewAttendances).filter(childId => this.didCrewMemberAttend(childId));
     }
 
     /**
      * For the given child, check how much they paid for the shifts they attended
      * If they did not attend, or were not registered, return a zero price
      */
-    amountPaidBy(childId: string): Price {
-        if (this.didAttend(childId)) {
-            return new Price(this.attendances[childId].amountPaid);
+    amountPaidByChild(childId: string): Price {
+        if (this.didChildAttend(childId)) {
+            return new Price(this.childAttendances[childId].amountPaid);
         } else {
             return Price.zero;
         }
     }
 }
 
-export class DetailedChildAttendancesOnShifts {
+export class DetailedAttendancesOnShifts {
     constructor(
-        readonly detailedChildAttendancesOnShift: ReadonlyArray<DetailedChildAttendancesOnShift>,
+        readonly detailedAttendancesOnShift: ReadonlyArray<DetailedAttendancesOnShift>,
     ) {
-        if (new Set(detailedChildAttendancesOnShift.map(x => x.shiftId)).size !== detailedChildAttendancesOnShift.length) {
+        if (new Set(detailedAttendancesOnShift.map(x => x.shiftId)).size !== detailedAttendancesOnShift.length) {
             throw new Error("detailedChildAttendancesOnShift may not contain two shifts with the same id");
         }
     }
@@ -116,10 +131,10 @@ export class DetailedChildAttendancesOnShifts {
      *
      * @param onShifts The shifts to consider. If undefined, consider all shifts the object has
      */
-    uniqueAttendances(onShifts?: ReadonlyArray<string>): number {
-        const allShiftIds = this.detailedChildAttendancesOnShift.map(attendances => attendances.shiftId);
+    uniqueChildAttendances(onShifts?: ReadonlyArray<string>): number {
+        const allShiftIds = this.detailedAttendancesOnShift.map(attendances => attendances.shiftId);
 
-        const allAttendances = this.detailedChildAttendancesOnShift
+        const allAttendances = this.detailedAttendancesOnShift
             .filter(detailedAttendances => (onShifts || allShiftIds).indexOf(detailedAttendances.shiftId) !== -1)
             .map(detailedAttendances => detailedAttendances.attendingChildren());
 
@@ -133,22 +148,22 @@ export class DetailedChildAttendancesOnShifts {
     /**
      * Returns the number of shifts a child attended
      */
-    numberOfAttendances(childId: string) {
-        return this.detailedChildAttendancesOnShift.reduce((previousValue, currentValue) => {
-            return previousValue + (currentValue.didAttend(childId) ? 1 : 0);
+    numberOfChildAttendances(childId: string) {
+        return this.detailedAttendancesOnShift.reduce((previousValue, currentValue) => {
+            return previousValue + (currentValue.didChildAttend(childId) ? 1 : 0);
         }, 0);
     }
 
     /**
      * Check if a given child did attend on a specific shift
      */
-    didAttend(childId: string, shiftId: string): boolean {
-        const attendancesForShift = this.detailedChildAttendancesOnShift.find(att => att.shiftId === shiftId);
+    didChildAttend(childId: string, shiftId: string): boolean {
+        const attendancesForShift = this.detailedAttendancesOnShift.find(att => att.shiftId === shiftId);
 
         if (!attendancesForShift) {
             return false;
         } else {
-            return attendancesForShift.didAttend(childId);
+            return attendancesForShift.didChildAttend(childId);
         }
     }
 
@@ -156,7 +171,7 @@ export class DetailedChildAttendancesOnShifts {
      * For the given child, check how much they paid for the shifts they attended
      * If they did not attend, or were not registered, return a zero price
      */
-    amountPaidBy(childId: string): Price {
-        return Price.total(...this.detailedChildAttendancesOnShift.map(x => x.amountPaidBy(childId)));
+    amountPaidByChild(childId: string): Price {
+        return Price.total(...this.detailedAttendancesOnShift.map(x => x.amountPaidByChild(childId)));
     }
 }
