@@ -1,4 +1,4 @@
-import {IPrice} from "./price";
+import { IPrice, Price } from "./price";
 
 export interface IDetailedChildAttendance {
     /**
@@ -72,7 +72,7 @@ export interface IDetailedCrewAttendance {
 export class DetailedChildAttendancesOnShift {
     constructor(
         readonly shiftId: string,
-        readonly attendances: { readonly [childId: string]: IDetailedCrewAttendance },
+        readonly attendances: { readonly [childId: string]: IDetailedChildAttendance },
     ) {}
 
     /**
@@ -87,6 +87,18 @@ export class DetailedChildAttendancesOnShift {
      */
     attendingChildren(): ReadonlyArray<string> {
         return Object.keys(this.attendances).filter(childId => this.didAttend(childId));
+    }
+
+    /**
+     * For the given child, check how much they paid for the shifts they attended
+     * If they did not attend, or were not registered, return a zero price
+     */
+    amountPaidBy(childId: string): Price {
+        if (this.didAttend(childId)) {
+            return new Price(this.attendances[childId].amountPaid);
+        } else {
+            return Price.zero;
+        }
     }
 }
 
@@ -129,5 +141,13 @@ export class DetailedChildAttendancesOnShifts {
         } else {
             return attendancesForShift.didAttend(childId);
         }
+    }
+
+    /**
+     * For the given child, check how much they paid for the shifts they attended
+     * If they did not attend, or were not registered, return a zero price
+     */
+    amountPaidBy(childId: string): Price {
+        return Price.total(...this.detailedChildAttendancesOnShift.map(x => x.amountPaidBy(childId)));
     }
 }

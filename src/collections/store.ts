@@ -54,7 +54,7 @@ export interface CrewAttendanceDeleteDoc {
 }
 
 export interface CrewAttendancesByShiftDoc {
-    readonly attendances: { readonly [childId: string]: IDetailedCrewAttendance };
+    readonly attendances: { readonly [crewId: string]: IDetailedCrewAttendance };
 }
 
 export interface CrewAttendancesByCrewDoc {
