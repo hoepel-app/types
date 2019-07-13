@@ -69,31 +69,48 @@ export interface IDetailedCrewAttendance {
     readonly ageGroupName?: string;
 }
 
-class DetailedChildAttendancesOnShift {
+export class DetailedChildAttendancesOnShift {
     constructor(
         readonly shiftId: string,
         readonly attendances: { readonly [childId: string]: IDetailedCrewAttendance },
     ) {}
 
+    /**
+     * Check if a given child attended this shift
+     */
     didAttend(childId: string) {
-        return this.attendances[childId] && this.attendances[childId].didAttend;
+        return !!this.attendances[childId] && this.attendances[childId].didAttend;
     }
 
+    /**
+     * Get an array of child id's that attended this shift
+     */
     attendingChildren(): ReadonlyArray<string> {
         return Object.keys(this.attendances).filter(childId => this.didAttend(childId));
     }
 }
 
-class DetailedChildAttendancesOnShifts {
+export class DetailedChildAttendancesOnShifts {
     constructor(
         readonly detailedChildAttendancesOnShift: ReadonlyArray<DetailedChildAttendancesOnShift>,
     ) {}
 
-    uniqueAttendances(onShifts: ReadonlyArray<string>): number {
+    /**
+     * Get the number of unique child attendances on given shifts
+     *
+     * @param onShifts The shifts to consider. If undefined, consider all shifts the object has
+     */
+    uniqueAttendances(onShifts?: ReadonlyArray<string>): number {
+        const allShiftIds = this.detailedChildAttendancesOnShift.map(attendances => attendances.shiftId);
+
         const allAttendances = this.detailedChildAttendancesOnShift
-            .filter(detailedAttendances => onShifts.indexOf(detailedAttendances.shiftId) !== -1)
+            .filter(detailedAttendances => (onShifts || allShiftIds).indexOf(detailedAttendances.shiftId) !== -1)
             .map(detailedAttendances => detailedAttendances.attendingChildren());
 
-        return new Set(allAttendances).size;
+        const set = new Set();
+
+        allAttendances.forEach(attendances => attendances.forEach(attendance => set.add(attendance)));
+
+        return set.size;
     }
 }
