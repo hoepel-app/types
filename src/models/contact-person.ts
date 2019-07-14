@@ -89,8 +89,8 @@ export class ContactPerson implements IContactPerson {
         return new ContactPerson({ ...(this as any), firstName });
     }
 
-    withLastName(firstName: string): ContactPerson {
-        return new ContactPerson({ ...(this as any), firstName });
+    withLastName(lastName: string): ContactPerson {
+        return new ContactPerson({ ...(this as any), lastName });
     }
 
     withAddress(address: IAddress): ContactPerson {
@@ -102,7 +102,7 @@ export class ContactPerson implements IContactPerson {
     }
 
     withPhone(phone: ReadonlyArray<IPhoneContact>): ContactPerson {
-        return new ContactPerson({ ...(this as any), contact: phone });
+        return new ContactPerson({ ...(this as any), phone });
     }
 
     withRemarks(remarks: string): ContactPerson {
