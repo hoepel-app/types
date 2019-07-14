@@ -8,10 +8,12 @@
     "virginity-ts": "^0.1.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^8.0.0",
+    "@commitlint/config-conventional": "^8.0.0",
+    "@commitlint/prompt": "^8.0.0",
     "@types/chai": "^4.1.7",
     "@types/mocha": "^5.2.7",
     "chai": "^4.2.0",
-    "commitizen": "^3.1.1",
     "cz-conventional-changelog": "^2.1.0",
     "husky": "^3.0.0",
     "mocha": "^6.1.4",
@@ -42,9 +44,14 @@
   "homepage": "https://github.com/hoepel-app/types#readme",
   "husky": {
     "hooks": {
-      "prepare-commit-msg": "exec < /dev/tty && git cz --hook",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "npm run build && npm run lint && npm test"
     }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   },
   "config": {
     "commitizen": {
