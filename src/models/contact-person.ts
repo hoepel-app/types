@@ -84,4 +84,28 @@ export class ContactPerson implements IContactPerson {
     withId(id?: string): ContactPerson {
         return new ContactPerson({...(this as any),  id });
     }
+
+    withFirstName(firstName: string): ContactPerson {
+        return new ContactPerson({ ...(this as any), firstName });
+    }
+
+    withLastName(firstName: string): ContactPerson {
+        return new ContactPerson({ ...(this as any), firstName });
+    }
+
+    withAddress(address: IAddress): ContactPerson {
+        return new ContactPerson({ ...(this as any), address });
+    }
+
+    withEmail(email: ReadonlyArray<string>): ContactPerson {
+        return new ContactPerson({ ...(this as any), email });
+    }
+
+    withPhone(phone: ReadonlyArray<IPhoneContact>): ContactPerson {
+        return new ContactPerson({ ...(this as any), contact: phone });
+    }
+
+    withRemarks(remarks: string): ContactPerson {
+        return new ContactPerson({ ...(this as any), remarks });
+    }
 }
