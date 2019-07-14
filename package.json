@@ -1,6 +1,6 @@
 {
   "name": "@hoepel.app/types",
-  "version": "1.3.16",
+  "version": "1.3.17",
   "description": "Interfaces and models for hoepel.app",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -16,6 +16,7 @@
     "husky": "^3.0.0",
     "mocha": "^6.1.4",
     "nyc": "^14.1.1",
+    "semantic-release": "^15.13.18",
     "ts-node": "^8.2.0",
     "tslint": "^5.12.0",
     "tslint-immutable": "^6.0.0",
@@ -27,17 +28,18 @@
     "lint": "tslint --project tsconfig.json --config tslint.json",
     "lint-fix": "tslint --project tsconfig.json --config tslint.json --fix",
     "test": "mocha -r ts-node/register tests/**/*.test.ts",
-    "testWithCoverage": "nyc -r lcov -e .ts -x \"*.test.ts\" mocha -r ts-node/register tests/**/*.test.ts && nyc report"
+    "testWithCoverage": "nyc -r lcov -e .ts -x \"*.test.ts\" mocha -r ts-node/register tests/**/*.test.ts && nyc report",
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thomastoye/types.hoepel.app.git"
+    "url": "https://github.com/hoepel-app/types.git"
   },
   "author": "Thomas Toye",
   "bugs": {
-    "url": "https://github.com/thomastoye/types.hoepel.app/issues"
+    "url": "https://github.com/hoepel-app/types/issues"
   },
-  "homepage": "https://github.com/thomastoye/types.hoepel.app#readme",
+  "homepage": "https://github.com/hoepel-app/types#readme",
   "husky": {
     "hooks": {
       "prepare-commit-msg": "exec < /dev/tty && git cz --hook",
