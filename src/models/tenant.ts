@@ -14,7 +14,11 @@ export interface Tenant {
      * Mail address for this organisation - not necessarily the address of the organisation itself
      */
     readonly address: {
+        /** @deprecated */
         readonly streetAndNumber?: string;
+
+        readonly street: string;
+        readonly number: string;
         readonly zipCode?: string;
         readonly city?: string;
     };
