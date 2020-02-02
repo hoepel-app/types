@@ -11,14 +11,12 @@
     "@commitlint/cli": "^8.1.0",
     "@commitlint/config-conventional": "^8.0.0",
     "@commitlint/prompt": "^8.1.0",
-    "@types/chai": "^4.1.7",
-    "@types/mocha": "^5.2.7",
-    "chai": "^4.2.0",
+    "@types/jest": "^25.1.1",
     "cz-conventional-changelog": "^3.0.2",
     "husky": "^3.0.0",
-    "mocha": "^6.1.4",
-    "nyc": "^14.1.1",
+    "jest": "^25.1.0",
     "semantic-release": "^15.13.18",
+    "ts-jest": "^25.1.0",
     "ts-node": "^8.2.0",
     "tslint": "^5.12.0",
     "tslint-immutable": "^6.0.0",
@@ -29,7 +27,7 @@
     "prepublishOnly": "npm run lint && npm run build",
     "lint": "tslint --project tsconfig.json --config tslint.json",
     "lint-fix": "tslint --project tsconfig.json --config tslint.json --fix",
-    "test": "mocha -r ts-node/register tests/**/*.test.ts",
+    "test": "jest",
     "testWithCoverage": "nyc -r lcov -e .ts -x \"*.test.ts\" mocha -r ts-node/register tests/**/*.test.ts && nyc report",
     "semantic-release": "semantic-release"
   },
@@ -57,5 +55,16 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "\\.(ts|tsx)$": "ts-jest"
+    },
+    "testRegex": "src/tests/.*\\.(ts|tsx|js)$"
   }
 }
