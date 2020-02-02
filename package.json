@@ -15,7 +15,7 @@
     "cz-conventional-changelog": "^3.0.2",
     "husky": "^4.2.1",
     "jest": "^25.1.0",
-    "semantic-release": "^15.13.18",
+    "semantic-release": "^17.0.2",
     "ts-jest": "^25.1.0",
     "ts-node": "^8.2.0",
     "tslint": "^5.12.0",
