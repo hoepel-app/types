@@ -30,4 +30,3 @@ export * from "./mappers/mapper";
 export * from "./mappers/mappers";
 export * from "./repositories/repositories";
 export * from "./errors";
-export * from "./events";
