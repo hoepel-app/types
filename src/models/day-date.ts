@@ -34,6 +34,18 @@ export class DayDate implements IDayDate {
     readonly year: number;
 
     constructor(daydate: IDayDate) {
+        if (isNaN(daydate.day)) {
+            throw new Error("Day is NaN");
+        }
+
+        if (isNaN(daydate.month)) {
+            throw new Error("Month is NaN");
+        }
+
+        if (isNaN(daydate.year)) {
+            throw new Error("Year is NaN");
+        }
+
         this.day = daydate.day;
         this.month = daydate.month;
         this.year = daydate.year;
