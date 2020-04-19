@@ -1,4 +1,3 @@
-import { AgeGroup, IAgeGroup } from "../models/age-group";
 import { Child, IChild } from "../models/child";
 import { Consumable, IConsumable } from "../models/consumable";
 import { Consumption, IConsumption } from "../models/consumption";
@@ -18,22 +17,6 @@ export const identityMapper = <T>(): Mapper<T, T & { readonly id: string }> => {
             return res as T;
         },
     };
-};
-
-export const ageGroupMapper: Mapper<
-    { readonly groups: ReadonlyArray<IAgeGroup> },
-    { readonly groups: ReadonlyArray<AgeGroup> }
-    > = {
-    lift(id: string, obj: { readonly groups: ReadonlyArray<IAgeGroup> }): { readonly groups: ReadonlyArray<AgeGroup> } {
-        if (!obj || !obj.groups) {
-            return { groups: [] };
-        }
-
-        return { groups: obj.groups.map(group => new AgeGroup(group)) };
-    },
-    unlift(obj: { readonly groups: ReadonlyArray<AgeGroup> }): { readonly groups: ReadonlyArray<IAgeGroup> } {
-        return obj;
-    },
 };
 
 export const childMapper: Mapper<IChild, Child> = {

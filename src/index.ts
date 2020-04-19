@@ -1,5 +1,4 @@
 export * from "./models/address";
-export * from "./models/age-group";
 export * from "./models/child";
 export * from "./models/consumable";
 export * from "./models/consumption";

@@ -1,5 +1,4 @@
 import {
-  ageGroupMapper,
   childMapper,
   consumableMapper,
   consumptionMapper,
@@ -9,7 +8,6 @@ import {
   shiftMapper,
   shiftPresetMapper,
 } from "../mappers/mappers";
-import { AgeGroup, IAgeGroup } from "../models/age-group";
 import { Child, IChild } from "../models/child";
 import { Consumable, IConsumable } from "../models/consumable";
 import { Consumption, IConsumption } from "../models/consumption";
@@ -84,11 +82,6 @@ export interface DiscountDoc {
  * Models Firestore contents with types
  */
 export const store = {
-  ageGroups: new MappingCollection<
-    { readonly groups: ReadonlyArray<IAgeGroup> },
-    { readonly groups: ReadonlyArray<AgeGroup> }
-  >("age-groups", "age-groups", ageGroupMapper, true),
-
   childAttendanceAdd: new TenantIndexedCollection<ChildAttendanceAddDoc>(
     "child-attendances-add",
     "child-attendance-add",
