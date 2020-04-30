@@ -136,4 +136,10 @@ describe("Price", () => {
         expect(price3.multiply(3.5).euro).toEqual(44);
         expect(price3.multiply(3.5).cents).toEqual(42);
     });
+
+    it("Creates price from cents", () => {
+        expect(Price.fromCents(1234).cents).toEqual(34);
+        expect(Price.fromCents(1234).euro).toEqual(12);
+        expect(Price.fromCents(1234).totalCents).toEqual(1234);
+    });
 });

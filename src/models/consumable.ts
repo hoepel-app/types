@@ -4,7 +4,6 @@
  * Consumption of consumables is tied to a dayid/DayDate (a specific date)
  * The same consumable can be consumed multiple times by the same child on the same day.
  */
-import { DayDate } from "./day-date";
 import { IPrice, Price } from "./price";
 
 export interface IConsumable {

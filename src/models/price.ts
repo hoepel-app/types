@@ -12,6 +12,10 @@ export class Price implements IPrice {
         return prices.reduce((a, b) => a.add(b), Price.zero);
     }
 
+    static fromCents(cents: number): Price {
+        return new Price({ euro: 0, cents });
+    }
+
     readonly cents: number;
     readonly euro: number;
 
