@@ -1,5 +1,4 @@
 import { Child, IChild } from "../models/child";
-import { Consumable, IConsumable } from "../models/consumable";
 import { Consumption, IConsumption } from "../models/consumption";
 import { ContactPerson, IContactPerson } from "../models/contact-person";
 import { Crew, ICrew } from "../models/crew";
@@ -36,15 +35,6 @@ export const contactPersonMapper: Mapper<IContactPerson, ContactPerson> = {
     unlift(contactPerson: ContactPerson): IContactPerson {
         const { id, ...obj } = contactPerson;
         return obj;
-    },
-};
-
-export const consumableMapper: Mapper<{ readonly consumables: ReadonlyArray<IConsumable> }, ReadonlyArray<Consumable>> = {
-    lift(id: string, obj: { readonly consumables: ReadonlyArray<IConsumable> }): ReadonlyArray<Consumable> {
-        return obj.consumables.map(iconsumable => new Consumable(iconsumable));
-    },
-    unlift(obj: ReadonlyArray<Consumable>): { readonly consumables: ReadonlyArray<IConsumable> } {
-        return { consumables: obj };
     },
 };
 

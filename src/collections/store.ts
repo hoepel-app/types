@@ -1,6 +1,5 @@
 import {
   childMapper,
-  consumableMapper,
   consumptionMapper,
   contactPersonMapper,
   crewMapper,
@@ -9,7 +8,6 @@ import {
   shiftPresetMapper,
 } from "../mappers/mappers";
 import { Child, IChild } from "../models/child";
-import { Consumable, IConsumable } from "../models/consumable";
 import { Consumption, IConsumption } from "../models/consumption";
 import { ContactPerson, IContactPerson } from "../models/contact-person";
 import { Crew, ICrew } from "../models/crew";
@@ -70,10 +68,6 @@ export interface CrewAttendancesByCrewDoc {
   readonly attendances: { readonly [shiftId: string]: IDetailedCrewAttendance };
 }
 
-export interface ConsumableDoc {
-  readonly consumables: ReadonlyArray<IConsumable>;
-}
-
 export interface DiscountDoc {
   readonly discounts: ReadonlyArray<IDiscount>;
 }
@@ -105,18 +99,6 @@ export const store = {
     IContactPerson,
     ContactPerson
   >("contact-people", "contact-person", contactPersonMapper),
-  consumables: new MappingCollection<ConsumableDoc, ReadonlyArray<Consumable>>(
-    "consumables",
-    "consumables",
-    consumableMapper,
-    true,
-  ),
-  consumptions: new TenantIndexedMappingCollection<IConsumption, Consumption>(
-    "consumables",
-    "consumables",
-    consumptionMapper,
-    true,
-  ),
   crewAttendancesAdd: new TenantIndexedCollection<CrewAttendanceAddDoc>(
     "crew-attendances-add",
     "crew-attendance-add",

@@ -1,6 +1,5 @@
 export * from "./models/address";
 export * from "./models/child";
-export * from "./models/consumable";
 export * from "./models/consumption";
 export * from "./models/contact-person";
 export * from "./models/crew";
