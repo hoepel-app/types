@@ -1,5 +1,3 @@
-import {Discount} from "./discount";
-
 export interface IPrice {
     readonly euro: number;
     readonly cents: number;
@@ -62,31 +60,6 @@ export class Price implements IPrice {
             return new Price({ euro: 0, cents: resultCents });
         }
 
-    }
-
-    /**
-     * Apply a discount
-     *
-     * When a discount has both an absolute and a relative component, the relative component is applied first
-     * When a discount would make the resulting price negative, a zero price is returned
-     */
-    applyDiscount(discount: Discount): Price {
-        const appliedAbsoluteDiscount = this.subtract(discount.absoluteDiscount || Price.zero);
-
-        const multiplier = 1 - (discount.relativeDiscount || 0) / 100;
-        return new Price({ euro: 0, cents: Math.round(appliedAbsoluteDiscount.totalCents * multiplier) });
-
-    }
-
-    /**
-     * Apply a list of discounts
-     *
-     * Discounts are applied left to right.
-     */
-    applyAllDiscounts(discounts: ReadonlyArray<Discount>): Price {
-        return discounts.reduce( ((previousValue: Price, currentValue: Discount) => {
-            return previousValue.applyDiscount(currentValue);
-        }), this);
     }
 
     /**

@@ -2,7 +2,6 @@ import { Child, IChild } from "../models/child";
 import { Consumption, IConsumption } from "../models/consumption";
 import { ContactPerson, IContactPerson } from "../models/contact-person";
 import { Crew, ICrew } from "../models/crew";
-import { Discount, IDiscount } from "../models/discount";
 import { IShift, IShiftPreset, Shift } from "../models/shift";
 import { Mapper } from "./mapper";
 
@@ -54,15 +53,6 @@ export const crewMapper: Mapper<ICrew, Crew> = {
     unlift(crew: Crew): ICrew {
         const { id, ...obj } = crew;
         return obj;
-    },
-};
-
-export const discountMapper: Mapper<{ readonly discounts: ReadonlyArray<IDiscount> }, ReadonlyArray<Discount>> = {
-    lift(id: string, obj: { readonly discounts: ReadonlyArray<IDiscount> }): ReadonlyArray<Discount> {
-        return obj.discounts.map(idiscount => new Discount(idiscount));
-    },
-    unlift(obj: ReadonlyArray<Discount>): { readonly discounts: ReadonlyArray<IDiscount> } {
-        return { discounts: obj };
     },
 };
 

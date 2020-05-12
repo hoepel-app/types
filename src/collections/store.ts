@@ -3,7 +3,6 @@ import {
   consumptionMapper,
   contactPersonMapper,
   crewMapper,
-  discountMapper,
   shiftMapper,
   shiftPresetMapper,
 } from "../mappers/mappers";
@@ -15,7 +14,6 @@ import {
   IDetailedChildAttendance,
   IDetailedCrewAttendance,
 } from "../models/detailed-attendance";
-import { Discount, IDiscount } from "../models/discount";
 import { IReport } from "../models/report";
 import { IShift, IShiftPreset, Shift } from "../models/shift";
 import { ITemplate } from "../models/template";
@@ -68,10 +66,6 @@ export interface CrewAttendancesByCrewDoc {
   readonly attendances: { readonly [shiftId: string]: IDetailedCrewAttendance };
 }
 
-export interface DiscountDoc {
-  readonly discounts: ReadonlyArray<IDiscount>;
-}
-
 /**
  * Models Firestore contents with types
  */
@@ -118,12 +112,6 @@ export const store = {
     "crew-members",
     "crew-member",
     crewMapper,
-  ),
-  discounts: new MappingCollection<DiscountDoc, ReadonlyArray<Discount>>(
-    "discounts",
-    "discounts",
-    discountMapper,
-    true,
   ),
   // TODO check if dates convert correctly (created and expires) for reports
   reports: new TenantIndexedCollection<IReport>("reports", "report"),

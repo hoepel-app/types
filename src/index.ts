@@ -7,7 +7,6 @@ export * from "./models/day";
 export * from "./models/day-date";
 export * from "./models/day-date-range";
 export * from "./models/detailed-attendance";
-export * from "./models/discount";
 export * from "./models/local-time";
 export * from "./models/phone-contact";
 export * from "./models/price";
