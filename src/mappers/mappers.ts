@@ -1,5 +1,4 @@
 import { Child, IChild } from "../models/child";
-import { Consumption, IConsumption } from "../models/consumption";
 import { ContactPerson, IContactPerson } from "../models/contact-person";
 import { Crew, ICrew } from "../models/crew";
 import { IShift, IShiftPreset, Shift } from "../models/shift";
@@ -33,15 +32,6 @@ export const contactPersonMapper: Mapper<IContactPerson, ContactPerson> = {
     },
     unlift(contactPerson: ContactPerson): IContactPerson {
         const { id, ...obj } = contactPerson;
-        return obj;
-    },
-};
-
-export const consumptionMapper: Mapper<IConsumption, Consumption> = {
-    lift(id: string, obj: IConsumption): Consumption {
-        return new Consumption(obj);
-    },
-    unlift(obj: Consumption): IConsumption {
         return obj;
     },
 };
