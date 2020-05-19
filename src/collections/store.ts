@@ -3,7 +3,6 @@ import {
   contactPersonMapper,
   crewMapper,
   shiftMapper,
-  shiftPresetMapper,
 } from "../mappers/mappers";
 import { Child, IChild } from "../models/child";
 import { ContactPerson, IContactPerson } from "../models/contact-person";
@@ -13,7 +12,7 @@ import {
   IDetailedCrewAttendance,
 } from "../models/detailed-attendance";
 import { IReport } from "../models/report";
-import { IShift, IShiftPreset, Shift } from "../models/shift";
+import { IShift, Shift } from "../models/shift";
 import { ITemplate } from "../models/template";
 import { ITenant } from "../models/tenant";
 import { IUser } from "../models/user";
@@ -113,10 +112,6 @@ export const store = {
   ),
   // TODO check if dates convert correctly (created and expires) for reports
   reports: new TenantIndexedCollection<IReport>("reports", "report"),
-  shiftPresets: new MappingCollection<
-    { readonly presets: ReadonlyArray<IShiftPreset> },
-    ReadonlyArray<Shift>
-  >("shift-presets", "shift-presets", shiftPresetMapper, true),
   shifts: new TenantIndexedMappingCollection<IShift, Shift>(
     "shifts",
     "shift",
