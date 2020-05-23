@@ -51,6 +51,9 @@ export interface Tenant {
      * A link to the privacy policy of the playground
      */
     readonly privacyPolicyUrl?: string;
+
+    readonly enableOnlineRegistration?: boolean;
+    readonly enableOnlineEnrollment?: boolean;
 }
 
 export type ITenant = Tenant;
