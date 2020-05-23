@@ -54,6 +54,7 @@ export interface Tenant {
 
     readonly enableOnlineRegistration?: boolean;
     readonly enableOnlineEnrollment?: boolean;
+    readonly onlineRegistrationsGoToWaitingList?: boolean;
 }
 
 export type ITenant = Tenant;
