@@ -4,18 +4,6 @@ import { Crew, ICrew } from "../models/crew";
 import { IShift, Shift } from "../models/shift";
 import { Mapper } from "./mapper";
 
-export const identityMapper = <T>(): Mapper<T, T & { readonly id: string }> => {
-    return {
-        lift(id: string, obj: T): T & { readonly id: string } {
-            return { id, ...obj };
-        },
-        unlift(obj: T & { readonly id?: string }): T {
-            const { id, ...res } = obj;
-            return res as T;
-        },
-    };
-};
-
 export const childMapper: Mapper<IChild, Child> = {
     lift(id: string, obj: IChild): Child {
         return new Child({ id, ...obj });
