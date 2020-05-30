@@ -50,6 +50,11 @@ export interface IDetailedChildAttendance {
      * The discounts that were applied for this attendance. Only the name of the discount is saved.
      */
     readonly discounts?: ReadonlyArray<{ readonly name: string }>;
+
+    /**
+     * If the child was part of a bubble (COVID-19 containment group) on this attendance
+     */
+    readonly bubbleName?: string;
 }
 
 export interface IDetailedCrewAttendance {
