@@ -5,6 +5,17 @@ export interface ILocalTime {
 }
 
 export class LocalTime implements ILocalTime {
+    static fromMinutesSinceMidnight(minutesSinceMidnight: number): LocalTime {
+        const clamped = Math.min(Math.max(0, minutesSinceMidnight), 1439);
+        const minute = clamped % 60;
+        const hour = (clamped - minute) / 60;
+
+        return new LocalTime({
+            hour,
+            minute,
+        });
+    }
+
     readonly hour: number;
     readonly minute: number;
 
