@@ -1,6 +1,33 @@
 import { LocalTime } from "../models/local-time";
 
 describe("LocalTime", () => {
+    describe("toMinutesSinceMidnight", () => {
+        test("17:59", () => {
+            const time = new LocalTime({
+                hour: 17,
+                minute: 59,
+            });
+
+            expect(time.minutesSinceMidnight).toEqual(1079);
+        });
+        test("00:00", () => {
+            const time = new LocalTime({
+                hour: 0,
+                minute: 0,
+            });
+
+            expect(time.minutesSinceMidnight).toEqual(0);
+        });
+        test("23:59", () => {
+            const time = new LocalTime({
+                hour: 23,
+                minute: 59,
+            });
+
+            expect(time.minutesSinceMidnight).toEqual(1439);
+        });
+    });
+
     describe("fromMinutesSinceMidnight", () => {
         test("0", () => {
             const time = LocalTime.fromMinutesSinceMidnight(0);

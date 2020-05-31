@@ -1,4 +1,3 @@
-
 export interface ILocalTime {
     readonly hour: number;
     readonly minute: number;
@@ -31,5 +30,9 @@ export class LocalTime implements ILocalTime {
     toString() {
         const min = this.minute <= 9 ? "0" + this.minute : this.minute;
         return this.hour.toString() + ":" + min;
+    }
+
+    get minutesSinceMidnight(): number {
+        return this.hour * 60 + this.minute;
     }
 }
