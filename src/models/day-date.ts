@@ -69,6 +69,7 @@ export class DayDate implements IDayDate {
         return new Date(this.year, this.month - 1, this.day);
     }
 
+    /** TODO does not take timezones into account! */
     nativeDayWithOffset(localTime: LocalTime) {
         return new Date(this.year, this.month - 1, this.day, localTime.hour, localTime.minute);
     }

@@ -18,7 +18,16 @@ export class DayDateRange implements IDayDateRange {
         this.to = new DayDate(range.to);
     }
 
+    /** @deprecated */
     contains(day: DayDate) {
+        return day.isAfter(this.from) && day.isBefore(this.to);
+    }
+
+    containsInclusive(day: DayDate): boolean {
+        if (this.from.equals(day) || this.to.equals(day)) {
+            return true;
+        }
+
         return day.isAfter(this.from) && day.isBefore(this.to);
     }
 
@@ -30,6 +39,7 @@ export class DayDateRange implements IDayDateRange {
         return day.isBefore(this.from);
     }
 
+    /** @deprecated */
     includes(other: DayDateRange | DayDate) {
         if (other instanceof DayDate) {
             return other.isAfterOrEqual(this.from) && other.isBeforeOrEqual(this.to);
