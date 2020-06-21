@@ -8,6 +8,8 @@ export type FileType = "all-children"
     | "child-fiscal-certificate"
     | "child-invoice"
     | "children-per-day"
+    | "bubble-assignments"
+    | "child-attendance-intentions"
     | "day-overview";
 
 export interface FileRequestMetadata {
