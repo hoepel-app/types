@@ -1,4 +1,4 @@
-import { LocalTime } from "../models/local-time";
+import { LocalTime } from "../value-objects/local-time";
 
 describe("LocalTime", () => {
     describe("toMinutesSinceMidnight", () => {

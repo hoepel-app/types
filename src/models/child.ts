@@ -1,10 +1,10 @@
 /**
  * A child
  */
-import { Address, IAddress } from "./address";
-import { DayDate, IDayDate } from "./day-date";
+import { Address, IAddress } from "../value-objects/address";
+import { DayDate, IDayDate } from "../value-objects/day-date";
 import {Person} from "./person";
-import {IPhoneContact} from "./phone-contact";
+import {IPhoneContact} from "../value-objects/phone-contact";
 
 export interface IChild extends Person {
     readonly firstName: string;

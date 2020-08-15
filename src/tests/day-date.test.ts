@@ -1,4 +1,4 @@
-import { DayDate } from "../models/day-date";
+import { DayDate } from "../value-objects/day-date";
 
 describe("DayDate", () => {
     it("throws when creating DayDate with NaN", () => {

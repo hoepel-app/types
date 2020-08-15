@@ -1,4 +1,4 @@
-import { IPrice, Price } from "./price";
+import { IPrice, Price } from "../value-objects/price";
 
 export interface IDetailedChildAttendance {
     /**

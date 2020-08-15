@@ -1,5 +1,5 @@
-import { DayDate } from "../models/day-date";
-import { DayDateRange } from "../models/day-date-range";
+import { DayDate } from "../value-objects/day-date";
+import { DayDateRange } from "../value-objects/day-date-range";
 
 describe("DayDateRange", () => {
     test("containsInclusive", () => {

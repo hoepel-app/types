@@ -1,10 +1,10 @@
 /**
  * A shift: an activity or period of a day
  */
-import {DayDate} from "./day-date";
-import {LocalTime} from "./local-time";
-import {IPrice, Price} from "./price";
-import {IStartAndEndTime, StartAndEndTime} from "./start-and-end-time";
+import {DayDate} from "../value-objects/day-date";
+import {LocalTime} from "../value-objects/local-time";
+import {IPrice, Price} from "../value-objects/price";
+import {IStartAndEndTime, StartAndEndTime} from "../value-objects/start-and-end-time";
 
 /** @deprecated */
 export interface IShift {

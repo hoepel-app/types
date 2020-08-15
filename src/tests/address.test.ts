@@ -1,4 +1,4 @@
-import { Address } from "../models/address";
+import { Address } from "../value-objects/address";
 
 describe("Address#formatted", () => {
     it("should return formatted full address", () => {

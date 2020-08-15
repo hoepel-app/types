@@ -1,5 +1,5 @@
-import {IAddress} from "./address";
-import {IPhoneContact} from "./phone-contact";
+import {IAddress} from "../value-objects/address";
+import {IPhoneContact} from "../value-objects/phone-contact";
 
 export interface Person {
     readonly id?: string;

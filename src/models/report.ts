@@ -1,4 +1,4 @@
-import { FileType } from "./file";
+import { FileType } from "../value-objects/file";
 
 export interface IReport {
     readonly refPath: string;

@@ -1,4 +1,4 @@
-import { Price } from "../models/price";
+import { Price } from "../value-objects/price";
 
 describe("Price", () => {
     it("Add cents to euros when >= 100", () => {

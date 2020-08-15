@@ -1,4 +1,4 @@
-import { DayDate, IDayDate } from "./day-date";
+import { DayDate, IDayDate } from "../value-objects/day-date";
 import { IShift, Shift } from "./shift";
 
 /**
