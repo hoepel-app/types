@@ -3,8 +3,8 @@
  */
 import { Address, IAddress } from "../value-objects/address";
 import { DayDate, IDayDate } from "../value-objects/day-date";
-import {Person} from "./person";
 import {IPhoneContact} from "../value-objects/phone-contact";
+import {Person} from "./person";
 
 export interface IChild extends Person {
     readonly firstName: string;

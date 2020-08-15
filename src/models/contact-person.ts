@@ -1,7 +1,7 @@
 import { compile } from "virginity-ts";
 import { Address, IAddress } from "../value-objects/address";
-import {Person} from "./person";
 import { IPhoneContact } from "../value-objects/phone-contact";
+import {Person} from "./person";
 
 export interface IContactPerson extends Person {
     readonly firstName: string;

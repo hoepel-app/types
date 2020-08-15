@@ -2,8 +2,8 @@ import { compile } from "virginity-ts";
 import { IAddress } from "../value-objects/address";
 import { CrewCertificates, ICrewCertificates } from "../value-objects/crew-certificates";
 import { DayDate, IDayDate } from "../value-objects/day-date";
-import {Person} from "./person";
 import {IPhoneContact} from "../value-objects/phone-contact";
+import {Person} from "./person";
 
 /**
  * A crew member
