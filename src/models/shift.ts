@@ -6,6 +6,7 @@ import {LocalTime} from "./local-time";
 import {IPrice, Price} from "./price";
 import {IStartAndEndTime, StartAndEndTime} from "./start-and-end-time";
 
+/** @deprecated */
 export interface IShift {
     readonly id?: string;
     readonly dayId: string;
@@ -18,6 +19,7 @@ export interface IShift {
     readonly startAndEnd?: IStartAndEndTime;
 }
 
+/** @deprecated */
 export class Shift implements IShift {
     static sort(shifts: ReadonlyArray<Shift>) {
         return [...shifts].sort( (a, b) => {
