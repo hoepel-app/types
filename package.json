@@ -11,7 +11,7 @@
     "@commitlint/cli": "^8.1.0",
     "@commitlint/config-conventional": "^8.0.0",
     "@commitlint/prompt": "^8.1.0",
-    "@types/jest": "^25.1.1",
+    "@types/jest": "^26.0.16",
     "cz-conventional-changelog": "^3.0.2",
     "husky": "^4.2.1",
     "jest": "^25.1.0",
